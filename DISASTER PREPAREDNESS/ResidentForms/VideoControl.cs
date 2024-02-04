@@ -29,30 +29,24 @@ namespace DISASTER_PREPAREDNESS.AdminForms
             InitializeComponent();
             InitializeControls();
         }
+
         private void InitializeControls()
         {
             webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
-            webView21.NavigationCompleted += webView21_NavigationCompleted;
+            webView21.CoreWebView2InitializationCompleted += webView21_CoreWebView2InitializationCompleted;
             webView21.Dock = DockStyle.Fill;
             Controls.Add(webView21);
 
-            // Add the following line to ensure CoreWebView2 is initialized
-            webView21.EnsureCoreWebView2Async(null);
-
         }
-        private void webView21_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e)
-        {
-            Console.WriteLine($"Navigation completed with result: {e.IsSuccess}, WebErrorStatus: {e.WebErrorStatus}");
 
-        }
 
 
         private void webView21_CoreWebView2InitializationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)
         {
             if (e.IsSuccess)
             {
-                Console.WriteLine("WebView2 initialization completed successfully.");
-                SetVideoLink(VideoLink);
+                MessageBox.Show("WebView2 initialization completed successfully.");
+                webView21.Source = new Uri("about:blank");
             }
             else
             {
@@ -66,48 +60,61 @@ namespace DISASTER_PREPAREDNESS.AdminForms
                 MessageBox.Show("SetVideoLink called with VideoLink: " + videoLink);
                 string videoId = GetYouTubeVideoId(videoLink);
 
-                string html = $@"
+                string embedHtml = $@"
 <!DOCTYPE html>
 <html>
 <body style='margin:0;'>
-    <iframe width='100%' height='100%' src='https://www.youtube.com/embed/{videoId}' frameborder='0' allowfullscreen></iframe>
+    <iframe width='100%' height='100%' src='https://www.youtube.com/embed/{videoId}?autoplay=1' frameborder='0' allowfullscreen></iframe>
 </body>
 </html>";
 
                 webView21.CoreWebView2.Navigate("about:blank");
-                webView21.CoreWebView2.NavigateToString(html);
+                webView21.CoreWebView2.NavigateToString(embedHtml);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error setting video link: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+
         }
-        
+
 
         private string GetYouTubeVideoId(string videoLink)
         {
-            // Extract the video ID from the YouTube video link
-            Uri uri = new Uri(videoLink);
-            string query = uri.Query;
-            if (!string.IsNullOrEmpty(query))
+            try
             {
-                string[] queryParams = query.Substring(1).Split('&');
-                foreach (string param in queryParams)
+                var uri = new Uri(videoLink);
+                var query = uri.Query;
+
+                if (!string.IsNullOrEmpty(query))
                 {
-                    string[] keyValue = param.Split('=');
-                    if (keyValue.Length == 2 && keyValue[0] == "v")
+                    var queryParams = System.Web.HttpUtility.ParseQueryString(query);
+                    var videoId = queryParams["v"];
+
+                    if (!string.IsNullOrEmpty(videoId))
                     {
-                        return keyValue[1];
+                        return videoId;
                     }
                 }
+
+                return string.Empty;
             }
-            return string.Empty;
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error extracting video ID: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return string.Empty;
+            }
         }
 
         private void webView21_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Hazard map uploaded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+
+        private void webView21_Click_1(object sender, EventArgs e)
+        {
 
         }
     }

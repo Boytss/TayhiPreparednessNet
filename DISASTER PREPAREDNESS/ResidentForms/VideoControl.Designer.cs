@@ -47,11 +47,12 @@
             webView21.AllowExternalDrop = true;
             webView21.CreationProperties = null;
             webView21.DefaultBackgroundColor = Color.White;
-            webView21.Location = new Point(44, 92);
+            webView21.Location = new Point(109, 50);
             webView21.Name = "webView21";
-            webView21.Size = new Size(188, 141);
+            webView21.Size = new Size(213, 146);
             webView21.TabIndex = 3;
             webView21.ZoomFactor = 1D;
+            webView21.Click += webView21_Click_1;
             // 
             // VideoControl
             // 
@@ -60,7 +61,7 @@
             Controls.Add(webView21);
             Controls.Add(labelTitle);
             Name = "VideoControl";
-            Size = new Size(303, 303);
+            Size = new Size(705, 320);
             ((System.ComponentModel.ISupportInitialize)webView21).EndInit();
             ResumeLayout(false);
             PerformLayout();

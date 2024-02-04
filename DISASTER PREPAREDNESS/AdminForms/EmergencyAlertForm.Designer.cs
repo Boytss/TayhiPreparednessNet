@@ -28,25 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
             SuspendLayout();
             // 
-            // label1
+            // textBox1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(152, 193);
-            label1.Name = "label1";
-            label1.Size = new Size(614, 65);
-            label1.TabIndex = 5;
-            label1.Text = "TODO - EMERGENCY ALERT";
+            textBox1.Location = new Point(198, 94);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(187, 23);
+            textBox1.TabIndex = 0;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(307, 214);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(187, 23);
+            textBox2.TabIndex = 1;
             // 
             // EmergencyAlertForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(label1);
+            Controls.Add(textBox2);
+            Controls.Add(textBox1);
             Name = "EmergencyAlertForm";
             Text = "EmergencyAlertForm";
             ResumeLayout(false);
@@ -55,6 +61,7 @@
 
         #endregion
 
-        private Label label1;
+        private TextBox textBox1;
+        private TextBox textBox2;
     }
 }
