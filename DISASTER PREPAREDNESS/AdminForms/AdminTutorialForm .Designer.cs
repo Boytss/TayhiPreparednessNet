@@ -1,6 +1,6 @@
-﻿namespace DISASTER_PREPAREDNESS.ResidentForms
+﻿namespace DISASTER_PREPAREDNESS.AdminForms
 {
-    partial class ResidentHazardMapsForm
+    partial class TutorialForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             panel2 = new Panel();
-            flowLayoutPanelHazardMaps = new FlowLayoutPanel();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             SuspendLayout();
             // 
             // panel2
@@ -39,33 +39,34 @@
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(800, 60);
-            panel2.TabIndex = 2;
+            panel2.TabIndex = 1;
             // 
-            // flowLayoutPanelHazardMaps
+            // flowLayoutPanel1
             // 
-            flowLayoutPanelHazardMaps.BackColor = Color.FromArgb(190, 196, 228);
-            flowLayoutPanelHazardMaps.Dock = DockStyle.Fill;
-            flowLayoutPanelHazardMaps.Location = new Point(0, 60);
-            flowLayoutPanelHazardMaps.Name = "flowLayoutPanelHazardMaps";
-            flowLayoutPanelHazardMaps.Size = new Size(800, 390);
-            flowLayoutPanelHazardMaps.TabIndex = 3;
+            flowLayoutPanel1.AutoScroll = true;
+            flowLayoutPanel1.BackColor = Color.FromArgb(190, 196, 228);
+            flowLayoutPanel1.Dock = DockStyle.Fill;
+            flowLayoutPanel1.Location = new Point(0, 60);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(800, 390);
+            flowLayoutPanel1.TabIndex = 2;
             // 
-            // ResidentHazardMapsForm
+            // TutorialForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
             ClientSize = new Size(800, 450);
-            Controls.Add(flowLayoutPanelHazardMaps);
+            Controls.Add(flowLayoutPanel1);
             Controls.Add(panel2);
-            Name = "ResidentHazardMapsForm";
-            Text = "ResidentHazardMapsForm";
+            MaximumSize = new Size(900, 900);
+            Name = "TutorialForm";
+            Text = "TutorialForm";
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel2;
-        private FlowLayoutPanel flowLayoutPanelHazardMaps;
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }

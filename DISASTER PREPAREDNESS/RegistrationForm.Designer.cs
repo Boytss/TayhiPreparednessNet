@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrationForm));
             backgroundPanel = new Panel();
             panel3 = new Panel();
-            minimizeButton = new Button();
-            maximizeButton = new Button();
-            closeButton = new Button();
+            button4 = new Button();
+            button2 = new Button();
+            button3 = new Button();
             panel4 = new Panel();
             label4 = new Label();
             label3 = new Label();
@@ -113,9 +113,9 @@
             // panel3
             // 
             panel3.BackgroundImage = (Image)resources.GetObject("panel3.BackgroundImage");
-            panel3.Controls.Add(minimizeButton);
-            panel3.Controls.Add(maximizeButton);
-            panel3.Controls.Add(closeButton);
+            panel3.Controls.Add(button4);
+            panel3.Controls.Add(button2);
+            panel3.Controls.Add(button3);
             panel3.Controls.Add(panel4);
             panel3.Controls.Add(label4);
             panel3.Controls.Add(label3);
@@ -125,49 +125,60 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(377, 491);
             panel3.TabIndex = 1;
+            panel3.Paint += panel3_Paint;
             panel3.MouseDown += panel3_MouseDown;
             // 
-            // minimizeButton
+            // button4
             // 
-            minimizeButton.BackColor = Color.FromArgb(65, 114, 107);
-            minimizeButton.BackgroundImage = (Image)resources.GetObject("minimizeButton.BackgroundImage");
-            minimizeButton.BackgroundImageLayout = ImageLayout.Stretch;
-            minimizeButton.FlatStyle = FlatStyle.Flat;
-            minimizeButton.ForeColor = SystemColors.ControlLight;
-            minimizeButton.Location = new Point(313, 0);
-            minimizeButton.Name = "minimizeButton";
-            minimizeButton.Size = new Size(22, 22);
-            minimizeButton.TabIndex = 24;
-            minimizeButton.UseVisualStyleBackColor = false;
-            minimizeButton.Click += minimizeButton_Click;
+            button4.BackColor = Color.Transparent;
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Popup;
+            button4.Font = new Font("Microsoft Sans Serif", 9F);
+            button4.ForeColor = Color.White;
+            button4.Image = (Image)resources.GetObject("button4.Image");
+            button4.Location = new Point(317, 0);
+            button4.Margin = new Padding(0);
+            button4.Name = "button4";
+            button4.Size = new Size(20, 20);
+            button4.TabIndex = 27;
+            button4.TextAlign = ContentAlignment.MiddleLeft;
+            button4.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button4.UseVisualStyleBackColor = false;
             // 
-            // maximizeButton
+            // button2
             // 
-            maximizeButton.BackColor = Color.FromArgb(65, 114, 107);
-            maximizeButton.BackgroundImage = (Image)resources.GetObject("maximizeButton.BackgroundImage");
-            maximizeButton.BackgroundImageLayout = ImageLayout.Zoom;
-            maximizeButton.FlatStyle = FlatStyle.Flat;
-            maximizeButton.ForeColor = SystemColors.ControlLight;
-            maximizeButton.Location = new Point(334, 0);
-            maximizeButton.Name = "maximizeButton";
-            maximizeButton.Size = new Size(22, 22);
-            maximizeButton.TabIndex = 23;
-            maximizeButton.UseVisualStyleBackColor = false;
-            maximizeButton.Click += maximizeButton_Click;
+            button2.BackColor = Color.Transparent;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Popup;
+            button2.Font = new Font("Microsoft Sans Serif", 9F);
+            button2.ForeColor = Color.White;
+            button2.Image = (Image)resources.GetObject("button2.Image");
+            button2.Location = new Point(337, 0);
+            button2.Margin = new Padding(0);
+            button2.Name = "button2";
+            button2.Size = new Size(20, 20);
+            button2.TabIndex = 26;
+            button2.TextAlign = ContentAlignment.MiddleLeft;
+            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button2.UseVisualStyleBackColor = false;
             // 
-            // closeButton
+            // button3
             // 
-            closeButton.BackColor = Color.FromArgb(65, 114, 107);
-            closeButton.BackgroundImage = (Image)resources.GetObject("closeButton.BackgroundImage");
-            closeButton.BackgroundImageLayout = ImageLayout.Zoom;
-            closeButton.FlatStyle = FlatStyle.Flat;
-            closeButton.ForeColor = SystemColors.Control;
-            closeButton.Location = new Point(355, 0);
-            closeButton.Name = "closeButton";
-            closeButton.Size = new Size(22, 22);
-            closeButton.TabIndex = 22;
-            closeButton.UseVisualStyleBackColor = false;
-            closeButton.Click += closeButton_Click;
+            button3.BackColor = Color.Transparent;
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatStyle = FlatStyle.Popup;
+            button3.Font = new Font("Microsoft Sans Serif", 9F);
+            button3.ForeColor = Color.White;
+            button3.Image = (Image)resources.GetObject("button3.Image");
+            button3.Location = new Point(357, 0);
+            button3.Margin = new Padding(0);
+            button3.Name = "button3";
+            button3.Size = new Size(20, 20);
+            button3.TabIndex = 25;
+            button3.TextAlign = ContentAlignment.MiddleLeft;
+            button3.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // panel4
             // 
@@ -267,7 +278,7 @@
             linkLabel1.AutoSize = true;
             linkLabel1.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             linkLabel1.LinkColor = Color.Black;
-            linkLabel1.Location = new Point(84, 361);
+            linkLabel1.Location = new Point(84, 380);
             linkLabel1.Name = "linkLabel1";
             linkLabel1.Size = new Size(180, 16);
             linkLabel1.TabIndex = 18;
@@ -777,9 +788,6 @@
         private Label label3;
         private Label label4;
         private Panel panel4;
-        private Button closeButton;
-        private Button minimizeButton;
-        private Button maximizeButton;
         private Panel panel1;
         private CheckBox showPassCheckbox;
         private TextBox passwordValue;
@@ -828,5 +836,8 @@
         private TextBox lastNameValue;
         private FlowLayoutPanel flowLayoutPanel1;
         private TextBox firstNameValue;
+        private Button button4;
+        private Button button2;
+        private Button button3;
     }
 }

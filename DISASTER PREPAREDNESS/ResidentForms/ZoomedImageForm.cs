@@ -12,27 +12,20 @@ namespace DISASTER_PREPAREDNESS.ResidentForms
 {
     public partial class ZoomedImageForm : Form
     {
-        private PictureBox pictureBoxZoomed;
         public ZoomedImageForm(Image image)
         {
             InitializeComponent();
-            InitializePictureBox(image);
+            InitializeForm(image);
         }
-        private void InitializePictureBox(Image image)
-        {
-            pictureBoxZoomed = new PictureBox
-            {
-                Image = image,
-                SizeMode = PictureBoxSizeMode.Zoom,
-                Dock = DockStyle.Fill
-            };
 
-            this.Controls.Add(pictureBoxZoomed);
+        private void InitializeForm(Image image)
+        {
+            this.BackgroundImage = image;
+            this.BackgroundImageLayout = ImageLayout.Zoom;
 
             this.Size = new Size(Math.Min(image.Width, Screen.PrimaryScreen.WorkingArea.Width),
-                                Math.Min(image.Height, Screen.PrimaryScreen.WorkingArea.Height));
-
-            this.StartPosition = FormStartPosition.CenterParent;
+                                 Math.Min(image.Height, Screen.PrimaryScreen.WorkingArea.Height));
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

@@ -28,33 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            panel2 = new Panel();
+            flowLayoutPanelDisasters = new FlowLayoutPanel();
             SuspendLayout();
             // 
-            // label1
+            // panel2
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(46, 106);
-            label1.Name = "label1";
-            label1.Size = new Size(477, 65);
-            label1.TabIndex = 4;
-            label1.Text = "TODO - HELPFULTIPS";
+            panel2.BackColor = Color.FromArgb(82, 97, 184);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(779, 60);
+            panel2.TabIndex = 0;
             // 
-            // HelpfulTipsForm
+            // flowLayoutPanelDisasters
+            // 
+            flowLayoutPanelDisasters.AutoScroll = true;
+            flowLayoutPanelDisasters.BackColor = Color.FromArgb(190, 196, 228);
+            flowLayoutPanelDisasters.Dock = DockStyle.Fill;
+            flowLayoutPanelDisasters.Location = new Point(0, 60);
+            flowLayoutPanelDisasters.Name = "flowLayoutPanelDisasters";
+            flowLayoutPanelDisasters.Size = new Size(779, 369);
+            flowLayoutPanelDisasters.TabIndex = 1;
+            // 
+            // AdminHelpfulTipsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(570, 331);
-            Controls.Add(label1);
-            Name = "HelpfulTipsForm";
+            AutoScroll = true;
+            ClientSize = new Size(779, 429);
+            Controls.Add(flowLayoutPanelDisasters);
+            Controls.Add(panel2);
+            Name = "AdminHelpfulTipsForm";
             Text = "HelpfulTipsForm";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
+        private Panel panel1;
+        private Panel panel2;
+        private FlowLayoutPanel flowLayoutPanelDisasters;
     }
 }

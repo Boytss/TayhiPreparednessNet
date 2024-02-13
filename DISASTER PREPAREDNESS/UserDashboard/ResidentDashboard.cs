@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,14 +14,28 @@ namespace DISASTER_PREPAREDNESS
 {
     public partial class ResidentDashboard : Form
     {
+        public Panel PanelDesktopPanels { get { return panelDesktopPanel; } }
+
         private Button currentButton;
         private Random random;
         private int tempIndex;
         private Form activeForm;
+        // Import the necessary Windows API functions
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+        // Define constants for window messages
+        const int WM_NCLBUTTONDOWN = 0xA1;
+        const int HT_CAPTION = 0x2;
         public ResidentDashboard()
         {
             InitializeComponent();
             random = new Random();
+            buttonWeatherForecast_Click(null, EventArgs.Empty);
+            SetRoundedCorners(this, 15);
+
 
         }
         private Color SelectThemeColor()
@@ -45,7 +61,6 @@ namespace DISASTER_PREPAREDNESS
                     currentButton.BackColor = color;
                     currentButton.ForeColor = Color.White;
                     currentButton.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                    panelTitleBar.BackColor = color;
                 }
             }
         }
@@ -76,40 +91,8 @@ namespace DISASTER_PREPAREDNESS
             this.panelDesktopPanel.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
-            labelHome.Text = childForm.Text;
         }
 
-
-
-        private void buttonWeather_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonHazardMaps_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonEducationalVideos_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonEvacuationCenter_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonNewsEvents_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonHelpfulTips_Click_1(object sender, EventArgs e)
-        {
-
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -126,42 +109,6 @@ namespace DISASTER_PREPAREDNESS
             // If the user clicks No, the log out action is canceled.
         }
 
-        private void buttonWeather_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new ResidentWeatherForm(), sender);
-
-        }
-
-        private void buttonHazardMaps_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new ResidentHazardMapsForm(), sender);
-
-        }
-
-        private void buttonEducationalVideos_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new ResidentEducationalVideosForm(), sender);
-
-        }
-
-        private void buttonEvacuationCenter_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new ResidentAdminEvacuationCenterForm(), sender);
-
-        }
-
-        private void buttonNewsEvents_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new ResidentNewsEventsForm(), sender);
-
-        }
-
-        private void buttonHelpfulTips_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new ResidentHelpfulTipsForm(), sender);
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             // Display a confirmation dialog
@@ -173,6 +120,92 @@ namespace DISASTER_PREPAREDNESS
                 this.Hide();
                 LoginForm loginForm = new LoginForm();
                 loginForm.Show();
+            }
+        }
+
+        private void buttonWeatherForecast_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new ResidentWeatherForm(), sender);
+
+        }
+
+        private void buttonHazardMaps_Click_2(object sender, EventArgs e)
+        {
+            OpenChildForm(new ResidentHazardMapsForm(), sender);
+
+        }
+
+        private void buttonEducationalVideos_Click_2(object sender, EventArgs e)
+        {
+            OpenChildForm(new ResidentEducationalVideosForm(), sender);
+
+        }
+
+        private void buttonEvacuationCenter_Click_2(object sender, EventArgs e)
+        {
+            OpenChildForm(new ResidentAdminEvacuationCenterForm(), sender);
+
+        }
+
+        private void buttonNewsEvents_Click_2(object sender, EventArgs e)
+        {
+            OpenChildForm(new ResidentNewsEventsForm(), sender);
+
+        }
+
+        private void buttonHelpfulTips_Click_2(object sender, EventArgs e)
+        {
+            OpenChildForm(new ResidentHelpfulTipsForm(), sender);
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+                WindowState = FormWindowState.Maximized;
+            else
+                WindowState = FormWindowState.Normal;
+            SetRoundedCorners(this, 15);
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+                WindowState = FormWindowState.Minimized;
+            else
+                WindowState = FormWindowState.Normal;
+            SetRoundedCorners(this, 15);
+        }
+
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // Close the form
+            this.Close();
+
+        }
+        private void SetRoundedCorners(Control control, int radius)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(control.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(control.Width - radius, control.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, control.Height - radius, radius, radius, 90, 90);
+            control.Region = new Region(path);
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel3_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
     }

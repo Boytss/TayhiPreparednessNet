@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using DISASTER_PREPAREDNESS.DataAccess;
@@ -57,9 +58,6 @@ namespace DISASTER_PREPAREDNESS
 
             SetRoundedButton(signUpButton);
             panel3.MouseDown += panel3_MouseDown;
-            minimizeButton.Click += minimizeButton_Click;
-            maximizeButton.Click += maximizeButton_Click;
-            closeButton.Click += closeButton_Click;
         }
         private void RegisterUser()
         {
@@ -70,8 +68,21 @@ namespace DISASTER_PREPAREDNESS
             string username = userNameValue.Text;
             string password = passwordValue.Text;
 
-            
+            // Check for empty fields
+            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) ||
+                string.IsNullOrWhiteSpace(purokNumber) || string.IsNullOrWhiteSpace(mobileNumber) ||
+                string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Please fill in all the fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            // Check password strength
+            if (!IsPasswordStrong(password))
+            {
+                MessageBox.Show("Password does not meet the requirements.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Return without attempting registration
+            }
 
             // Call the RegistrationHelper method
             bool registrationSuccess = RegistrationHelper.RegisterUser(firstName, lastName, purokNumber, mobileNumber, username, password);
@@ -273,6 +284,7 @@ namespace DISASTER_PREPAREDNESS
         private void passwordValue_TextChanged(object sender, EventArgs e)
         {
 
+
         }
 
         private void showPassCheckbox_CheckedChanged(object sender, EventArgs e)
@@ -299,6 +311,27 @@ namespace DISASTER_PREPAREDNESS
         {
             RegisterUser();
 
+
+        }
+        private bool IsPasswordStrong(string password)
+        {
+            bool isLengthValid = password.Length >= 8;
+            bool hasUpperCase = password.Any(char.IsUpper);
+            bool hasLowerCase = password.Any(char.IsLower);
+            bool hasDigit = password.Any(char.IsDigit);
+            bool hasSpecialChar = Regex.IsMatch(password, @"[!@#$%^&*()_+=\[{\]};:<>|./?,-]");
+
+            return isLengthValid && hasUpperCase && hasLowerCase && hasDigit && hasSpecialChar;
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -11,16 +11,16 @@ namespace DISASTER_PREPAREDNESS
     {
         public static List<string> ColorList = new List<string>()
         {
-            "#38AA93",
-            "#38AA93",
-            "#38AA93",
-            "#38AA93",
-            "#38AA93",
-            "#38AA93",
-            "#38AA93",
-            "#38AA93",
-            "#38AA93",
-            "#38AA93", };
+            "#7D8AF3",
+            "#7D8AF3",
+            "#7D8AF3",
+            "#7D8AF3",
+            "#7D8AF3",
+            "#7D8AF3",
+            "#7D8AF3",
+            "#7D8AF3",
+            "#7D8AF3",
+            "#7D8AF3", };
 
         public static Color ChangeColorBrightness(Color color, double correctionFactor)
         {
