@@ -62,52 +62,52 @@ namespace DISASTER_PREPAREDNESS.Forms
             flowLayoutPanelHazardMaps.Controls.Remove(deletedControl);
         }
 
-        private void btnBrowse_Click(object sender, EventArgs e)
-        {
-            // Open file dialog to select hazard map file
-            OpenFileDialog openFileDialog = new OpenFileDialog
-            {
-                Filter = "Image Files|*.png;*.jpg;*.jpeg;*.gif;*.bmp",
-                Title = "Select Hazard Map"
-            };
+        //private void btnBrowse_Click(object sender, EventArgs e)
+        //{
+        //    // Open file dialog to select hazard map file
+        //    OpenFileDialog openFileDialog = new OpenFileDialog
+        //    {
+        //        Filter = "Image Files|*.png;*.jpg;*.jpeg;*.gif;*.bmp",
+        //        Title = "Select Hazard Map"
+        //    };
 
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                // Display the selected file path
-                textBoxFilePath.Text = openFileDialog.FileName;
-            }
-        }
+        //    if (openFileDialog.ShowDialog() == DialogResult.OK)
+        //    {
+        //        // Display the selected file path
+        //        textBoxFilePath.Text = openFileDialog.FileName;
+        //    }
+        //}
 
-        private void btnUpload_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Get values from the form
-                string mapName = textMapName.Text;
-                string description = textDescription.Text;
+        //private void btnUpload_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        // Get values from the form
+        //        string mapName = textMapName.Text;
+        //        string description = textDescription.Text;
 
-                // Validate if a file is selected
-                if (string.IsNullOrEmpty(textBoxFilePath.Text))
-                {
-                    MessageBox.Show("Please select a hazard map file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+        //        // Validate if a file is selected
+        //        if (string.IsNullOrEmpty(textBoxFilePath.Text))
+        //        {
+        //            MessageBox.Show("Please select a hazard map file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            return;
+        //        }
 
-                // Get the file path
-                string imagePath = textBoxFilePath.Text;
+        //        // Get the file path
+        //        string imagePath = textBoxFilePath.Text;
 
-                // Save the hazard map information to the database
-                HazardMapDataAccess.UploadHazardMap(mapName, description, imagePath);
+        //        // Save the hazard map information to the database
+        //        HazardMapDataAccess.UploadHazardMap(mapName, description, imagePath);
 
-                MessageBox.Show("Hazard map uploaded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                flowLayoutPanelHazardMaps.Controls.Clear();
-                LoadHazardMaps();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error uploading hazard map: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        //        MessageBox.Show("Hazard map uploaded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        flowLayoutPanelHazardMaps.Controls.Clear();
+        //        LoadHazardMaps();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Error uploading hazard map: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {

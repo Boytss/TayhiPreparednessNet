@@ -41,6 +41,55 @@ namespace DISASTER_PREPAREDNESS.DataAccess
 
             return residentsDataTable;
         }
+        public static DataTable GetAllResidentContacts()
+        {
+            DataTable residentsContactDataTable = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string selectQuery = "SELECT ID, FirstName, LastName, PurokNumber, MobileNumber FROM dbo.Resident";
+
+                    using (SqlCommand command = new SqlCommand(selectQuery, connection))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            adapter.Fill(residentsContactDataTable);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle it as needed
+                throw new Exception($"Error fetching residents data: {ex.Message}");
+            }
+
+            return residentsContactDataTable;
+        }
+        public static void SendSMSAlerts(DataGridViewSelectedRowCollection selectedRows, string message)
+        {
+            try
+            {
+                // Loop through selected rows and send SMS alerts
+                foreach (DataGridViewRow row in selectedRows)
+                {
+                    string phoneNumber = row.Cells["MobileNumber"].Value.ToString();
+                    // Call a method to send SMS using the phoneNumber and message
+                    // Replace the following line with your SMS sending logic
+                    Console.WriteLine($"Sending SMS to {phoneNumber}: {message}");
+                }
+
+                MessageBox.Show("SMS alerts sent successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error sending SMS alerts: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         public static DataTable SearchResidents(string searchTerm)
         {
             DataTable searchResults = new DataTable();

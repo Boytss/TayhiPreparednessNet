@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DISASTER_PREPAREDNESS.ResidentForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,17 +20,12 @@ namespace DISASTER_PREPAREDNESS.AdminForms
         public AdminHazardMapsControl(string mapName, string description, string imagePath)
         {
             InitializeComponent();
-            MapName = mapName;
             // Set the information for the hazard map
-            labelDescription.Text = description;
-            labelMapName.Text = mapName;
+            labelHazardMaps.Text = mapName;
 
 
             // Set the image for the hazard map (assuming you have a PictureBox named pictureBoxMap)
-            pictureBoxMap.Image = Image.FromFile(imagePath);
-            SetRoundedCornersAndShadow(panel1, 80);
-            // Attach a click event to handle deletion when the picture is clicked
-            pictureBoxMap.Click += pictureBoxMap_Click_1;
+            buttonHazardMaps.Image = Image.FromFile(imagePath);
         }
 
 
@@ -70,9 +66,9 @@ namespace DISASTER_PREPAREDNESS.AdminForms
 
         }
 
-        
 
-       
+
+
 
         private void HazardMapControl_Load(object sender, EventArgs e)
         {
@@ -125,7 +121,22 @@ namespace DISASTER_PREPAREDNESS.AdminForms
         }
         private void AdminHazardMapsControl_Load(object sender, EventArgs e)
         {
-                
+
+        }
+
+        private void buttonHazardMaps_Click(object sender, EventArgs e)
+        {
+            // Check if the button's Image property is not null
+            if (buttonHazardMaps.Image != null)
+            {
+                // Create a new instance of ZoomedImageForm with the button's Image
+                ZoomedImageForm zoomForm = new ZoomedImageForm(buttonHazardMaps.Image);
+                zoomForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No image available to zoom.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

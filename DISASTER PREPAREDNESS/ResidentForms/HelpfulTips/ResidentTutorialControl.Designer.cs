@@ -1,6 +1,6 @@
-﻿namespace DISASTER_PREPAREDNESS.AdminForms
+﻿namespace DISASTER_PREPAREDNESS.ResidentForms
 {
-    partial class AdminTutorialControl
+    partial class ResidentTutorialControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -33,25 +33,27 @@
             // 
             // labelTutorialText
             // 
+            labelTutorialText.AutoEllipsis = true;
             labelTutorialText.AutoSize = true;
             labelTutorialText.Dock = DockStyle.Fill;
-            labelTutorialText.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Italic);
+            labelTutorialText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
             labelTutorialText.ForeColor = Color.FromArgb(32, 57, 131);
+            labelTutorialText.ImageAlign = ContentAlignment.TopCenter;
             labelTutorialText.Location = new Point(0, 0);
             labelTutorialText.Name = "labelTutorialText";
-            labelTutorialText.Size = new Size(46, 18);
-            labelTutorialText.TabIndex = 0;
+            labelTutorialText.Size = new Size(51, 20);
+            labelTutorialText.TabIndex = 1;
             labelTutorialText.Text = "label1";
-            labelTutorialText.Click += labelTutorialText_Click;
             // 
-            // AdminTutorialControl
+            // ResidentTutorialControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             AutoSize = true;
             Controls.Add(labelTutorialText);
-            Name = "AdminTutorialControl";
-            Size = new Size(216, 196);
+            Name = "ResidentTutorialControl";
+            Size = new Size(425, 252);
             ResumeLayout(false);
             PerformLayout();
         }

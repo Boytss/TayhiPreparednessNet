@@ -1,4 +1,6 @@
+using DISASTER_PREPAREDNESS.AdminForms;
 using DISASTER_PREPAREDNESS.Forms;
+using System.Configuration;
 
 namespace DISASTER_PREPAREDNESS
 {
@@ -14,7 +16,9 @@ namespace DISASTER_PREPAREDNESS
             // see https://aka.ms/applicationconfiguration.
             Application.EnableVisualStyles();
             ApplicationConfiguration.Initialize();
-            Application.Run(new RegistrationForm());
+            
+            Application.Run(new AdminDashboard());
+           
         }
     }
 }

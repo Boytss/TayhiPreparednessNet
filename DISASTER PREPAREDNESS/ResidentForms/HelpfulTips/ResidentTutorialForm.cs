@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DISASTER_PREPAREDNESS.AdminForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,19 +10,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DISASTER_PREPAREDNESS.AdminForms
+namespace DISASTER_PREPAREDNESS.ResidentForms
 {
-    public partial class TutorialForm : Form
+    public partial class ResidentTutorialForm : Form
     {
         private static readonly string connectionString = "Server=DESKTOP-7INE4EE\\SQLEXPRESS02;Database=DisasterPreparedness;Trusted_Connection=True;";
 
-        public TutorialForm(string disasterName)
+        public ResidentTutorialForm(string disasterName)
         {
             InitializeComponent();
-            // Query database to retrieve tutorial information based on disaster name
-  
+            labelTips.Text = disasterName;
             LoadTutorialText(disasterName);
-
         }
         private void LoadTutorialText(string disasterName)
         {
@@ -29,7 +28,7 @@ namespace DISASTER_PREPAREDNESS.AdminForms
             {
                 // Retrieve tutorial text based on the selected disaster name
                 string tutorialText = RetrieveTutorialText(disasterName);
-                AdminTutorialControl tutorial = new AdminTutorialControl();
+                ResidentTutorialControl tutorial = new ResidentTutorialControl();
 
                 // Set the tutorial text in the tutorialControl
                 tutorial.SetTutorialText(tutorialText);
@@ -73,6 +72,5 @@ namespace DISASTER_PREPAREDNESS.AdminForms
                 throw new Exception($"Error retrieving tutorial text: {ex.Message}");
             }
         }
-
     }
 }

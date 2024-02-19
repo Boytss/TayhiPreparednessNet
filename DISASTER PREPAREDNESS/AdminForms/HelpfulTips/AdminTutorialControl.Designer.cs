@@ -1,6 +1,6 @@
-﻿namespace DISASTER_PREPAREDNESS.ResidentForms
+﻿namespace DISASTER_PREPAREDNESS.AdminForms
 {
-    partial class ResidentTutorialControl
+    partial class AdminTutorialControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -40,18 +40,18 @@
             labelTutorialText.Location = new Point(0, 0);
             labelTutorialText.Name = "labelTutorialText";
             labelTutorialText.Size = new Size(46, 18);
-            labelTutorialText.TabIndex = 1;
+            labelTutorialText.TabIndex = 2;
             labelTutorialText.Text = "label1";
+            labelTutorialText.Click += labelTutorialText_Click_1;
             // 
-            // ResidentTutorialControl
+            // AdminTutorialControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoScroll = true;
             AutoSize = true;
             Controls.Add(labelTutorialText);
-            Name = "ResidentTutorialControl";
-            Size = new Size(163, 162);
+            Name = "AdminTutorialControl";
+            Size = new Size(422, 325);
             ResumeLayout(false);
             PerformLayout();
         }

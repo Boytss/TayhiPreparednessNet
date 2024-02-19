@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DISASTER_PREPAREDNESS.ResidentForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,7 +35,24 @@ namespace DISASTER_PREPAREDNESS.AdminForms
 
         private void buttonPicture_Click(object sender, EventArgs e)
         {
-           
+
+            
+        }
+        private AdminDashboard FindAdminDashboardParentForm()
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is AdminDashboard)
+                {
+                    return (AdminDashboard)form;
+                }
+            }
+
+            return null;
+        }
+
+        private void buttonPicture_Click_1(object sender, EventArgs e)
+        {
             AdminDashboard parentForm = FindAdminDashboardParentForm();
 
             if (parentForm != null)
@@ -64,18 +82,6 @@ namespace DISASTER_PREPAREDNESS.AdminForms
             {
                 MessageBox.Show("Parent form not found.");
             }
-        }
-        private AdminDashboard FindAdminDashboardParentForm()
-        {
-            foreach (Form form in Application.OpenForms)
-            {
-                if (form is AdminDashboard)
-                {
-                    return (AdminDashboard)form;
-                }
-            }
-
-            return null;
         }
     }
 }

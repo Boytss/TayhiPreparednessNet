@@ -50,23 +50,23 @@
             // 
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(265, 52);
+            label2.Location = new Point(188, 54);
             label2.Name = "label2";
-            label2.Size = new Size(299, 30);
+            label2.Size = new Size(423, 21);
             label2.TabIndex = 1;
-            label2.Text = "Essential Steps to Keep You Safe";
+            label2.Text = "Essential Steps to Keep You Safe During or Before a Disaster";
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Font = new Font("Sigmar One", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Sigmar One", 20.2499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(110, 0);
+            label1.Location = new Point(165, 9);
             label1.Name = "label1";
-            label1.Size = new Size(652, 61);
+            label1.Size = new Size(478, 45);
             label1.TabIndex = 0;
             label1.Text = "Disaster Preparedness Tips";
             // 
@@ -84,6 +84,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(800, 450);
             Controls.Add(flowLayoutPanelDisasters);
             Controls.Add(panel2);

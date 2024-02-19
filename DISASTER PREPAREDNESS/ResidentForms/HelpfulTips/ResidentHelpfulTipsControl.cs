@@ -8,23 +8,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Drawing.Imaging;
 
 
 namespace DISASTER_PREPAREDNESS.ResidentForms
 {
     public partial class ResidentHelpfulTipsControl : UserControl
     {
-        // Property for the disaster name
-
+  
         public ResidentHelpfulTipsControl(string DisasterName, String PictureLogoPath)
         {
             InitializeComponent();
             labelDisasters.Text = DisasterName;
+
             buttonPicture.BackgroundImage = Image.FromFile(PictureLogoPath);
             buttonPicture.BackgroundImageLayout = ImageLayout.Stretch;
 
+            
+
         }
         
+
 
         private void buttonPicture_Click_1(object sender, EventArgs e)
         {
@@ -70,5 +75,12 @@ namespace DISASTER_PREPAREDNESS.ResidentForms
 
             return null;
         }
+
+        private void labelDisasters_Click(object sender, EventArgs e)
+        {
+
+        }
+
+      
     }
 }

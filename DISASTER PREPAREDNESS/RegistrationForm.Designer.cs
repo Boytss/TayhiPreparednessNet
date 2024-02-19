@@ -131,15 +131,14 @@
             // button4
             // 
             button4.BackColor = Color.Transparent;
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatStyle = FlatStyle.Popup;
+            button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Microsoft Sans Serif", 9F);
             button4.ForeColor = Color.White;
             button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(317, 0);
+            button4.Location = new Point(297, 0);
             button4.Margin = new Padding(0);
             button4.Name = "button4";
-            button4.Size = new Size(20, 20);
+            button4.Size = new Size(26, 20);
             button4.TabIndex = 27;
             button4.TextAlign = ContentAlignment.MiddleLeft;
             button4.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -148,15 +147,14 @@
             // button2
             // 
             button2.BackColor = Color.Transparent;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Popup;
+            button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Microsoft Sans Serif", 9F);
             button2.ForeColor = Color.White;
             button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(337, 0);
+            button2.Location = new Point(324, 0);
             button2.Margin = new Padding(0);
             button2.Name = "button2";
-            button2.Size = new Size(20, 20);
+            button2.Size = new Size(26, 20);
             button2.TabIndex = 26;
             button2.TextAlign = ContentAlignment.MiddleLeft;
             button2.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -165,15 +163,14 @@
             // button3
             // 
             button3.BackColor = Color.Transparent;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Popup;
+            button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Microsoft Sans Serif", 9F);
             button3.ForeColor = Color.White;
             button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(357, 0);
+            button3.Location = new Point(351, 0);
             button3.Margin = new Padding(0);
             button3.Name = "button3";
-            button3.Size = new Size(20, 20);
+            button3.Size = new Size(26, 20);
             button3.TabIndex = 25;
             button3.TextAlign = ContentAlignment.MiddleLeft;
             button3.TextImageRelation = TextImageRelation.ImageBeforeText;

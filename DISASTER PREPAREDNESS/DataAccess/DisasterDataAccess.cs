@@ -40,6 +40,34 @@ namespace DISASTER_PREPAREDNESS.DataAccess
 
             return Disaster;
         }
-      
+        public static void UpdateTutorialText(string disasterName, string newText)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string updateQuery = "UPDATE dbo.TutorialTexts SET TutorialText = @NewText WHERE DisasterID = (SELECT DisasterID FROM dbo.Disasters WHERE DisasterName = @DisasterName)";
+
+                    using (SqlCommand command = new SqlCommand(updateQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@NewText", newText);
+                        command.Parameters.AddWithValue("@DisasterName", disasterName);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected == 0)
+                        {
+                            throw new Exception("No rows were affected. Disaster name might be invalid.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error updating tutorial text: {ex.Message}");
+            }
+        }
+
     }
 }

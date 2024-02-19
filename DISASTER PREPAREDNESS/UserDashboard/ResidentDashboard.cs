@@ -36,7 +36,60 @@ namespace DISASTER_PREPAREDNESS
             buttonWeatherForecast_Click(null, EventArgs.Empty);
             SetRoundedCorners(this, 15);
 
+            ApplyRoundedEdges(panel2);
+            ApplyCircularBorder(panel4);
+            labelTime.Text = DateTime.Now.ToLongTimeString();
+            labelDate.Text = DateTime.Now.ToLongDateString();
+        }
+        private void ApplyCircularBorder(Panel panel)
+        {
+            panel.BackColor = Color.Transparent; // Set background color as transparent
 
+            // Override OnPaint event to draw circular border
+            panel.Paint += (sender, e) =>
+            {
+                using (GraphicsPath path = new GraphicsPath())
+                {
+                    Rectangle bounds = panel.ClientRectangle;
+                    bounds.Width--; // Adjust width and height to compensate for the border
+                    bounds.Height--;
+                    path.AddEllipse(bounds);
+
+                    using (Pen pen = new Pen(Color.White, 1)) // Set border color and width
+                    {
+                        e.Graphics.DrawEllipse(pen, bounds);
+                    }
+                }
+            };
+        }
+        private void ApplyRoundedEdges(Panel panel)
+        {
+            panel.BackColor = Color.FromArgb(39, 39, 54); // Set background color as required
+            panel.BorderStyle = BorderStyle.None; // Remove default border
+
+            // Override OnPaint event to draw rounded edges
+            panel.Paint += (sender, e) =>
+            {
+                using (GraphicsPath path = new GraphicsPath())
+                {
+                    int cornerRadius = 20; // Adjust the corner radius as required
+                    Rectangle bounds = panel.ClientRectangle;
+                    int arcSize = cornerRadius * 2;
+
+                    path.AddArc(bounds.X, bounds.Y, arcSize, arcSize, 180, 90);
+                    path.AddArc(bounds.Right - arcSize, bounds.Y, arcSize, arcSize, 270, 90);
+                    path.AddArc(bounds.Right - arcSize, bounds.Bottom - arcSize, arcSize, arcSize, 0, 90);
+                    path.AddArc(bounds.X, bounds.Bottom - arcSize, arcSize, arcSize, 90, 90);
+                    path.CloseAllFigures();
+
+                    panel.Region = new Region(path);
+
+                    using (Pen pen = new Pen(Color.White, 2)) // Adjust border color and width as required
+                    {
+                        e.Graphics.DrawPath(pen, path);
+                    }
+                }
+            };
         }
         private Color SelectThemeColor()
         {
@@ -175,7 +228,7 @@ namespace DISASTER_PREPAREDNESS
                 WindowState = FormWindowState.Minimized;
             else
                 WindowState = FormWindowState.Normal;
-            SetRoundedCorners(this, 15);
+
         }
 
 
@@ -207,6 +260,12 @@ namespace DISASTER_PREPAREDNESS
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            labelTime.Text = DateTime.Now.ToLongTimeString();
+            labelDate.Text = DateTime.Now.ToLongDateString();
         }
     }
 }
