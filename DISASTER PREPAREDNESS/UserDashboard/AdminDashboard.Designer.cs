@@ -31,6 +31,10 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDashboard));
             panelMenu = new Panel();
+            buttonNewsEvents = new Button();
+            buttonEvacuationCenter = new Button();
+            buttonEducationalVideos = new Button();
+            button1 = new Button();
             label3 = new Label();
             label2 = new Label();
             panel4 = new Panel();
@@ -39,9 +43,6 @@
             labelTime = new Label();
             buttonEmergencyAlert = new Button();
             buttonHelpfulTips = new Button();
-            buttonNewsEvents = new Button();
-            buttonEvacuationCenter = new Button();
-            buttonEducationalVideos = new Button();
             buttonHazardMaps = new Button();
             buttonManageResidence = new Button();
             panelDesktopPanel = new Panel();
@@ -62,30 +63,104 @@
             // panelMenu
             // 
             panelMenu.BackColor = Color.FromArgb(51, 51, 76);
+            panelMenu.Controls.Add(buttonNewsEvents);
+            panelMenu.Controls.Add(buttonEvacuationCenter);
+            panelMenu.Controls.Add(buttonEducationalVideos);
+            panelMenu.Controls.Add(button1);
             panelMenu.Controls.Add(label3);
             panelMenu.Controls.Add(label2);
             panelMenu.Controls.Add(panel4);
             panelMenu.Controls.Add(panel2);
             panelMenu.Controls.Add(buttonEmergencyAlert);
             panelMenu.Controls.Add(buttonHelpfulTips);
-            panelMenu.Controls.Add(buttonNewsEvents);
-            panelMenu.Controls.Add(buttonEvacuationCenter);
-            panelMenu.Controls.Add(buttonEducationalVideos);
             panelMenu.Controls.Add(buttonHazardMaps);
             panelMenu.Controls.Add(buttonManageResidence);
             panelMenu.Dock = DockStyle.Left;
             panelMenu.Location = new Point(0, 20);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(214, 559);
+            panelMenu.Size = new Size(214, 577);
             panelMenu.TabIndex = 0;
             panelMenu.Paint += panelMenu_Paint;
+            // 
+            // buttonNewsEvents
+            // 
+            buttonNewsEvents.FlatAppearance.BorderSize = 0;
+            buttonNewsEvents.FlatStyle = FlatStyle.Flat;
+            buttonNewsEvents.Font = new Font("Microsoft Sans Serif", 9F);
+            buttonNewsEvents.ForeColor = Color.White;
+            buttonNewsEvents.Image = (Image)resources.GetObject("buttonNewsEvents.Image");
+            buttonNewsEvents.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonNewsEvents.Location = new Point(2, 484);
+            buttonNewsEvents.Name = "buttonNewsEvents";
+            buttonNewsEvents.Padding = new Padding(12, 0, 0, 0);
+            buttonNewsEvents.Size = new Size(214, 50);
+            buttonNewsEvents.TabIndex = 4;
+            buttonNewsEvents.Text = "  News/Events";
+            buttonNewsEvents.TextAlign = ContentAlignment.MiddleLeft;
+            buttonNewsEvents.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonNewsEvents.UseVisualStyleBackColor = true;
+            buttonNewsEvents.Click += buttonNewsEvents_Click;
+            // 
+            // buttonEvacuationCenter
+            // 
+            buttonEvacuationCenter.FlatAppearance.BorderSize = 0;
+            buttonEvacuationCenter.FlatStyle = FlatStyle.Flat;
+            buttonEvacuationCenter.Font = new Font("Microsoft Sans Serif", 9F);
+            buttonEvacuationCenter.ForeColor = Color.White;
+            buttonEvacuationCenter.Image = (Image)resources.GetObject("buttonEvacuationCenter.Image");
+            buttonEvacuationCenter.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonEvacuationCenter.Location = new Point(2, 432);
+            buttonEvacuationCenter.Name = "buttonEvacuationCenter";
+            buttonEvacuationCenter.Padding = new Padding(12, 0, 0, 0);
+            buttonEvacuationCenter.Size = new Size(214, 50);
+            buttonEvacuationCenter.TabIndex = 3;
+            buttonEvacuationCenter.Text = "  Evacuation Center";
+            buttonEvacuationCenter.TextAlign = ContentAlignment.MiddleLeft;
+            buttonEvacuationCenter.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonEvacuationCenter.UseVisualStyleBackColor = true;
+            buttonEvacuationCenter.Click += buttonEvacuationCenter_Click;
+            // 
+            // buttonEducationalVideos
+            // 
+            buttonEducationalVideos.FlatAppearance.BorderSize = 0;
+            buttonEducationalVideos.FlatStyle = FlatStyle.Flat;
+            buttonEducationalVideos.Font = new Font("Microsoft Sans Serif", 9F);
+            buttonEducationalVideos.ForeColor = Color.White;
+            buttonEducationalVideos.Image = (Image)resources.GetObject("buttonEducationalVideos.Image");
+            buttonEducationalVideos.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonEducationalVideos.Location = new Point(1, 379);
+            buttonEducationalVideos.Name = "buttonEducationalVideos";
+            buttonEducationalVideos.Padding = new Padding(12, 0, 0, 0);
+            buttonEducationalVideos.Size = new Size(214, 50);
+            buttonEducationalVideos.TabIndex = 2;
+            buttonEducationalVideos.Text = "  Educational Videos";
+            buttonEducationalVideos.TextAlign = ContentAlignment.MiddleLeft;
+            buttonEducationalVideos.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonEducationalVideos.UseVisualStyleBackColor = true;
+            buttonEducationalVideos.Click += buttonEducationalVideos_Click;
+            // 
+            // button1
+            // 
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Microsoft Sans Serif", 9F);
+            button1.ForeColor = Color.White;
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.Location = new Point(0, 535);
+            button1.Name = "button1";
+            button1.Padding = new Padding(12, 0, 0, 0);
+            button1.Size = new Size(214, 39);
+            button1.TabIndex = 15;
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Verdana", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.FromArgb(167, 182, 243);
-            label3.Location = new Point(16, 157);
+            label3.Location = new Point(16, 149);
             label3.Name = "label3";
             label3.Size = new Size(183, 13);
             label3.TabIndex = 13;
@@ -154,10 +229,10 @@
             buttonEmergencyAlert.ForeColor = Color.White;
             buttonEmergencyAlert.Image = (Image)resources.GetObject("buttonEmergencyAlert.Image");
             buttonEmergencyAlert.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonEmergencyAlert.Location = new Point(3, 491);
+            buttonEmergencyAlert.Location = new Point(1, 214);
             buttonEmergencyAlert.Name = "buttonEmergencyAlert";
             buttonEmergencyAlert.Padding = new Padding(12, 0, 0, 0);
-            buttonEmergencyAlert.Size = new Size(214, 54);
+            buttonEmergencyAlert.Size = new Size(214, 50);
             buttonEmergencyAlert.TabIndex = 6;
             buttonEmergencyAlert.Text = "  Emergency Alert";
             buttonEmergencyAlert.TextAlign = ContentAlignment.MiddleLeft;
@@ -173,73 +248,16 @@
             buttonHelpfulTips.ForeColor = Color.White;
             buttonHelpfulTips.Image = (Image)resources.GetObject("buttonHelpfulTips.Image");
             buttonHelpfulTips.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonHelpfulTips.Location = new Point(3, 439);
+            buttonHelpfulTips.Location = new Point(1, 266);
             buttonHelpfulTips.Name = "buttonHelpfulTips";
             buttonHelpfulTips.Padding = new Padding(12, 0, 0, 0);
-            buttonHelpfulTips.Size = new Size(214, 54);
+            buttonHelpfulTips.Size = new Size(214, 50);
             buttonHelpfulTips.TabIndex = 5;
             buttonHelpfulTips.Text = "  Helpful Tips";
             buttonHelpfulTips.TextAlign = ContentAlignment.MiddleLeft;
             buttonHelpfulTips.TextImageRelation = TextImageRelation.ImageBeforeText;
             buttonHelpfulTips.UseVisualStyleBackColor = true;
             buttonHelpfulTips.Click += buttonHelpfulTips_Click;
-            // 
-            // buttonNewsEvents
-            // 
-            buttonNewsEvents.FlatAppearance.BorderSize = 0;
-            buttonNewsEvents.FlatStyle = FlatStyle.Flat;
-            buttonNewsEvents.Font = new Font("Microsoft Sans Serif", 9F);
-            buttonNewsEvents.ForeColor = Color.White;
-            buttonNewsEvents.Image = (Image)resources.GetObject("buttonNewsEvents.Image");
-            buttonNewsEvents.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonNewsEvents.Location = new Point(3, 387);
-            buttonNewsEvents.Name = "buttonNewsEvents";
-            buttonNewsEvents.Padding = new Padding(12, 0, 0, 0);
-            buttonNewsEvents.Size = new Size(214, 54);
-            buttonNewsEvents.TabIndex = 4;
-            buttonNewsEvents.Text = "  News/Events";
-            buttonNewsEvents.TextAlign = ContentAlignment.MiddleLeft;
-            buttonNewsEvents.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonNewsEvents.UseVisualStyleBackColor = true;
-            buttonNewsEvents.Click += buttonNewsEvents_Click;
-            // 
-            // buttonEvacuationCenter
-            // 
-            buttonEvacuationCenter.FlatAppearance.BorderSize = 0;
-            buttonEvacuationCenter.FlatStyle = FlatStyle.Flat;
-            buttonEvacuationCenter.Font = new Font("Microsoft Sans Serif", 9F);
-            buttonEvacuationCenter.ForeColor = Color.White;
-            buttonEvacuationCenter.Image = (Image)resources.GetObject("buttonEvacuationCenter.Image");
-            buttonEvacuationCenter.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonEvacuationCenter.Location = new Point(3, 334);
-            buttonEvacuationCenter.Name = "buttonEvacuationCenter";
-            buttonEvacuationCenter.Padding = new Padding(12, 0, 0, 0);
-            buttonEvacuationCenter.Size = new Size(214, 54);
-            buttonEvacuationCenter.TabIndex = 3;
-            buttonEvacuationCenter.Text = "  Evacuation Center";
-            buttonEvacuationCenter.TextAlign = ContentAlignment.MiddleLeft;
-            buttonEvacuationCenter.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonEvacuationCenter.UseVisualStyleBackColor = true;
-            buttonEvacuationCenter.Click += buttonEvacuationCenter_Click;
-            // 
-            // buttonEducationalVideos
-            // 
-            buttonEducationalVideos.FlatAppearance.BorderSize = 0;
-            buttonEducationalVideos.FlatStyle = FlatStyle.Flat;
-            buttonEducationalVideos.Font = new Font("Microsoft Sans Serif", 9F);
-            buttonEducationalVideos.ForeColor = Color.White;
-            buttonEducationalVideos.Image = (Image)resources.GetObject("buttonEducationalVideos.Image");
-            buttonEducationalVideos.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonEducationalVideos.Location = new Point(3, 282);
-            buttonEducationalVideos.Name = "buttonEducationalVideos";
-            buttonEducationalVideos.Padding = new Padding(12, 0, 0, 0);
-            buttonEducationalVideos.Size = new Size(214, 54);
-            buttonEducationalVideos.TabIndex = 2;
-            buttonEducationalVideos.Text = "  Educational Videos";
-            buttonEducationalVideos.TextAlign = ContentAlignment.MiddleLeft;
-            buttonEducationalVideos.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonEducationalVideos.UseVisualStyleBackColor = true;
-            buttonEducationalVideos.Click += buttonEducationalVideos_Click;
             // 
             // buttonHazardMaps
             // 
@@ -249,10 +267,10 @@
             buttonHazardMaps.ForeColor = Color.White;
             buttonHazardMaps.Image = (Image)resources.GetObject("buttonHazardMaps.Image");
             buttonHazardMaps.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonHazardMaps.Location = new Point(3, 228);
+            buttonHazardMaps.Location = new Point(1, 323);
             buttonHazardMaps.Name = "buttonHazardMaps";
             buttonHazardMaps.Padding = new Padding(12, 0, 0, 0);
-            buttonHazardMaps.Size = new Size(214, 54);
+            buttonHazardMaps.Size = new Size(214, 50);
             buttonHazardMaps.TabIndex = 1;
             buttonHazardMaps.Text = "  Hazard Maps";
             buttonHazardMaps.TextAlign = ContentAlignment.MiddleLeft;
@@ -268,10 +286,10 @@
             buttonManageResidence.ForeColor = Color.White;
             buttonManageResidence.Image = (Image)resources.GetObject("buttonManageResidence.Image");
             buttonManageResidence.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonManageResidence.Location = new Point(3, 177);
+            buttonManageResidence.Location = new Point(0, 165);
             buttonManageResidence.Name = "buttonManageResidence";
             buttonManageResidence.Padding = new Padding(12, 0, 0, 0);
-            buttonManageResidence.Size = new Size(214, 54);
+            buttonManageResidence.Size = new Size(214, 50);
             buttonManageResidence.TabIndex = 0;
             buttonManageResidence.Text = "  Manage Residence";
             buttonManageResidence.TextAlign = ContentAlignment.MiddleLeft;
@@ -285,7 +303,7 @@
             panelDesktopPanel.Dock = DockStyle.Fill;
             panelDesktopPanel.Location = new Point(214, 20);
             panelDesktopPanel.Name = "panelDesktopPanel";
-            panelDesktopPanel.Size = new Size(837, 559);
+            panelDesktopPanel.Size = new Size(837, 577);
             panelDesktopPanel.TabIndex = 9;
             // 
             // panelBrgyLogo
@@ -399,7 +417,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1051, 579);
+            ClientSize = new Size(1051, 597);
             ControlBox = false;
             Controls.Add(panelDesktopPanel);
             Controls.Add(panelMenu);
@@ -428,7 +446,6 @@
         private Button buttonManageResidence;
         private Button buttonNewsEvents;
         private Panel panelDesktopPanel;
-        private Button buttonEmergencyAlert;
         private FlowLayoutPanel panelBrgyLogo;
         private Panel panel3;
         private Button button3;
@@ -443,5 +460,7 @@
         private System.Windows.Forms.Timer timer1;
         private Label labelDate;
         private Label label3;
+        private Button buttonEmergencyAlert;
+        private Button button1;
     }
 }

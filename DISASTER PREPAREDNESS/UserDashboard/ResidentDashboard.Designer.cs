@@ -31,8 +31,9 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResidentDashboard));
             panelMenu = new Panel();
+            button1 = new Button();
             label3 = new Label();
-            label2 = new Label();
+            userLabel = new Label();
             panel4 = new Panel();
             panel2 = new Panel();
             labelDate = new Label();
@@ -62,12 +63,13 @@
             // 
             panelMenu.AutoSize = true;
             panelMenu.BackColor = Color.FromArgb(51, 51, 76);
+            panelMenu.Controls.Add(buttonNewsEvents);
+            panelMenu.Controls.Add(button1);
             panelMenu.Controls.Add(label3);
-            panelMenu.Controls.Add(label2);
+            panelMenu.Controls.Add(userLabel);
             panelMenu.Controls.Add(panel4);
             panelMenu.Controls.Add(panel2);
             panelMenu.Controls.Add(buttonHelpfulTips);
-            panelMenu.Controls.Add(buttonNewsEvents);
             panelMenu.Controls.Add(buttonEvacuationCenter);
             panelMenu.Controls.Add(buttonEducationalVideos);
             panelMenu.Controls.Add(buttonHazardMaps);
@@ -75,8 +77,25 @@
             panelMenu.Dock = DockStyle.Left;
             panelMenu.Location = new Point(0, 20);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(221, 559);
+            panelMenu.Size = new Size(223, 559);
             panelMenu.TabIndex = 10;
+            // 
+            // button1
+            // 
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Microsoft Sans Serif", 9F);
+            button1.ForeColor = Color.White;
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.Location = new Point(5, 520);
+            button1.Name = "button1";
+            button1.Padding = new Padding(12, 0, 0, 0);
+            button1.Size = new Size(214, 39);
+            button1.TabIndex = 18;
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
             // 
             // label3
             // 
@@ -89,16 +108,16 @@
             label3.TabIndex = 17;
             label3.Text = "______________________";
             // 
-            // label2
+            // userLabel
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Verdana", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.FromArgb(167, 182, 243);
-            label2.Location = new Point(72, 86);
-            label2.Name = "label2";
-            label2.Size = new Size(71, 13);
-            label2.TabIndex = 16;
-            label2.Text = "RESIDENT";
+            userLabel.AutoSize = true;
+            userLabel.Font = new Font("Verdana", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            userLabel.ForeColor = Color.FromArgb(167, 182, 243);
+            userLabel.Location = new Point(72, 86);
+            userLabel.Name = "userLabel";
+            userLabel.Size = new Size(71, 13);
+            userLabel.TabIndex = 16;
+            userLabel.Text = "RESIDENT";
             // 
             // panel4
             // 
@@ -152,10 +171,10 @@
             buttonHelpfulTips.ForeColor = Color.White;
             buttonHelpfulTips.Image = (Image)resources.GetObject("buttonHelpfulTips.Image");
             buttonHelpfulTips.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonHelpfulTips.Location = new Point(4, 242);
+            buttonHelpfulTips.Location = new Point(6, 236);
             buttonHelpfulTips.Name = "buttonHelpfulTips";
             buttonHelpfulTips.Padding = new Padding(12, 0, 0, 0);
-            buttonHelpfulTips.Size = new Size(214, 54);
+            buttonHelpfulTips.Size = new Size(214, 50);
             buttonHelpfulTips.TabIndex = 5;
             buttonHelpfulTips.Text = "  Helpful Tips";
             buttonHelpfulTips.TextAlign = ContentAlignment.MiddleLeft;
@@ -171,10 +190,10 @@
             buttonNewsEvents.ForeColor = Color.White;
             buttonNewsEvents.Image = (Image)resources.GetObject("buttonNewsEvents.Image");
             buttonNewsEvents.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonNewsEvents.Location = new Point(4, 421);
+            buttonNewsEvents.Location = new Point(3, 348);
             buttonNewsEvents.Name = "buttonNewsEvents";
             buttonNewsEvents.Padding = new Padding(12, 0, 0, 0);
-            buttonNewsEvents.Size = new Size(214, 54);
+            buttonNewsEvents.Size = new Size(214, 50);
             buttonNewsEvents.TabIndex = 4;
             buttonNewsEvents.Text = "  News/Events";
             buttonNewsEvents.TextAlign = ContentAlignment.MiddleLeft;
@@ -190,10 +209,10 @@
             buttonEvacuationCenter.ForeColor = Color.White;
             buttonEvacuationCenter.Image = (Image)resources.GetObject("buttonEvacuationCenter.Image");
             buttonEvacuationCenter.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonEvacuationCenter.Location = new Point(4, 365);
+            buttonEvacuationCenter.Location = new Point(2, 404);
             buttonEvacuationCenter.Name = "buttonEvacuationCenter";
             buttonEvacuationCenter.Padding = new Padding(12, 0, 0, 0);
-            buttonEvacuationCenter.Size = new Size(214, 54);
+            buttonEvacuationCenter.Size = new Size(214, 50);
             buttonEvacuationCenter.TabIndex = 3;
             buttonEvacuationCenter.Text = "  Evacuation Center";
             buttonEvacuationCenter.TextAlign = ContentAlignment.MiddleLeft;
@@ -209,10 +228,10 @@
             buttonEducationalVideos.ForeColor = Color.White;
             buttonEducationalVideos.Image = (Image)resources.GetObject("buttonEducationalVideos.Image");
             buttonEducationalVideos.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonEducationalVideos.Location = new Point(4, 483);
+            buttonEducationalVideos.Location = new Point(6, 460);
             buttonEducationalVideos.Name = "buttonEducationalVideos";
             buttonEducationalVideos.Padding = new Padding(12, 0, 0, 0);
-            buttonEducationalVideos.Size = new Size(214, 54);
+            buttonEducationalVideos.Size = new Size(214, 50);
             buttonEducationalVideos.TabIndex = 2;
             buttonEducationalVideos.Text = "  Educational Videos";
             buttonEducationalVideos.TextAlign = ContentAlignment.MiddleLeft;
@@ -228,10 +247,10 @@
             buttonHazardMaps.ForeColor = Color.White;
             buttonHazardMaps.Image = (Image)resources.GetObject("buttonHazardMaps.Image");
             buttonHazardMaps.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonHazardMaps.Location = new Point(4, 302);
+            buttonHazardMaps.Location = new Point(5, 292);
             buttonHazardMaps.Name = "buttonHazardMaps";
             buttonHazardMaps.Padding = new Padding(12, 0, 0, 0);
-            buttonHazardMaps.Size = new Size(214, 54);
+            buttonHazardMaps.Size = new Size(214, 50);
             buttonHazardMaps.TabIndex = 1;
             buttonHazardMaps.Text = "  Hazard Maps";
             buttonHazardMaps.TextAlign = ContentAlignment.MiddleLeft;
@@ -247,10 +266,10 @@
             buttonWeatherForecast.ForeColor = Color.White;
             buttonWeatherForecast.Image = (Image)resources.GetObject("buttonWeatherForecast.Image");
             buttonWeatherForecast.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonWeatherForecast.Location = new Point(4, 182);
+            buttonWeatherForecast.Location = new Point(4, 180);
             buttonWeatherForecast.Name = "buttonWeatherForecast";
             buttonWeatherForecast.Padding = new Padding(12, 0, 0, 0);
-            buttonWeatherForecast.Size = new Size(214, 54);
+            buttonWeatherForecast.Size = new Size(214, 50);
             buttonWeatherForecast.TabIndex = 0;
             buttonWeatherForecast.Text = "  Weather Forecast";
             buttonWeatherForecast.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -363,9 +382,9 @@
             // 
             panelDesktopPanel.BorderStyle = BorderStyle.FixedSingle;
             panelDesktopPanel.Dock = DockStyle.Fill;
-            panelDesktopPanel.Location = new Point(221, 20);
+            panelDesktopPanel.Location = new Point(223, 20);
             panelDesktopPanel.Name = "panelDesktopPanel";
-            panelDesktopPanel.Size = new Size(830, 559);
+            panelDesktopPanel.Size = new Size(828, 559);
             panelDesktopPanel.TabIndex = 12;
             // 
             // timer1
@@ -384,6 +403,7 @@
             Controls.Add(panel3);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ResidentDashboard";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ResidentDashboard";
             panelMenu.ResumeLayout(false);
             panelMenu.PerformLayout();
@@ -411,7 +431,7 @@
         private Button button2;
         private Button button3;
         private Label label3;
-        private Label label2;
+        private Label userLabel;
         private Panel panel4;
         private Panel panel2;
         private Label labelDate;
@@ -419,5 +439,6 @@
         private PictureBox pictureBox2;
         private Label label1;
         private System.Windows.Forms.Timer timer1;
+        private Button button1;
     }
 }

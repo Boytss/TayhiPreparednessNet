@@ -161,11 +161,11 @@
             // 
             temperatureLabels7.AutoSize = true;
             temperatureLabels7.BackColor = Color.Transparent;
-            temperatureLabels7.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            temperatureLabels7.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             temperatureLabels7.ForeColor = Color.White;
             temperatureLabels7.Location = new Point(35, 104);
             temperatureLabels7.Name = "temperatureLabels7";
-            temperatureLabels7.Size = new Size(51, 25);
+            temperatureLabels7.Size = new Size(42, 21);
             temperatureLabels7.TabIndex = 3;
             temperatureLabels7.Text = "20 C";
             // 
@@ -223,11 +223,11 @@
             // 
             temperatureLabels6.AutoSize = true;
             temperatureLabels6.BackColor = Color.Transparent;
-            temperatureLabels6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            temperatureLabels6.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             temperatureLabels6.ForeColor = Color.White;
             temperatureLabels6.Location = new Point(35, 104);
             temperatureLabels6.Name = "temperatureLabels6";
-            temperatureLabels6.Size = new Size(51, 25);
+            temperatureLabels6.Size = new Size(42, 21);
             temperatureLabels6.TabIndex = 3;
             temperatureLabels6.Text = "20 C";
             // 
@@ -285,11 +285,11 @@
             // 
             temperatureLabels5.AutoSize = true;
             temperatureLabels5.BackColor = Color.Transparent;
-            temperatureLabels5.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            temperatureLabels5.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             temperatureLabels5.ForeColor = Color.White;
             temperatureLabels5.Location = new Point(35, 104);
             temperatureLabels5.Name = "temperatureLabels5";
-            temperatureLabels5.Size = new Size(51, 25);
+            temperatureLabels5.Size = new Size(42, 21);
             temperatureLabels5.TabIndex = 3;
             temperatureLabels5.Text = "20 C";
             // 
@@ -347,11 +347,11 @@
             // 
             temperatureLabels4.AutoSize = true;
             temperatureLabels4.BackColor = Color.Transparent;
-            temperatureLabels4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            temperatureLabels4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             temperatureLabels4.ForeColor = Color.White;
             temperatureLabels4.Location = new Point(35, 104);
             temperatureLabels4.Name = "temperatureLabels4";
-            temperatureLabels4.Size = new Size(51, 25);
+            temperatureLabels4.Size = new Size(42, 21);
             temperatureLabels4.TabIndex = 3;
             temperatureLabels4.Text = "20 C";
             // 
@@ -409,11 +409,11 @@
             // 
             temperatureLabels3.AutoSize = true;
             temperatureLabels3.BackColor = Color.Transparent;
-            temperatureLabels3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            temperatureLabels3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             temperatureLabels3.ForeColor = Color.White;
             temperatureLabels3.Location = new Point(35, 104);
             temperatureLabels3.Name = "temperatureLabels3";
-            temperatureLabels3.Size = new Size(51, 25);
+            temperatureLabels3.Size = new Size(42, 21);
             temperatureLabels3.TabIndex = 3;
             temperatureLabels3.Text = "20 C";
             // 
@@ -471,11 +471,11 @@
             // 
             temperatureLabels2.AutoSize = true;
             temperatureLabels2.BackColor = Color.Transparent;
-            temperatureLabels2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            temperatureLabels2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             temperatureLabels2.ForeColor = Color.White;
             temperatureLabels2.Location = new Point(35, 104);
             temperatureLabels2.Name = "temperatureLabels2";
-            temperatureLabels2.Size = new Size(51, 25);
+            temperatureLabels2.Size = new Size(42, 21);
             temperatureLabels2.TabIndex = 3;
             temperatureLabels2.Text = "20 C";
             // 
@@ -533,11 +533,11 @@
             // 
             temperatureLabels1.AutoSize = true;
             temperatureLabels1.BackColor = Color.Transparent;
-            temperatureLabels1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            temperatureLabels1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             temperatureLabels1.ForeColor = Color.White;
             temperatureLabels1.Location = new Point(35, 104);
             temperatureLabels1.Name = "temperatureLabels1";
-            temperatureLabels1.Size = new Size(51, 25);
+            temperatureLabels1.Size = new Size(42, 21);
             temperatureLabels1.TabIndex = 3;
             temperatureLabels1.Text = "20 C";
             // 

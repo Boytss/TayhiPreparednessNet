@@ -51,7 +51,7 @@ namespace DISASTER_PREPAREDNESS.DataAccess
                 {
                     connection.Open();
 
-                    string selectQuery = "SELECT ID, FirstName, LastName, PurokNumber, MobileNumber FROM dbo.Resident";
+                    string selectQuery = "SELECT FirstName, LastName, PurokNumber, MobileNumber FROM dbo.Resident";
 
                     using (SqlCommand command = new SqlCommand(selectQuery, connection))
                     {
@@ -101,7 +101,7 @@ namespace DISASTER_PREPAREDNESS.DataAccess
                     connection.Open();
 
                     // Adjust the SQL query based on your database schema and search criteria
-                    string searchQuery = "SELECT ID, FirstName, LastName, PurokNumber, MobileNumber, Username, Password FROM dbo.Resident WHERE FirstName LIKE @SearchTerm OR LastName LIKE @SearchTerm OR Username LIKE @SearchTerm";
+                    string searchQuery = "SELECT ID, FirstName, LastName,  MobileNumber, Username FROM dbo.Resident WHERE FirstName LIKE @SearchTerm OR LastName LIKE @SearchTerm OR Username LIKE @SearchTerm";
 
                     using (SqlCommand command = new SqlCommand(searchQuery, connection))
                     {
@@ -118,6 +118,40 @@ namespace DISASTER_PREPAREDNESS.DataAccess
             {
                 // Log the exception or handle it as needed
                 throw new Exception($"Error searching residents data: {ex.Message}");
+            }
+
+            return searchResults;
+        }
+        public static DataTable SearchResidentsByPurok(string purok)
+        {
+            DataTable searchResults = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Adjust the SQL query based on your database schema and search criteria
+                    string searchQuery = "SELECT ID, FirstName, LastName, PurokNumber, MobileNumber, Username, Password " +
+                                         "FROM dbo.Resident " +
+                                         "WHERE PurokNumber = @Purok";
+
+                    using (SqlCommand command = new SqlCommand(searchQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@Purok", purok);
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            adapter.Fill(searchResults);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle it as needed
+                throw new Exception($"Error searching residents by Purok: {ex.Message}");
             }
 
             return searchResults;
@@ -152,7 +186,7 @@ namespace DISASTER_PREPAREDNESS.DataAccess
 
             return residentDataTable;
         }
-        public static void UpdateResident(int residentID, string updatedFirstName, string updatedLastName, string updatedPurokNumber, string updatedMobileNumber)
+        public static void UpdateResident(int residentID, string firstName, string lastName, string purokNumber, string mobileNumber, string username, string password)
         {
             try
             {
@@ -160,15 +194,17 @@ namespace DISASTER_PREPAREDNESS.DataAccess
                 {
                     connection.Open();
 
-                    string updateQuery = "UPDATE dbo.Resident SET FirstName = @FirstName, LastName = @LastName, PurokNumber = @PurokNumber, MobileNumber = @MobileNumber WHERE ID = @ResidentID";
+                    string updateQuery = "UPDATE dbo.Resident SET FirstName = @FirstName, LastName = @LastName, PurokNumber = @PurokNumber, MobileNumber = @MobileNumber, Username = @Username, Password = @Password WHERE Id = @ResidentID";
 
                     using (SqlCommand command = new SqlCommand(updateQuery, connection))
                     {
                         command.Parameters.AddWithValue("@ResidentID", residentID);
-                        command.Parameters.AddWithValue("@FirstName", updatedFirstName);
-                        command.Parameters.AddWithValue("@LastName", updatedLastName);
-                        command.Parameters.AddWithValue("@PurokNumber", updatedPurokNumber);
-                        command.Parameters.AddWithValue("@MobileNumber", updatedMobileNumber);
+                        command.Parameters.AddWithValue("@FirstName", firstName);
+                        command.Parameters.AddWithValue("@LastName", lastName);
+                        command.Parameters.AddWithValue("@PurokNumber", purokNumber);
+                        command.Parameters.AddWithValue("@MobileNumber", mobileNumber);
+                        command.Parameters.AddWithValue("@Username", username);
+                        command.Parameters.AddWithValue("@Password", password);
 
                         command.ExecuteNonQuery();
                     }
@@ -200,7 +236,18 @@ namespace DISASTER_PREPAREDNESS.DataAccess
                         command.Parameters.AddWithValue("@Username", username);
                         command.Parameters.AddWithValue("@Password", password);
 
-                        command.ExecuteNonQuery();
+
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        // Check if any rows were affected
+                        if (rowsAffected > 0)
+                        {
+                            Console.WriteLine("Resident added successfully.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("No rows were affected. Check your input and try again.");
+                        }
                     }
                 }
             }

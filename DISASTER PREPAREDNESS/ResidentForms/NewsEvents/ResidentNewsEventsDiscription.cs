@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DISASTER_PREPAREDNESS.ResidentForms
+namespace DISASTER_PREPAREDNESS.ResidentForms.NewsEvents
 {
-    public partial class ResidentNewsEventsForm : Form
+    public partial class ResidentNewsEventsDiscription : UserControl
     {
-        public ResidentNewsEventsForm()
+        public ResidentNewsEventsDiscription()
         {
             InitializeComponent();
         }

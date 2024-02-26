@@ -35,35 +35,35 @@
             gradientPanel1 = new GradientPanel();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            clearButton = new MyControls.MyButton();
             dataGridViewResidents = new DataGridView();
             panel4 = new Panel();
-            myComboBox1 = new MyControls.MyComboBox();
+            pictureBox1 = new PictureBox();
+            label10 = new Label();
+            searchByPurokDropdown = new MyControls.MyComboBox();
             label9 = new Label();
             searchNameTextbox = new MyControls.MyTextBox();
-            searchButton = new MyControls.MyButton();
             panel3 = new Panel();
             panel1 = new Panel();
             editButton = new MyControls.MyButton();
             addnewButton = new MyControls.MyButton();
             deleteButton = new MyControls.MyButton();
             tabPage2 = new TabPage();
-            textBox1 = new TextBox();
+            passwordTextbox = new MyControls.MyTextBox();
+            label7 = new Label();
+            usernameTextbox = new MyControls.MyTextBox();
+            label6 = new Label();
+            labelDetails = new Label();
+            residentFirstNameTextbox = new MyControls.MyTextBox();
             cancelButton = new MyControls.MyButton();
             saveButton = new MyControls.MyButton();
-            residentPasswordTextbox = new MyControls.MyTextBox();
-            label7 = new Label();
-            residentUsernameTextbox = new MyControls.MyTextBox();
-            label6 = new Label();
             residentMobileNumberTextbox = new MyControls.MyTextBox();
             label5 = new Label();
             residentPurokNumberTextbox = new MyControls.MyTextBox();
             label4 = new Label();
             residentLastnameTextbox = new MyControls.MyTextBox();
             label3 = new Label();
-            residentFirstNameTextbox = new MyControls.MyTextBox();
             label8 = new Label();
-            residentIdTextbox = new MyControls.MyTextBox();
-            residentId = new Label();
             panel2 = new Panel();
             label2 = new Label();
             label1 = new Label();
@@ -75,6 +75,7 @@
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewResidents).BeginInit();
             panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             tabPage2.SuspendLayout();
             panel2.SuspendLayout();
@@ -107,6 +108,8 @@
             // 
             // tabPage1
             // 
+            tabPage1.BackColor = Color.FromArgb(190, 196, 228);
+            tabPage1.Controls.Add(clearButton);
             tabPage1.Controls.Add(dataGridViewResidents);
             tabPage1.Controls.Add(panel4);
             tabPage1.Controls.Add(panel3);
@@ -117,7 +120,25 @@
             tabPage1.Size = new Size(920, 583);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Resident List";
-            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // clearButton
+            // 
+            clearButton.BackColor = Color.MediumSlateBlue;
+            clearButton.BackgroundColor = Color.MediumSlateBlue;
+            clearButton.BorderColor = Color.PaleVioletRed;
+            clearButton.BorderRadius = 15;
+            clearButton.BorderSize = 0;
+            clearButton.FlatAppearance.BorderSize = 0;
+            clearButton.FlatStyle = FlatStyle.Flat;
+            clearButton.ForeColor = Color.White;
+            clearButton.Location = new Point(675, 373);
+            clearButton.Name = "clearButton";
+            clearButton.Size = new Size(112, 35);
+            clearButton.TabIndex = 52;
+            clearButton.Text = "Clear Selection";
+            clearButton.TextColor = Color.White;
+            clearButton.UseVisualStyleBackColor = false;
+            clearButton.Click += clearButton_Click;
             // 
             // dataGridViewResidents
             // 
@@ -138,7 +159,7 @@
             dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(224, 218, 232);
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dataGridViewResidents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewResidents.ColumnHeadersHeight = 35;
+            dataGridViewResidents.ColumnHeadersHeight = 25;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(223, 228, 231);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -149,107 +170,111 @@
             dataGridViewResidents.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewResidents.Dock = DockStyle.Top;
             dataGridViewResidents.EnableHeadersVisualStyles = false;
-            dataGridViewResidents.Location = new Point(46, 141);
+            dataGridViewResidents.Location = new Point(25, 141);
             dataGridViewResidents.Name = "dataGridViewResidents";
             dataGridViewResidents.RowHeadersVisible = false;
-            dataGridViewResidents.RowHeadersWidth = 25;
+            dataGridViewResidents.RowHeadersWidth = 40;
             dataGridViewResidents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewResidents.Size = new Size(746, 226);
+            dataGridViewResidents.Size = new Size(767, 226);
             dataGridViewResidents.TabIndex = 51;
             dataGridViewResidents.SelectionChanged += dataGridViewResidents_SelectionChanged;
             // 
             // panel4
             // 
-            panel4.Controls.Add(myComboBox1);
+            panel4.Controls.Add(pictureBox1);
+            panel4.Controls.Add(label10);
+            panel4.Controls.Add(searchByPurokDropdown);
             panel4.Controls.Add(label9);
             panel4.Controls.Add(searchNameTextbox);
-            panel4.Controls.Add(searchButton);
             panel4.Dock = DockStyle.Top;
-            panel4.Location = new Point(46, 3);
+            panel4.Location = new Point(25, 3);
             panel4.Name = "panel4";
-            panel4.Size = new Size(746, 138);
+            panel4.Size = new Size(767, 138);
             panel4.TabIndex = 50;
             // 
-            // myComboBox1
+            // pictureBox1
             // 
-            myComboBox1.Anchor = AnchorStyles.Left;
-            myComboBox1.BackColor = Color.WhiteSmoke;
-            myComboBox1.BorderColor = Color.MediumSlateBlue;
-            myComboBox1.BorderSize = 2;
-            myComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            myComboBox1.Font = new Font("Segoe UI", 10F);
-            myComboBox1.ForeColor = Color.DarkGray;
-            myComboBox1.IconColor = Color.MediumSlateBlue;
-            myComboBox1.ListBackColor = Color.White;
-            myComboBox1.ListTextColor = Color.Black;
-            myComboBox1.Location = new Point(358, 102);
-            myComboBox1.MinimumSize = new Size(200, 30);
-            myComboBox1.Name = "myComboBox1";
-            myComboBox1.Padding = new Padding(2);
-            myComboBox1.Size = new Size(200, 30);
-            myComboBox1.TabIndex = 7;
-            myComboBox1.Texts = "Search by purok";
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(347, 105);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(27, 23);
+            pictureBox1.TabIndex = 9;
+            pictureBox1.TabStop = false;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.Location = new Point(6, 37);
+            label10.Name = "label10";
+            label10.Size = new Size(135, 21);
+            label10.TabIndex = 8;
+            label10.Text = "Of Barangay Tayhi";
+            // 
+            // searchByPurokDropdown
+            // 
+            searchByPurokDropdown.Anchor = AnchorStyles.Right;
+            searchByPurokDropdown.BackColor = Color.FromArgb(190, 196, 228);
+            searchByPurokDropdown.BorderColor = Color.MediumSlateBlue;
+            searchByPurokDropdown.BorderSize = 2;
+            searchByPurokDropdown.DropDownStyle = ComboBoxStyle.DropDown;
+            searchByPurokDropdown.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            searchByPurokDropdown.ForeColor = Color.Gray;
+            searchByPurokDropdown.IconColor = Color.MediumSlateBlue;
+            searchByPurokDropdown.Items.AddRange(new object[] { "Purok 1", "Purok 2", "Purok 3", "Purok 4", "Purok 5", "Purok 6" });
+            searchByPurokDropdown.ListBackColor = Color.White;
+            searchByPurokDropdown.ListTextColor = Color.Black;
+            searchByPurokDropdown.Location = new Point(550, 99);
+            searchByPurokDropdown.MinimumSize = new Size(200, 30);
+            searchByPurokDropdown.Name = "searchByPurokDropdown";
+            searchByPurokDropdown.Padding = new Padding(2);
+            searchByPurokDropdown.Size = new Size(211, 33);
+            searchByPurokDropdown.TabIndex = 7;
+            searchByPurokDropdown.Texts = "Search by purok";
+            searchByPurokDropdown.OnSelectedIndexChanged += myComboBox1_OnSelectedIndexChanged;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI Emoji", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(6, 9);
+            label9.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.Location = new Point(3, 0);
             label9.Name = "label9";
-            label9.Size = new Size(212, 43);
+            label9.Size = new Size(180, 37);
             label9.TabIndex = 6;
             label9.Text = "Resident List";
             // 
             // searchNameTextbox
             // 
-            searchNameTextbox.BackColor = SystemColors.Window;
+            searchNameTextbox.BackColor = Color.FromArgb(190, 196, 228);
             searchNameTextbox.BorderColor = Color.MediumSlateBlue;
             searchNameTextbox.BorderFocusColor = Color.Blue;
-            searchNameTextbox.BorderRadius = 18;
+            searchNameTextbox.BorderRadius = 15;
             searchNameTextbox.BorderSize = 2;
-            searchNameTextbox.Font = new Font("Segoe UI", 9.5F);
-            searchNameTextbox.ForeColor = Color.DimGray;
-            searchNameTextbox.Location = new Point(6, 100);
+            searchNameTextbox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            searchNameTextbox.ForeColor = Color.Black;
+            searchNameTextbox.Location = new Point(6, 99);
             searchNameTextbox.Margin = new Padding(4);
             searchNameTextbox.Multiline = false;
             searchNameTextbox.Name = "searchNameTextbox";
             searchNameTextbox.Padding = new Padding(7);
             searchNameTextbox.PasswordChar = false;
-            searchNameTextbox.PlaceholderColor = Color.DarkGray;
+            searchNameTextbox.PlaceholderColor = Color.Gray;
             searchNameTextbox.PlaceholderText = "Search by Name";
-            searchNameTextbox.Size = new Size(345, 32);
+            searchNameTextbox.Size = new Size(380, 35);
             searchNameTextbox.TabIndex = 4;
             searchNameTextbox.UnderlinedStyle = false;
             searchNameTextbox.TextChanged += searchNameTextbox_TextChanged;
-            // 
-            // searchButton
-            // 
-            searchButton.Anchor = AnchorStyles.Right;
-            searchButton.BackColor = Color.FromArgb(128, 128, 255);
-            searchButton.BackgroundColor = Color.FromArgb(128, 128, 255);
-            searchButton.BorderColor = Color.MediumSlateBlue;
-            searchButton.BorderRadius = 18;
-            searchButton.BorderSize = 1;
-            searchButton.FlatAppearance.BorderSize = 0;
-            searchButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(51, 51, 76);
-            searchButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(124, 146, 237);
-            searchButton.FlatStyle = FlatStyle.Flat;
-            searchButton.ForeColor = Color.Blue;
-            searchButton.Location = new Point(656, 99);
-            searchButton.Name = "searchButton";
-            searchButton.Size = new Size(84, 33);
-            searchButton.TabIndex = 5;
-            searchButton.Text = "Search";
-            searchButton.TextColor = Color.Blue;
-            searchButton.UseVisualStyleBackColor = false;
-            searchButton.Click += searchButton_Click;
+            searchNameTextbox.KeyDown += searchNameTextbox_KeyDown;
             // 
             // panel3
             // 
+            panel3.BackColor = Color.FromArgb(190, 196, 228);
             panel3.Dock = DockStyle.Left;
             panel3.Location = new Point(3, 3);
             panel3.Name = "panel3";
-            panel3.Size = new Size(43, 577);
+            panel3.Size = new Size(22, 577);
             panel3.TabIndex = 49;
             // 
             // panel1
@@ -262,6 +287,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(125, 577);
             panel1.TabIndex = 46;
+            panel1.Paint += panel1_Paint;
             // 
             // editButton
             // 
@@ -273,13 +299,14 @@
             editButton.FlatAppearance.BorderSize = 0;
             editButton.FlatStyle = FlatStyle.Flat;
             editButton.ForeColor = Color.White;
-            editButton.Location = new Point(26, 73);
+            editButton.Location = new Point(13, 206);
             editButton.Name = "editButton";
             editButton.Size = new Size(88, 35);
             editButton.TabIndex = 7;
             editButton.Text = "Edit";
             editButton.TextColor = Color.White;
             editButton.UseVisualStyleBackColor = false;
+            editButton.Click += editButton_Click;
             // 
             // addnewButton
             // 
@@ -291,13 +318,14 @@
             addnewButton.FlatAppearance.BorderSize = 0;
             addnewButton.FlatStyle = FlatStyle.Flat;
             addnewButton.ForeColor = Color.White;
-            addnewButton.Location = new Point(21, 138);
+            addnewButton.Location = new Point(13, 138);
             addnewButton.Name = "addnewButton";
             addnewButton.Size = new Size(88, 35);
             addnewButton.TabIndex = 6;
             addnewButton.Text = "Add new";
             addnewButton.TextColor = Color.White;
             addnewButton.UseVisualStyleBackColor = false;
+            addnewButton.Click += addnewButton_Click;
             // 
             // deleteButton
             // 
@@ -309,50 +337,140 @@
             deleteButton.FlatAppearance.BorderSize = 0;
             deleteButton.FlatStyle = FlatStyle.Flat;
             deleteButton.ForeColor = Color.White;
-            deleteButton.Location = new Point(21, 207);
+            deleteButton.Location = new Point(13, 272);
             deleteButton.Name = "deleteButton";
             deleteButton.Size = new Size(88, 35);
             deleteButton.TabIndex = 8;
             deleteButton.Text = "Delete";
             deleteButton.TextColor = Color.White;
             deleteButton.UseVisualStyleBackColor = false;
+            deleteButton.Click += deleteButton_Click;
             // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(textBox1);
+            tabPage2.BackColor = Color.FromArgb(190, 196, 228);
+            tabPage2.Controls.Add(passwordTextbox);
+            tabPage2.Controls.Add(label7);
+            tabPage2.Controls.Add(usernameTextbox);
+            tabPage2.Controls.Add(label6);
+            tabPage2.Controls.Add(labelDetails);
+            tabPage2.Controls.Add(residentFirstNameTextbox);
             tabPage2.Controls.Add(cancelButton);
             tabPage2.Controls.Add(saveButton);
-            tabPage2.Controls.Add(residentPasswordTextbox);
-            tabPage2.Controls.Add(label7);
-            tabPage2.Controls.Add(residentUsernameTextbox);
-            tabPage2.Controls.Add(label6);
             tabPage2.Controls.Add(residentMobileNumberTextbox);
             tabPage2.Controls.Add(label5);
             tabPage2.Controls.Add(residentPurokNumberTextbox);
             tabPage2.Controls.Add(label4);
             tabPage2.Controls.Add(residentLastnameTextbox);
             tabPage2.Controls.Add(label3);
-            tabPage2.Controls.Add(residentFirstNameTextbox);
             tabPage2.Controls.Add(label8);
-            tabPage2.Controls.Add(residentIdTextbox);
-            tabPage2.Controls.Add(residentId);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(920, 583);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Resident Details";
-            tabPage2.UseVisualStyleBackColor = true;
+            tabPage2.Click += tabPage2_Click;
             // 
-            // textBox1
+            // passwordTextbox
             // 
-            textBox1.Location = new Point(641, 141);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(195, 23);
-            textBox1.TabIndex = 18;
+            passwordTextbox.Anchor = AnchorStyles.None;
+            passwordTextbox.BackColor = Color.FromArgb(190, 196, 228);
+            passwordTextbox.BorderColor = Color.MediumSlateBlue;
+            passwordTextbox.BorderFocusColor = Color.Blue;
+            passwordTextbox.BorderRadius = 0;
+            passwordTextbox.BorderSize = 1;
+            passwordTextbox.Font = new Font("Segoe UI", 11.25F);
+            passwordTextbox.ForeColor = Color.Black;
+            passwordTextbox.Location = new Point(470, 289);
+            passwordTextbox.Margin = new Padding(4);
+            passwordTextbox.Multiline = false;
+            passwordTextbox.Name = "passwordTextbox";
+            passwordTextbox.Padding = new Padding(7);
+            passwordTextbox.PasswordChar = false;
+            passwordTextbox.PlaceholderColor = Color.DarkGray;
+            passwordTextbox.PlaceholderText = "";
+            passwordTextbox.Size = new Size(195, 35);
+            passwordTextbox.TabIndex = 5;
+            passwordTextbox.UnderlinedStyle = true;
+            // 
+            // label7
+            // 
+            label7.Anchor = AnchorStyles.None;
+            label7.AutoSize = true;
+            label7.Location = new Point(467, 270);
+            label7.Name = "label7";
+            label7.Size = new Size(105, 15);
+            label7.TabIndex = 24;
+            label7.Text = "Resident Password";
+            // 
+            // usernameTextbox
+            // 
+            usernameTextbox.Anchor = AnchorStyles.None;
+            usernameTextbox.BackColor = Color.FromArgb(190, 196, 228);
+            usernameTextbox.BorderColor = Color.MediumSlateBlue;
+            usernameTextbox.BorderFocusColor = Color.Blue;
+            usernameTextbox.BorderRadius = 0;
+            usernameTextbox.BorderSize = 1;
+            usernameTextbox.Font = new Font("Segoe UI", 11.25F);
+            usernameTextbox.ForeColor = Color.Black;
+            usernameTextbox.Location = new Point(257, 289);
+            usernameTextbox.Margin = new Padding(4);
+            usernameTextbox.Multiline = false;
+            usernameTextbox.Name = "usernameTextbox";
+            usernameTextbox.Padding = new Padding(7);
+            usernameTextbox.PasswordChar = false;
+            usernameTextbox.PlaceholderColor = Color.DarkGray;
+            usernameTextbox.PlaceholderText = "";
+            usernameTextbox.Size = new Size(195, 35);
+            usernameTextbox.TabIndex = 4;
+            usernameTextbox.UnderlinedStyle = true;
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.None;
+            label6.AutoSize = true;
+            label6.Location = new Point(254, 270);
+            label6.Name = "label6";
+            label6.Size = new Size(108, 15);
+            label6.TabIndex = 22;
+            label6.Text = "Resident Username";
+            // 
+            // labelDetails
+            // 
+            labelDetails.AutoSize = true;
+            labelDetails.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelDetails.Location = new Point(21, 13);
+            labelDetails.Name = "labelDetails";
+            labelDetails.Size = new Size(224, 37);
+            labelDetails.TabIndex = 21;
+            labelDetails.Text = "Resident Details";
+            // 
+            // residentFirstNameTextbox
+            // 
+            residentFirstNameTextbox.Anchor = AnchorStyles.None;
+            residentFirstNameTextbox.BackColor = Color.FromArgb(190, 196, 228);
+            residentFirstNameTextbox.BorderColor = Color.MediumSlateBlue;
+            residentFirstNameTextbox.BorderFocusColor = Color.Blue;
+            residentFirstNameTextbox.BorderRadius = 0;
+            residentFirstNameTextbox.BorderSize = 1;
+            residentFirstNameTextbox.Font = new Font("Segoe UI", 11.25F);
+            residentFirstNameTextbox.ForeColor = Color.Black;
+            residentFirstNameTextbox.Location = new Point(260, 150);
+            residentFirstNameTextbox.Margin = new Padding(4);
+            residentFirstNameTextbox.Multiline = false;
+            residentFirstNameTextbox.Name = "residentFirstNameTextbox";
+            residentFirstNameTextbox.Padding = new Padding(7);
+            residentFirstNameTextbox.PasswordChar = false;
+            residentFirstNameTextbox.PlaceholderColor = Color.DarkGray;
+            residentFirstNameTextbox.PlaceholderText = "";
+            residentFirstNameTextbox.Size = new Size(195, 35);
+            residentFirstNameTextbox.TabIndex = 0;
+            residentFirstNameTextbox.UnderlinedStyle = true;
             // 
             // cancelButton
             // 
+            cancelButton.Anchor = AnchorStyles.None;
             cancelButton.BackColor = Color.MediumSlateBlue;
             cancelButton.BackgroundColor = Color.MediumSlateBlue;
             cancelButton.BorderColor = Color.PaleVioletRed;
@@ -361,16 +479,18 @@
             cancelButton.FlatAppearance.BorderSize = 0;
             cancelButton.FlatStyle = FlatStyle.Flat;
             cancelButton.ForeColor = Color.White;
-            cancelButton.Location = new Point(307, 300);
+            cancelButton.Location = new Point(470, 382);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(150, 40);
             cancelButton.TabIndex = 17;
             cancelButton.Text = "Cancel";
             cancelButton.TextColor = Color.White;
             cancelButton.UseVisualStyleBackColor = false;
+            cancelButton.Click += cancelButton_Click;
             // 
             // saveButton
             // 
+            saveButton.Anchor = AnchorStyles.None;
             saveButton.BackColor = Color.MediumSlateBlue;
             saveButton.BackgroundColor = Color.MediumSlateBlue;
             saveButton.BorderColor = Color.PaleVioletRed;
@@ -379,84 +499,26 @@
             saveButton.FlatAppearance.BorderSize = 0;
             saveButton.FlatStyle = FlatStyle.Flat;
             saveButton.ForeColor = Color.White;
-            saveButton.Location = new Point(113, 300);
+            saveButton.Location = new Point(276, 382);
             saveButton.Name = "saveButton";
             saveButton.Size = new Size(150, 40);
             saveButton.TabIndex = 16;
             saveButton.Text = "Save";
             saveButton.TextColor = Color.White;
             saveButton.UseVisualStyleBackColor = false;
-            // 
-            // residentPasswordTextbox
-            // 
-            residentPasswordTextbox.BackColor = SystemColors.Window;
-            residentPasswordTextbox.BorderColor = Color.MediumSlateBlue;
-            residentPasswordTextbox.BorderFocusColor = Color.HotPink;
-            residentPasswordTextbox.BorderRadius = 0;
-            residentPasswordTextbox.BorderSize = 2;
-            residentPasswordTextbox.Font = new Font("Segoe UI", 9.5F);
-            residentPasswordTextbox.ForeColor = Color.DimGray;
-            residentPasswordTextbox.Location = new Point(575, 62);
-            residentPasswordTextbox.Margin = new Padding(4);
-            residentPasswordTextbox.Multiline = false;
-            residentPasswordTextbox.Name = "residentPasswordTextbox";
-            residentPasswordTextbox.Padding = new Padding(7);
-            residentPasswordTextbox.PasswordChar = false;
-            residentPasswordTextbox.PlaceholderColor = Color.DarkGray;
-            residentPasswordTextbox.PlaceholderText = "";
-            residentPasswordTextbox.Size = new Size(195, 32);
-            residentPasswordTextbox.TabIndex = 13;
-            residentPasswordTextbox.UnderlinedStyle = true;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(578, 46);
-            label7.Name = "label7";
-            label7.Size = new Size(65, 15);
-            label7.TabIndex = 12;
-            label7.Text = "Resident Id";
-            // 
-            // residentUsernameTextbox
-            // 
-            residentUsernameTextbox.BackColor = SystemColors.Window;
-            residentUsernameTextbox.BorderColor = Color.MediumSlateBlue;
-            residentUsernameTextbox.BorderFocusColor = Color.HotPink;
-            residentUsernameTextbox.BorderRadius = 0;
-            residentUsernameTextbox.BorderSize = 2;
-            residentUsernameTextbox.Font = new Font("Segoe UI", 9.5F);
-            residentUsernameTextbox.ForeColor = Color.DimGray;
-            residentUsernameTextbox.Location = new Point(352, 237);
-            residentUsernameTextbox.Margin = new Padding(4);
-            residentUsernameTextbox.Multiline = false;
-            residentUsernameTextbox.Name = "residentUsernameTextbox";
-            residentUsernameTextbox.Padding = new Padding(7);
-            residentUsernameTextbox.PasswordChar = false;
-            residentUsernameTextbox.PlaceholderColor = Color.DarkGray;
-            residentUsernameTextbox.PlaceholderText = "";
-            residentUsernameTextbox.Size = new Size(195, 32);
-            residentUsernameTextbox.TabIndex = 11;
-            residentUsernameTextbox.UnderlinedStyle = true;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(355, 221);
-            label6.Name = "label6";
-            label6.Size = new Size(65, 15);
-            label6.TabIndex = 10;
-            label6.Text = "Resident Id";
+            saveButton.Click += saveButton_Click;
             // 
             // residentMobileNumberTextbox
             // 
-            residentMobileNumberTextbox.BackColor = SystemColors.Window;
+            residentMobileNumberTextbox.Anchor = AnchorStyles.None;
+            residentMobileNumberTextbox.BackColor = Color.FromArgb(190, 196, 228);
             residentMobileNumberTextbox.BorderColor = Color.MediumSlateBlue;
-            residentMobileNumberTextbox.BorderFocusColor = Color.HotPink;
+            residentMobileNumberTextbox.BorderFocusColor = Color.Blue;
             residentMobileNumberTextbox.BorderRadius = 0;
-            residentMobileNumberTextbox.BorderSize = 2;
-            residentMobileNumberTextbox.Font = new Font("Segoe UI", 9.5F);
-            residentMobileNumberTextbox.ForeColor = Color.DimGray;
-            residentMobileNumberTextbox.Location = new Point(352, 144);
+            residentMobileNumberTextbox.BorderSize = 1;
+            residentMobileNumberTextbox.Font = new Font("Segoe UI", 11.25F);
+            residentMobileNumberTextbox.ForeColor = Color.Black;
+            residentMobileNumberTextbox.Location = new Point(470, 220);
             residentMobileNumberTextbox.Margin = new Padding(4);
             residentMobileNumberTextbox.Multiline = false;
             residentMobileNumberTextbox.Name = "residentMobileNumberTextbox";
@@ -464,29 +526,31 @@
             residentMobileNumberTextbox.PasswordChar = false;
             residentMobileNumberTextbox.PlaceholderColor = Color.DarkGray;
             residentMobileNumberTextbox.PlaceholderText = "";
-            residentMobileNumberTextbox.Size = new Size(195, 32);
-            residentMobileNumberTextbox.TabIndex = 9;
+            residentMobileNumberTextbox.Size = new Size(195, 35);
+            residentMobileNumberTextbox.TabIndex = 3;
             residentMobileNumberTextbox.UnderlinedStyle = true;
             // 
             // label5
             // 
+            label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
-            label5.Location = new Point(355, 128);
+            label5.Location = new Point(467, 201);
             label5.Name = "label5";
-            label5.Size = new Size(65, 15);
+            label5.Size = new Size(139, 15);
             label5.TabIndex = 8;
-            label5.Text = "Resident Id";
+            label5.Text = "Resident Mobile Number";
             // 
             // residentPurokNumberTextbox
             // 
-            residentPurokNumberTextbox.BackColor = SystemColors.Window;
+            residentPurokNumberTextbox.Anchor = AnchorStyles.None;
+            residentPurokNumberTextbox.BackColor = Color.FromArgb(190, 196, 228);
             residentPurokNumberTextbox.BorderColor = Color.MediumSlateBlue;
-            residentPurokNumberTextbox.BorderFocusColor = Color.HotPink;
+            residentPurokNumberTextbox.BorderFocusColor = Color.Blue;
             residentPurokNumberTextbox.BorderRadius = 0;
-            residentPurokNumberTextbox.BorderSize = 2;
-            residentPurokNumberTextbox.Font = new Font("Segoe UI", 9.5F);
-            residentPurokNumberTextbox.ForeColor = Color.DimGray;
-            residentPurokNumberTextbox.Location = new Point(352, 62);
+            residentPurokNumberTextbox.BorderSize = 1;
+            residentPurokNumberTextbox.Font = new Font("Segoe UI", 11.25F);
+            residentPurokNumberTextbox.ForeColor = Color.Black;
+            residentPurokNumberTextbox.Location = new Point(260, 220);
             residentPurokNumberTextbox.Margin = new Padding(4);
             residentPurokNumberTextbox.Multiline = false;
             residentPurokNumberTextbox.Name = "residentPurokNumberTextbox";
@@ -494,29 +558,31 @@
             residentPurokNumberTextbox.PasswordChar = false;
             residentPurokNumberTextbox.PlaceholderColor = Color.DarkGray;
             residentPurokNumberTextbox.PlaceholderText = "";
-            residentPurokNumberTextbox.Size = new Size(195, 32);
-            residentPurokNumberTextbox.TabIndex = 7;
+            residentPurokNumberTextbox.Size = new Size(195, 35);
+            residentPurokNumberTextbox.TabIndex = 2;
             residentPurokNumberTextbox.UnderlinedStyle = true;
             // 
             // label4
             // 
+            label4.Anchor = AnchorStyles.None;
             label4.AutoSize = true;
-            label4.Location = new Point(355, 46);
+            label4.Location = new Point(257, 201);
             label4.Name = "label4";
-            label4.Size = new Size(65, 15);
+            label4.Size = new Size(133, 15);
             label4.TabIndex = 6;
-            label4.Text = "Resident Id";
+            label4.Text = "Resident Purok Number";
             // 
             // residentLastnameTextbox
             // 
-            residentLastnameTextbox.BackColor = SystemColors.Window;
+            residentLastnameTextbox.Anchor = AnchorStyles.None;
+            residentLastnameTextbox.BackColor = Color.FromArgb(190, 196, 228);
             residentLastnameTextbox.BorderColor = Color.MediumSlateBlue;
-            residentLastnameTextbox.BorderFocusColor = Color.HotPink;
+            residentLastnameTextbox.BorderFocusColor = Color.Blue;
             residentLastnameTextbox.BorderRadius = 0;
-            residentLastnameTextbox.BorderSize = 2;
-            residentLastnameTextbox.Font = new Font("Segoe UI", 9.5F);
-            residentLastnameTextbox.ForeColor = Color.DimGray;
-            residentLastnameTextbox.Location = new Point(83, 237);
+            residentLastnameTextbox.BorderSize = 1;
+            residentLastnameTextbox.Font = new Font("Segoe UI", 11.25F);
+            residentLastnameTextbox.ForeColor = Color.Black;
+            residentLastnameTextbox.Location = new Point(467, 150);
             residentLastnameTextbox.Margin = new Padding(4);
             residentLastnameTextbox.Multiline = false;
             residentLastnameTextbox.Name = "residentLastnameTextbox";
@@ -524,78 +590,30 @@
             residentLastnameTextbox.PasswordChar = false;
             residentLastnameTextbox.PlaceholderColor = Color.DarkGray;
             residentLastnameTextbox.PlaceholderText = "";
-            residentLastnameTextbox.Size = new Size(195, 32);
-            residentLastnameTextbox.TabIndex = 5;
+            residentLastnameTextbox.Size = new Size(195, 35);
+            residentLastnameTextbox.TabIndex = 1;
             residentLastnameTextbox.UnderlinedStyle = true;
+            residentLastnameTextbox.TextChanged += residentLastnameTextbox_TextChanged;
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
-            label3.Location = new Point(86, 221);
+            label3.Location = new Point(464, 131);
             label3.Name = "label3";
-            label3.Size = new Size(65, 15);
+            label3.Size = new Size(111, 15);
             label3.TabIndex = 4;
-            label3.Text = "Resident Id";
-            // 
-            // residentFirstNameTextbox
-            // 
-            residentFirstNameTextbox.BackColor = SystemColors.Window;
-            residentFirstNameTextbox.BorderColor = Color.MediumSlateBlue;
-            residentFirstNameTextbox.BorderFocusColor = Color.HotPink;
-            residentFirstNameTextbox.BorderRadius = 0;
-            residentFirstNameTextbox.BorderSize = 2;
-            residentFirstNameTextbox.Font = new Font("Segoe UI", 9.5F);
-            residentFirstNameTextbox.ForeColor = Color.DimGray;
-            residentFirstNameTextbox.Location = new Point(83, 144);
-            residentFirstNameTextbox.Margin = new Padding(4);
-            residentFirstNameTextbox.Multiline = false;
-            residentFirstNameTextbox.Name = "residentFirstNameTextbox";
-            residentFirstNameTextbox.Padding = new Padding(7);
-            residentFirstNameTextbox.PasswordChar = false;
-            residentFirstNameTextbox.PlaceholderColor = Color.DarkGray;
-            residentFirstNameTextbox.PlaceholderText = "";
-            residentFirstNameTextbox.Size = new Size(195, 32);
-            residentFirstNameTextbox.TabIndex = 3;
-            residentFirstNameTextbox.UnderlinedStyle = true;
+            label3.Text = "Resident Last Name";
             // 
             // label8
             // 
+            label8.Anchor = AnchorStyles.None;
             label8.AutoSize = true;
-            label8.Location = new Point(86, 128);
+            label8.Location = new Point(260, 131);
             label8.Name = "label8";
-            label8.Size = new Size(65, 15);
+            label8.Size = new Size(112, 15);
             label8.TabIndex = 2;
-            label8.Text = "Resident Id";
-            // 
-            // residentIdTextbox
-            // 
-            residentIdTextbox.BackColor = SystemColors.Window;
-            residentIdTextbox.BorderColor = Color.MediumSlateBlue;
-            residentIdTextbox.BorderFocusColor = Color.HotPink;
-            residentIdTextbox.BorderRadius = 0;
-            residentIdTextbox.BorderSize = 2;
-            residentIdTextbox.Font = new Font("Segoe UI", 9.5F);
-            residentIdTextbox.ForeColor = Color.DimGray;
-            residentIdTextbox.Location = new Point(83, 62);
-            residentIdTextbox.Margin = new Padding(4);
-            residentIdTextbox.Multiline = false;
-            residentIdTextbox.Name = "residentIdTextbox";
-            residentIdTextbox.Padding = new Padding(7);
-            residentIdTextbox.PasswordChar = false;
-            residentIdTextbox.PlaceholderColor = Color.Black;
-            residentIdTextbox.PlaceholderText = "aasdasd";
-            residentIdTextbox.Size = new Size(195, 32);
-            residentIdTextbox.TabIndex = 1;
-            residentIdTextbox.UnderlinedStyle = true;
-            // 
-            // residentId
-            // 
-            residentId.AutoSize = true;
-            residentId.Location = new Point(86, 46);
-            residentId.Name = "residentId";
-            residentId.Size = new Size(65, 15);
-            residentId.TabIndex = 0;
-            residentId.Text = "Resident Id";
+            label8.Text = "Resident First Name";
             // 
             // panel2
             // 
@@ -628,9 +646,9 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(320, 19);
             label1.Name = "label1";
-            label1.Size = new Size(316, 45);
+            label1.Size = new Size(301, 45);
             label1.TabIndex = 0;
-            label1.Text = "Manage Residence";
+            label1.Text = "Manage Resident";
             // 
             // contextMenuStrip1
             // 
@@ -671,6 +689,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewResidents).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
@@ -692,33 +711,34 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private MyControls.MyButton deleteButton;
-        private MyControls.MyButton editButton;
         private MyControls.MyButton addnewButton;
         private TabPage tabPage2;
         private MyControls.MyButton cancelButton;
         private MyControls.MyButton saveButton;
-        private MyControls.MyTextBox residentPasswordTextbox;
-        private Label label7;
-        private MyControls.MyTextBox residentUsernameTextbox;
-        private Label label6;
         private MyControls.MyTextBox residentMobileNumberTextbox;
         private Label label5;
         private MyControls.MyTextBox residentPurokNumberTextbox;
         private Label label4;
         private MyControls.MyTextBox residentLastnameTextbox;
         private Label label3;
-        private MyControls.MyTextBox residentFirstNameTextbox;
         private Label label8;
-        private MyControls.MyTextBox residentIdTextbox;
-        private Label residentId;
         private Panel panel1;
         private DataGridView dataGridViewResidents;
         private Panel panel4;
         private Label label9;
         private MyControls.MyTextBox searchNameTextbox;
-        private MyControls.MyButton searchButton;
         private Panel panel3;
-        private TextBox textBox1;
-        private MyControls.MyComboBox myComboBox1;
+        private MyControls.MyComboBox searchByPurokDropdown;
+        private Label label10;
+        private MyControls.MyButton editButton;
+        private Label label11;
+        private PictureBox pictureBox1;
+        private MyControls.MyTextBox residentFirstNameTextbox;
+        private Label labelDetails;
+        private MyControls.MyTextBox passwordTextbox;
+        private Label label7;
+        private MyControls.MyTextBox usernameTextbox;
+        private Label label6;
+        private MyControls.MyButton clearButton;
     }
 }

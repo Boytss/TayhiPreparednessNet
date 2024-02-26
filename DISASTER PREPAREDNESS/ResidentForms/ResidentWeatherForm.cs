@@ -15,13 +15,18 @@ namespace DISASTER_PREPAREDNESS.ResidentForms
 {
     public partial class ResidentWeatherForm : Form
     {
+        // Define arrays to hold references to controls
+        private Label[] dayLabels = new Label[7];
+        private Label[] temperatureLabels = new Label[7];
+        private Label[] conditionLabels = new Label[7];
+        private PictureBox[] pictureBoxes = new PictureBox[7];
         private const string ApiKey = "3c1b42054e212a0088cda5f59832df02";
         private const string ApiUrl = "https://api.openweathermap.org/data/2.5/weather";
         private const string FolderPath = @"C:\Users\Admin\Desktop\DISASTER PREPAREDNESS SYSTEM OF BARANGAY TAYHI, TABACO\Conditions\";
         public ResidentWeatherForm()
         {
             InitializeComponent();
-         
+
 
         }
 
@@ -199,58 +204,89 @@ namespace DISASTER_PREPAREDNESS.ResidentForms
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
         }
+        private void UpdateForecastForDay(ForecastEntry forecastEntry, Label dayLabel, Label tempLabel, Label conditionLabel, PictureBox pictureBox)
+        {
+            // Convert the forecast date to a DateTime object
+            DateTime forecastDate = DateTimeOffset.FromUnixTimeSeconds(forecastEntry.Dt).DateTime;
 
+            // Calculate the day of the week for the forecast date
+            string dayName = forecastDate.ToString("dddd");
+
+            double temperature = forecastEntry.Main.Temp;
+            string weatherCondition = forecastEntry.Weather[0].Description;
+
+            // Update labels with forecast information
+            if (dayLabel != null)
+                dayLabel.Text = dayName;
+
+            if (tempLabel != null)
+                tempLabel.Text = $"{temperature}°C";
+
+            if (conditionLabel != null)
+                conditionLabel.Text = weatherCondition;
+
+            if (pictureBox != null)
+            {
+                pictureBox.BackgroundImage = null;
+
+                // Set the image location based on weather condition
+                pictureBox.ImageLocation = GetCustomIconPath(weatherCondition);
+                // Stretch background image
+                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+        }
         private void Update7DayForecastUI(ForecastData forecastData)
         {
             // Get the current day of the week
             DateTime today = DateTime.Today;
 
-
+            // Loop through each day label
             for (int i = 0; i < 7; i++)
             {
-                // Get forecast information for the current day
-                var forecastEntry = forecastData.List[i];
+                // Calculate the index of the forecast entry for the current day
+                int forecastIndex = (i + 1) * 8 - 1; // Adjust index to get the last entry for each day
 
-                // Convert the forecast date to a DateTime object
-                DateTime forecastDate = DateTimeOffset.FromUnixTimeSeconds(forecastEntry.Dt).DateTime;
-
-                // Calculate the day of the week for the forecast date
-                string dayName = forecastDate.ToString("dddd");
-
-                double temperature = forecastEntry.Main.Temp;
-                string weatherCondition = forecastEntry.Weather[0].Description;
-
-                // Update labels with forecast information
-                var dayLabel = Controls.Find($"dayLabels{i + 1}", true).FirstOrDefault() as Label;
-                var temperatureLabel = Controls.Find($"temperatureLabels{i + 1}", true).FirstOrDefault() as Label;
-                var conditionLabel = Controls.Find($"conditionLabels{i + 1}", true).FirstOrDefault() as Label;
-                var pictureBox = Controls.Find($"pictureBoxes{i + 1}", true).FirstOrDefault() as PictureBox;
-
-
-
-
-                if (dayLabel != null)
-                    dayLabel.Text = dayName;
-
-                if (temperatureLabel != null)
-                    temperatureLabel.Text = $"{temperature}°C";
-
-                if (conditionLabel != null)
-                    conditionLabel.Text = weatherCondition;
-
-                if (pictureBox != null)
+                // Check if the forecast index is within the bounds of the forecast data list
+                if (forecastIndex < forecastData.List.Count)
                 {
-                    pictureBox.BackgroundImage = null;
+                    // Get forecast information for the current day
+                    var forecastEntry = forecastData.List[forecastIndex];
 
-                    // Set the image location based on weather condition
-                    pictureBox.ImageLocation = GetCustomIconPath(weatherCondition);
-                    // Stretch background image
-                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    // Convert the forecast date to a DateTime object
+                    DateTime forecastDate = DateTimeOffset.FromUnixTimeSeconds(forecastEntry.Dt).DateTime;
+
+                    // Calculate the day of the week for the forecast date
+                    string dayName = forecastDate.ToString("dddd");
+
+                    double temperature = forecastEntry.Main.Temp;
+                    string weatherCondition = forecastEntry.Weather[0].Description;
+
+                    // Update labels with forecast information
+                    Label dayLabel = (Label)this.Controls.Find($"dayLabels{i + 1}", true).FirstOrDefault();
+                    Label temperatureLabel = (Label)this.Controls.Find($"temperatureLabels{i + 1}", true).FirstOrDefault();
+                    Label conditionLabel = (Label)this.Controls.Find($"conditionLabels{i + 1}", true).FirstOrDefault();
+                    PictureBox pictureBox = (PictureBox)this.Controls.Find($"pictureBoxes{i + 1}", true).FirstOrDefault();
+
+                    if (dayLabel != null)
+                        dayLabel.Text = dayName;
+
+                    if (temperatureLabel != null)
+                        temperatureLabel.Text = $"{temperature}°C";
+
+                    if (conditionLabel != null)
+                        conditionLabel.Text = weatherCondition;
+
+                    if (pictureBox != null)
+                    {
+                        pictureBox.BackgroundImage = null;
+
+                        // Set the image location based on weather condition
+                        pictureBox.ImageLocation = GetCustomIconPath(weatherCondition);
+                        // Stretch background image
+                        pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    }
                 }
             }
-
-
-
         }
 
         private void timer1_Tick_1(object sender, EventArgs e)

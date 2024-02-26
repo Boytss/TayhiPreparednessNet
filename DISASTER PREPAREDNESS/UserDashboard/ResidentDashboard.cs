@@ -14,6 +14,7 @@ namespace DISASTER_PREPAREDNESS
 {
     public partial class ResidentDashboard : Form
     {
+        private string loggedInUsername;
         public Panel PanelDesktopPanels { get { return panelDesktopPanel; } }
 
         private Button currentButton;
@@ -29,9 +30,13 @@ namespace DISASTER_PREPAREDNESS
         // Define constants for window messages
         const int WM_NCLBUTTONDOWN = 0xA1;
         const int HT_CAPTION = 0x2;
-        public ResidentDashboard()
+        public ResidentDashboard(string username)
         {
             InitializeComponent();
+
+            loggedInUsername = username;
+            userLabel.Text = loggedInUsername;
+
             random = new Random();
             buttonWeatherForecast_Click(null, EventArgs.Empty);
             SetRoundedCorners(this, 15);
@@ -40,6 +45,7 @@ namespace DISASTER_PREPAREDNESS
             ApplyCircularBorder(panel4);
             labelTime.Text = DateTime.Now.ToLongTimeString();
             labelDate.Text = DateTime.Now.ToLongDateString();
+            this.loggedInUsername = loggedInUsername;
         }
         private void ApplyCircularBorder(Panel panel)
         {
@@ -266,6 +272,21 @@ namespace DISASTER_PREPAREDNESS
         {
             labelTime.Text = DateTime.Now.ToLongTimeString();
             labelDate.Text = DateTime.Now.ToLongDateString();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            // Display a confirmation dialog
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                // User clicked Yes, proceed with log out
+                this.Hide();
+                LoginForm loginForm = new LoginForm();
+                loginForm.Show();
+            }
+            // If the user clicks No, the log out action is canceled.
         }
     }
 }

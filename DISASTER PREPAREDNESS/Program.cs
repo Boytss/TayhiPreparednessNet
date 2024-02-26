@@ -1,7 +1,7 @@
 using DISASTER_PREPAREDNESS.AdminForms;
 using DISASTER_PREPAREDNESS.Forms;
 using System.Configuration;
-
+using DISASTER_PREPAREDNESS.ResidentForms;
 namespace DISASTER_PREPAREDNESS
 {
     internal static class Program
@@ -17,7 +17,7 @@ namespace DISASTER_PREPAREDNESS
             Application.EnableVisualStyles();
             ApplicationConfiguration.Initialize();
             
-            Application.Run(new AdminDashboard());
+            Application.Run(new LoginForm());
            
         }
     }

@@ -26,23 +26,11 @@ namespace DISASTER_PREPAREDNESS.AdminForms
             this.Resize += EmergencyAlertForm_Resize;
 
 
-            AddShadow(panel2);
+
             // Scroll Bars
             dataGridViewResidents.ScrollBars = ScrollBars.Both;
         }
-        private void AddShadow(Panel panel)
-        {
-            // Create a new label to act as the shadow
-            Label shadowLabel = new Label();
-            shadowLabel.BackColor = Color.FromArgb(30, Color.Black); // Semi-transparent black
-            shadowLabel.AutoSize = false;
-            shadowLabel.Size = new Size(panel.Width, panel.Height);
-            shadowLabel.Location = new Point(panel.Location.X + 5, panel.Location.Y + 5); // Adjust shadow position
-            shadowLabel.SendToBack(); // Send shadow to back so it appears behind the panel
 
-            // Add the shadow label to the form's controls
-            this.Controls.Add(shadowLabel);
-        }
         private void LoadResidentsData()
         {
             try
@@ -52,6 +40,12 @@ namespace DISASTER_PREPAREDNESS.AdminForms
 
                 // Display the data in the DataGridView
                 dataGridViewResidents.DataSource = residentsContactDataTable;
+                // Set column header text
+                dataGridViewResidents.Columns["FirstName"].HeaderText = "First Name";
+                dataGridViewResidents.Columns["LastName"].HeaderText = "Last Name";
+                dataGridViewResidents.Columns["PurokNumber"].HeaderText = "Purok Number";
+                dataGridViewResidents.Columns["MobileNumber"].HeaderText = "Mobile Number";
+                dataGridViewResidents.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -59,59 +53,14 @@ namespace DISASTER_PREPAREDNESS.AdminForms
             }
         }
 
-        private void buttonSendAlert_Click(object sender, EventArgs e)
-        {
-            //SerialPort sp = new SerialPort();
-            //try
-            //{
-            //    // Configure serial port
-            //    sp.PortName = txtPort.Text;
-            //    sp.Open();
 
-            //    // Set write timeout to 1000 milliseconds (1 second)
-            //    sp.WriteTimeout = 1000;
-
-            //    // Set SMS text mode
-            //    sp.WriteLine("AT+CMGF=1" + Environment.NewLine);
-
-            //    // Set recipient phone number
-            //    sp.WriteLine("AT+CMGS=\"" + txtPhoneNumber.Text + "\"" + Environment.NewLine);
-
-            //    // Set message content
-            //    sp.Write(message.Text + '\x1A'); // '\x1A' is the ASCII code for Ctrl+Z (End of message)
-
-            //    // Read response
-            //    var response = sp.ReadExisting();
-
-            //    if (response.Contains("ERROR"))
-            //    {
-            //        MessageBox.Show("Send Failed!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Message has been sent!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-            //finally
-            //{
-            //    // Close the serial port when done
-            //    if (sp.IsOpen)
-            //        sp.Close();
-            //}
-            // Create a list to store selected phone numbers
-
-        }
         private void SendSMS(string phoneNumber, string message)
         {
             SerialPort sp = new SerialPort();
             try
             {
                 // Configure serial port
-                sp.PortName = txtPort.Text;
+                sp.PortName = txtPort.Texts;
                 sp.Open();
 
                 // Set write timeout to 1000 milliseconds (1 second)
@@ -133,10 +82,7 @@ namespace DISASTER_PREPAREDNESS.AdminForms
                 {
                     MessageBox.Show("Send Failed!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else
-                {
-                    MessageBox.Show("Message has been sent to " + phoneNumber, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                
             }
             catch (Exception ex)
             {
@@ -189,22 +135,159 @@ namespace DISASTER_PREPAREDNESS.AdminForms
                 column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
-
-        private void buttonSendAlert_Click_1(object sender, EventArgs e)
+        private void SendSMSMessagesToPurok(string purok, string messageContent)
         {
-            List<string> selectedPhoneNumbers = new List<string>();
+            DataTable dataTable = (DataTable)dataGridViewResidents.DataSource;
+            if (dataTable == null) return;
 
+            var rowsToSendSMS = dataTable.AsEnumerable()
+                                          .Where(row => row.Field<string>("PurokNumber") == purok)
+                                          .ToList();
+
+            foreach (DataRow row in rowsToSendSMS)
+            {
+                string phoneNumber = row["MobileNumber"].ToString();
+                SendSMS(phoneNumber, messageContent);
+            }
+
+            if (rowsToSendSMS.Count > 0)
+            {
+                MessageBox.Show($"SMS messages have been sent to all residents in Purok {purok}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show($"No residents found in Purok {purok} to send SMS.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
+
+        private void searchNameTextbox_TextChanged(object sender, EventArgs e)
+        {
+            // Get the search term from the TextBox
+            string searchTerm = searchNameTextbox.Text.Trim();
+
+            // If search term is empty, show all rows
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+                dataGridViewResidents.DataSource = ResidentDataAccess.GetAllResidentContacts();
+                return;
+            }
+
+            // Split the search term into individual words
+            string[] keywords = searchTerm.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+            // Construct the filter expression dynamically
+            StringBuilder filterExpression = new StringBuilder();
+            filterExpression.Append("(");
+            foreach (string keyword in keywords)
+            {
+                if (filterExpression.Length > 1)
+                    filterExpression.Append(" AND ");
+
+                filterExpression.Append("(");
+                filterExpression.AppendFormat("FirstName LIKE '%{0}%'", keyword);
+                filterExpression.Append(" OR ");
+                filterExpression.AppendFormat("LastName LIKE '%{0}%'", keyword);
+                filterExpression.Append(" OR ");
+                filterExpression.AppendFormat("PurokNumber LIKE '%{0}%'", keyword);
+                filterExpression.Append(" OR ");
+                filterExpression.AppendFormat("MobileNumber LIKE '%{0}%'", keyword);
+
+                filterExpression.Append(")");
+            }
+            filterExpression.Append(")");
+
+            // Apply the filter to the DataGridView's DataSource
+            ((DataTable)dataGridViewResidents.DataSource).DefaultView.RowFilter = filterExpression.ToString();
+
+        }
+
+        private void searchByPurokDropdown_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Get the selected Purok from the dropdown
+            string selectedPurok = searchByPurokDropdown.SelectedItem.ToString();
+
+            // Perform the search operation based on the selected Purok
+            SearchResidentsByPurok(selectedPurok);
+        }
+        private void SearchResidentsByPurok(string purok)
+        {
             try
             {
-                // Iterate through selected DataGridView rows
+                DataTable searchResults;
+
+                if (purok == "All Residents")
+                {
+                    // Fetch all residents
+                    searchResults = ResidentDataAccess.GetAllResidentContacts();
+                }
+                else
+                {
+                    // Fetch residents by the selected purok
+                    searchResults = ResidentDataAccess.SearchResidentsByPurok(purok);
+                }
+
+                // Update the DataGridView with search results
+                dataGridViewResidents.DataSource = searchResults;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error searching residents by Purok: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void myButton1_Click(object sender, EventArgs e)
+        {
+            if (searchByPurokDropdown.SelectedItem != null && searchByPurokDropdown.SelectedItem.ToString() == "All Residents")
+            {
+                // Retrieve all residents' mobile numbers
+                DataTable allResidentsDataTable = ResidentDataAccess.GetAllResidentContacts();
+
+                // Check if any residents are found
+                if (allResidentsDataTable.Rows.Count == 0)
+                {
+                    MessageBox.Show("No residents found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                // Confirmation before sending SMS to all residents
+                DialogResult result = MessageBox.Show("Are you sure you want to send SMS alerts to all residents?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    // Iterate through each resident and send SMS
+                    foreach (DataRow row in allResidentsDataTable.Rows)
+                    {
+                        string phoneNumber = row["MobileNumber"].ToString();
+                        SendSMS(phoneNumber, message.Text);
+                    }
+
+                    MessageBox.Show("SMS alerts have been sent to all residents!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                // Iterate through each resident and send SMS
+                foreach (DataRow row in allResidentsDataTable.Rows)
+                {
+                    string phoneNumber = row["MobileNumber"].ToString();
+                    SendSMS(phoneNumber, message.Text);
+                }
+
+                MessageBox.Show("SMS alerts have been sent to all residents!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (dataGridViewResidents.SelectedRows.Count == 0)
+            {
+                string selectedPurok = searchByPurokDropdown.SelectedItem.ToString();
+                SendSMSMessagesToPurok(selectedPurok, message.Text);
+            }
+            else
+            {
+                // Existing code to send SMS to selected rows
+                List<string> selectedPhoneNumbers = new List<string>();
                 foreach (DataGridViewRow row in dataGridViewResidents.SelectedRows)
                 {
-                    // Retrieve the phone number
                     string phoneNumber = row.Cells["MobileNumber"].Value.ToString();
                     selectedPhoneNumbers.Add(phoneNumber);
                 }
 
-                // Iterate through selected phone numbers and send SMS alerts
                 foreach (string phoneNumber in selectedPhoneNumbers)
                 {
                     SendSMS(phoneNumber, message.Text);
@@ -212,10 +295,17 @@ namespace DISASTER_PREPAREDNESS.AdminForms
 
                 MessageBox.Show("SMS alerts have been sent!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error sending SMS alerts: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+        }
+
+        private void txtPort_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            // Clear the selection in the DataGridView
+            dataGridViewResidents.ClearSelection();
         }
     }
 }

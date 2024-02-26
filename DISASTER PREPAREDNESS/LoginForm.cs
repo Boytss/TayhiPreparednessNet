@@ -29,19 +29,22 @@ namespace DISASTER_PREPAREDNESS
         public LoginForm()
         {
             InitializeComponent();
-            SetDefaultTextAndAttachHandlers(userNameValue, "" + "Username");
-            SetDefaultTextAndAttachHandlers(passwordValue, "" + "Password");
 
 
-            SetRoundedButton(loginButton);
-            minimizeButton.Click += minimizeButton_Click;
-            maximizeButton.Click += maximizeButton_Click;
-            closeButton.Click += closeButton_Click;
+            SetRoundedCorners(this, 15);
+
+
         }
-        private void loginButton_Click(object sender, EventArgs e)
+        private void SetRoundedCorners(Control control, int radius)
         {
-            LoginUser();
+            GraphicsPath path = new GraphicsPath();
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(control.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(control.Width - radius, control.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, control.Height - radius, radius, radius, 90, 90);
+            control.Region = new Region(path);
         }
+
         private void LoginUser()
         {
             string username = userNameValue.Text;
@@ -65,121 +68,30 @@ namespace DISASTER_PREPAREDNESS
                 }
                 else
                 {
-                    MessageBox.Show("Login successful! Welcome!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (username == null && password == null)
+                    {
+                        MessageBox.Show("Invalid input fields");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Login successful! Welcome!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Redirect to the ResidentDashboard
-                    ResidentDashboard residentDashboard = new ResidentDashboard();
-                    residentDashboard.Show();
+                        // Redirect to the ResidentDashboard
+                        ResidentDashboard residentDashboard = new ResidentDashboard(username);
+                        residentDashboard.Show();
 
-                    // Optionally, hide the current login form
-                    this.Hide();
+                        // Optionally, hide the current login form
+                        this.Hide();
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Login failed. Please check your credentials.");
+                MessageBox.Show("Login failed. Please check your credentials.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-
-        // P/Invoke declarations for native functions
-        [DllImport("user32.dll")]
-        private static extern IntPtr GetWindowDC(IntPtr hWnd);
-
-        [DllImport("user32.dll")]
-        private static extern int ReleaseDC(IntPtr hWnd, IntPtr hDC);
-
-        [DllImport("gdi32.dll")]
-        private static extern int SetBkColor(IntPtr hdc, int crColor);
-        private void SetRoundedButton(Button button)
-        {
-            button.FlatStyle = FlatStyle.Flat;
-            button.FlatAppearance.BorderSize = 0;
-
-            loginButton.Size = new Size(143, 40); // Adjust the width and height as needed
-
-            GraphicsPath path = new GraphicsPath();
-            int radius = 20; // Adjust the radius to control the roundness
-            Rectangle rectangle = button.ClientRectangle;
-            path.AddArc(rectangle.Left, rectangle.Top, radius * 2, radius * 2, 180, 90);
-            path.AddArc(rectangle.Right - radius * 2, rectangle.Top, radius * 2, radius * 2, 270, 90);
-            path.AddArc(rectangle.Right - radius * 2, rectangle.Bottom - radius * 2, radius * 2, radius * 2, 0, 90);
-            path.AddArc(rectangle.Left, rectangle.Bottom - radius * 2, radius * 2, radius * 2, 90, 90);
-            button.Region = new Region(path);
-        }
-        private void SetDefaultTextAndAttachHandlers(TextBox textBox, string defaultText)
-        {
-
-            textBox.Text = defaultText;
-            textBox.ForeColor = System.Drawing.Color.Gray;
-            textBox.TextAlign = HorizontalAlignment.Left;
-
-            // Set the UseSystemPasswordChar property for the password TextBox
-            if (textBox.Name == "passwordValue")
-            {
-                textBox.UseSystemPasswordChar = true;
-            }
-
-            textBox.GotFocus += (sender, e) => TextBox_GotFocus(textBox, defaultText);
-            textBox.LostFocus += (sender, e) => TextBox_LostFocus(textBox, defaultText);
-            textBox.TextChanged += (sender, e) => TextBox_TextChanged(textBox, defaultText);
-        }
-        private void TextBox_TextChanged(TextBox textBox, string defaultText)
-        {
-            // If text is being typed in the password TextBox, change the font color and show actual characters
-            if (textBox.Name == "passwordValue" && textBox.Text != defaultText)
-            {
-                textBox.ForeColor = SystemColors.WindowText;
-                textBox.UseSystemPasswordChar = false;
-            }
-        }
-
-        private void TextBox_GotFocus(TextBox textBox, string defaultText)
-        {
-            // Change font color when the TextBox receives focus
-            if (textBox.Text == defaultText)
-            {
-                textBox.Text = "";
-                textBox.ForeColor = SystemColors.WindowText; // Set to default text color
-
-            }
-        }
-
-        private void TextBox_LostFocus(TextBox textBox, string defaultText)
-        {
-
-            // Restore default text and font color if the TextBox is empty
-            if (string.IsNullOrWhiteSpace(textBox.Text))
-            {
-                textBox.Text = defaultText;
-                textBox.ForeColor = System.Drawing.Color.Gray;
-            }
-        }
-
-        private void minimizeButton_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void maximizeButton_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Maximize button clicked"); // Add this line for debugging
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-        }
-
-        private void closeButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void panel3_MouseDown_1(object sender, MouseEventArgs e)
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -188,26 +100,51 @@ namespace DISASTER_PREPAREDNESS
             }
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+                WindowState = FormWindowState.Maximized;
+            else
+                WindowState = FormWindowState.Normal;
+            SetRoundedCorners(this, 15);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+                WindowState = FormWindowState.Minimized;
+            else
+                WindowState = FormWindowState.Normal;
+        }
+
+        private void showpass_CheckedChanged_2(object sender, EventArgs e)
+        {
+            if (showpass.Checked)
+            {
+                passwordValue.PasswordChar = false;
+            }
+            else
+            {
+                passwordValue.PasswordChar = true;
+            }
+        }
+
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            LoginUser();
+        }
+
+        private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
             // Open the registration form when the link label is clicked
             RegistrationForm registrationForm = new RegistrationForm();
             registrationForm.Show();
             this.Hide();  // Optionally, hide the current login form
         }
-
-        private void showpass_CheckedChanged(object sender, EventArgs e)
-        {
-            if (showpass.Checked)
-            {
-                passwordValue.UseSystemPasswordChar = true;
-            }
-            else
-            {
-                passwordValue.UseSystemPasswordChar = false;
-            }
-        }
-
-       
     }
 }

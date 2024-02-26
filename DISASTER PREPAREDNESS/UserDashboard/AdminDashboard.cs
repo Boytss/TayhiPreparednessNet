@@ -39,12 +39,15 @@ namespace DISASTER_PREPAREDNESS
         public AdminDashboard()
         {
             InitializeComponent();
+            buttonManageResidence_Click(null, EventArgs.Empty);
+
             random = new Random();
             SetRoundedCorners(this, 15);
             ApplyRoundedEdges(panel2);
             ApplyCircularBorder(panel4);
             labelTime.Text = DateTime.Now.ToLongTimeString();
             labelDate.Text = DateTime.Now.ToLongDateString();
+
         }
 
 
@@ -293,6 +296,21 @@ namespace DISASTER_PREPAREDNESS
         {
             labelTime.Text = DateTime.Now.ToLongTimeString();
             labelDate.Text = DateTime.Now.ToLongDateString();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            // Display a confirmation dialog
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                // User clicked Yes, proceed with log out
+                this.Hide();
+                LoginForm loginForm = new LoginForm();
+                loginForm.Show();
+            }
+            // If the user clicks No, the log out action is canceled.
         }
     }
 }
