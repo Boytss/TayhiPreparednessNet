@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             flowLayoutPanel1 = new FlowLayoutPanel();
+            flowLayoutPanelDisasters = new FlowLayoutPanel();
             panel2 = new Panel();
             labelTips = new Label();
+            flowLayoutPanel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -39,10 +41,21 @@
             flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.BackColor = Color.FromArgb(190, 196, 228);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanelDisasters);
             flowLayoutPanel1.Location = new Point(0, 60);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(800, 390);
             flowLayoutPanel1.TabIndex = 4;
+            // 
+            // flowLayoutPanelDisasters
+            // 
+            flowLayoutPanelDisasters.AutoScroll = true;
+            flowLayoutPanelDisasters.BackColor = Color.FromArgb(190, 196, 228);
+            flowLayoutPanelDisasters.Dock = DockStyle.Fill;
+            flowLayoutPanelDisasters.Location = new Point(3, 3);
+            flowLayoutPanelDisasters.Name = "flowLayoutPanelDisasters";
+            flowLayoutPanelDisasters.Size = new Size(800, 0);
+            flowLayoutPanelDisasters.TabIndex = 59;
             // 
             // panel2
             // 
@@ -58,12 +71,12 @@
             // 
             labelTips.Anchor = AnchorStyles.None;
             labelTips.AutoSize = true;
-            labelTips.Font = new Font("Sigmar One", 20.2499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelTips.Font = new Font("Sitka Heading", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelTips.ForeColor = Color.White;
-            labelTips.Location = new Point(271, 9);
+            labelTips.Location = new Point(205, 4);
             labelTips.Name = "labelTips";
-            labelTips.Size = new Size(478, 45);
-            labelTips.TabIndex = 1;
+            labelTips.Size = new Size(383, 47);
+            labelTips.TabIndex = 60;
             labelTips.Text = "Disaster Preparedness Tips";
             // 
             // ResidentTutorialForm
@@ -76,6 +89,7 @@
             Controls.Add(panel2);
             Name = "ResidentTutorialForm";
             Text = "ResidentTutorialForm";
+            flowLayoutPanel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);
@@ -85,6 +99,7 @@
 
         private FlowLayoutPanel flowLayoutPanel1;
         private Panel panel2;
+        private FlowLayoutPanel flowLayoutPanelDisasters;
         private Label labelTips;
     }
 }

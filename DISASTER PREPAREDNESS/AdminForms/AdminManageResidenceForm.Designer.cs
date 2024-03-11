@@ -66,10 +66,10 @@
             label8 = new Label();
             panel2 = new Panel();
             label2 = new Label();
-            label1 = new Label();
             contextMenuStrip1 = new ContextMenuStrip(components);
             deleteToolStripMenuItem = new ToolStripMenuItem();
             editToolStripMenuItem = new ToolStripMenuItem();
+            label12 = new Label();
             gradientPanel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -618,8 +618,8 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(82, 97, 184);
+            panel2.Controls.Add(label12);
             panel2.Controls.Add(label2);
-            panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
@@ -638,18 +638,6 @@
             label2.TabIndex = 1;
             label2.Text = "Manage Tips";
             // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.None;
-            label1.AutoSize = true;
-            label1.Font = new Font("Sigmar One", 20.2499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(320, 19);
-            label1.Name = "label1";
-            label1.Size = new Size(301, 45);
-            label1.TabIndex = 0;
-            label1.Text = "Manage Resident";
-            // 
             // contextMenuStrip1
             // 
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { deleteToolStripMenuItem, editToolStripMenuItem });
@@ -667,6 +655,18 @@
             editToolStripMenuItem.Name = "editToolStripMenuItem";
             editToolStripMenuItem.Size = new Size(107, 22);
             editToolStripMenuItem.Text = "Edit";
+            // 
+            // label12
+            // 
+            label12.Anchor = AnchorStyles.None;
+            label12.AutoSize = true;
+            label12.Font = new Font("Sitka Heading", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label12.ForeColor = Color.White;
+            label12.Location = new Point(244, 18);
+            label12.Name = "label12";
+            label12.Size = new Size(431, 47);
+            label12.TabIndex = 4;
+            label12.Text = "Manage Resident Informations";
             // 
             // AdminManageResidenceForm
             // 
@@ -707,7 +707,6 @@
         private ToolStripMenuItem editToolStripMenuItem;
         private Panel panel2;
         private Label label2;
-        private Label label1;
         private TabControl tabControl1;
         private TabPage tabPage1;
         private MyControls.MyButton deleteButton;
@@ -740,5 +739,6 @@
         private MyControls.MyTextBox usernameTextbox;
         private Label label6;
         private MyControls.MyButton clearButton;
+        private Label label12;
     }
 }

@@ -19,6 +19,7 @@ namespace DISASTER_PREPAREDNESS.ResidentForms
         public void SetTutorialText(string text)
         {
             labelTutorialText.Text = text;
+
         }
     }
 }

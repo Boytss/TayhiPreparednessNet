@@ -1,4 +1,4 @@
-﻿using DISASTER_PREPAREDNESS.AdminForms.NewsEvents;
+﻿using DISASTER_PREPAREDNESS.AdminForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,15 +13,20 @@ namespace DISASTER_PREPAREDNESS.ResidentForms.NewsEvents
 {
     public partial class ResidentNewsEventsDataControl : UserControl
     {
+        private string titleName; // Store the titleName
+        private const int someExtraSpace = 10; // Adjust this value as needed
         public ResidentNewsEventsDataControl(String titleName, String date, String imagePath)
         {
             InitializeComponent();
+            this.titleName = titleName; // Store the titleName
             linkTitle.Text = titleName;
             labelDate.Text = date;
 
             buttonImage.BackgroundImage = Image.FromFile(imagePath);
             buttonImage.BackgroundImageLayout = ImageLayout.Stretch;
         }
+
+
         private ResidentDashboard FindResidentDashboardParentForm()
         {
             foreach (Form form in Application.OpenForms)
@@ -39,10 +44,25 @@ namespace DISASTER_PREPAREDNESS.ResidentForms.NewsEvents
 
         private void linkTitle_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            
+
         }
 
         private void linkTitle_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void buttonImage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkTitle_LinkClicked_2(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void linkTitle_LinkClicked_3(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ResidentDashboard parentForm = FindResidentDashboardParentForm();
 
@@ -53,7 +73,7 @@ namespace DISASTER_PREPAREDNESS.ResidentForms.NewsEvents
 
                 if (panelDesktopPanel != null)
                 {
-                    ResidentNewsEventsDiscriptionForm discriptionForm = new ResidentNewsEventsDiscriptionForm(); // Replace Form1 with the actual form you want to open
+                    ResidentNewsEventsDiscriptionForm discriptionForm = new ResidentNewsEventsDiscriptionForm(titleName); // Replace Form1 with the actual form you want to open
                     discriptionForm.TopLevel = false;
                     discriptionForm.FormBorderStyle = FormBorderStyle.None;
                     discriptionForm.Dock = DockStyle.Fill;
@@ -71,6 +91,11 @@ namespace DISASTER_PREPAREDNESS.ResidentForms.NewsEvents
             {
                 MessageBox.Show("Parent form not found.");
             }
+        }
+
+        private void ResidentNewsEventsDataControl_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

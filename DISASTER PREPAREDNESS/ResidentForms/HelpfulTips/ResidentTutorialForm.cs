@@ -72,5 +72,10 @@ namespace DISASTER_PREPAREDNESS.ResidentForms
                 throw new Exception($"Error retrieving tutorial text: {ex.Message}");
             }
         }
+
+        private void labelTips_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

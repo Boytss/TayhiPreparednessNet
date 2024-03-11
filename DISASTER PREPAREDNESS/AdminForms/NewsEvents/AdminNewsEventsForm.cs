@@ -18,36 +18,57 @@ namespace DISASTER_PREPAREDNESS.Forms
         public AdminNewsEventsForm()
         {
             InitializeComponent();
-            LoadNewsEvents();
         }
-        private void LoadNewsEvents()
+
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonImage_Click(object sender, EventArgs e)
+        {
+            // Show the OpenFileDialog
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp|All Files|*.*"; // Filter for image files
+            openFileDialog.Title = "Select Image File";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Get the selected file path
+                string imagePath = openFileDialog.FileName;
+
+                // Display the image in the PictureBox
+                buttonImage.BackgroundImage = Image.FromFile(imagePath);
+                buttonImage.BackgroundImageLayout = ImageLayout.Stretch;
+                buttonImage.Text = "";
+                // Display the file path in the TextBox (optional)
+                buttonImage.Tag = imagePath;
+            }
+        }
+
+        private void buttonUpload_Click(object sender, EventArgs e)
         {
             try
             {
+                string title = titleName.Text;
+                string description = descriptionName.Text;
+                string imagePath = buttonImage.Tag.ToString();
+                string author = authorName.Text;
 
-                // Fetch hazard maps from the database
-                DataTable dataTable = NewsEventsHelper.GetNewsEvents();
+                // Insert the image path into the database
+                NewsEventsHelper.UploadNewsEvent(title, description, imagePath, author);
 
-                // Display hazard maps in the form
-                foreach (DataRow row in dataTable.Rows)
-                {
-                    string titleName = row["Title"].ToString();
-                    string date = row["Date"].ToString();
-                    string imagePath = row["ImagePath"].ToString();
-
-                    // Create a UserControl to display each hazard map
-                    AdminForms.NewsEvents.NewsEventsDataControl NewsEvents = new AdminForms.NewsEvents.NewsEventsDataControl(titleName, date, imagePath);
-                    // Add the control to the FlowLayoutPanel
-                    flowLayoutPanelDisasters.Controls.Add(NewsEvents);
-                }
+                // Optionally, display a success message
+                MessageBox.Show("Upload successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading NewsEvents: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error uploading: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void descriptionName_TextChanged(object sender, EventArgs e)
         {
 
         }

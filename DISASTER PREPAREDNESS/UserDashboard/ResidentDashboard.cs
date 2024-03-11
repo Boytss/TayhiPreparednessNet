@@ -202,7 +202,7 @@ namespace DISASTER_PREPAREDNESS
 
         private void buttonEvacuationCenter_Click_2(object sender, EventArgs e)
         {
-            OpenChildForm(new ResidentAdminEvacuationCenterForm(), sender);
+            OpenChildForm(new ResidentEvacuationCenterForm(), sender);
 
         }
 

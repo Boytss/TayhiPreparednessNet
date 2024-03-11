@@ -28,23 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            labelTips = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel2 = new Panel();
+            labelTips = new Label();
             panel2.SuspendLayout();
             SuspendLayout();
-            // 
-            // labelTips
-            // 
-            labelTips.Anchor = AnchorStyles.None;
-            labelTips.AutoSize = true;
-            labelTips.Font = new Font("Sigmar One", 20.2499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelTips.ForeColor = Color.White;
-            labelTips.Location = new Point(239, 9);
-            labelTips.Name = "labelTips";
-            labelTips.Size = new Size(478, 45);
-            labelTips.TabIndex = 1;
-            labelTips.Text = "Disaster Preparedness Tips";
             // 
             // flowLayoutPanel1
             // 
@@ -67,6 +55,18 @@
             panel2.Size = new Size(800, 60);
             panel2.TabIndex = 5;
             // 
+            // labelTips
+            // 
+            labelTips.Anchor = AnchorStyles.None;
+            labelTips.AutoSize = true;
+            labelTips.Font = new Font("Sitka Heading", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelTips.ForeColor = Color.White;
+            labelTips.Location = new Point(213, 0);
+            labelTips.Name = "labelTips";
+            labelTips.Size = new Size(383, 47);
+            labelTips.TabIndex = 3;
+            labelTips.Text = "Disaster Preparedness Tips";
+            // 
             // TutorialForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -84,9 +84,8 @@
         }
 
         #endregion
-
-        private Label labelTips;
         private FlowLayoutPanel flowLayoutPanel1;
         private Panel panel2;
+        private Label labelTips;
     }
 }

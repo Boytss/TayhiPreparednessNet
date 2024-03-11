@@ -68,6 +68,35 @@ namespace DISASTER_PREPAREDNESS.DataAccess
                 throw new Exception($"Error updating tutorial text: {ex.Message}");
             }
         }
+        public static DataTable GetEvacuationCenters()
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT CenterName FROM EvacuationCenters";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+
+        public static DataTable GetRoomsForEvacuationCenter(string evacuationCenterName)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT RoomName, Capacity FROM Rooms WHERE EvacuationCenterName = @EvacuationCenterName";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@EvacuationCenterName", evacuationCenterName);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
 
     }
 }

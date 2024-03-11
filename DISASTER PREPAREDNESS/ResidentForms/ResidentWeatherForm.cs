@@ -92,6 +92,10 @@ namespace DISASTER_PREPAREDNESS.ResidentForms
                     return Path.Combine(FolderPath, "broken-clouds.png");
                 case "light rain":
                     return Path.Combine(FolderPath, "light-rain.png");
+                case "overcast clouds":
+                    return Path.Combine(FolderPath, "overcast-cloud.png");
+                case "moderate rain":
+                    return Path.Combine(FolderPath, "moderate-rain.png");
                 // Add cases for other weather conditions as needed
                 default:
                     return string.Empty; // Return empty string if no custom icon is found

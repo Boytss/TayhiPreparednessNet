@@ -39,5 +39,65 @@ namespace DISASTER_PREPAREDNESS.DataAccess
 
             return NewsEvents;
         }
+        public static DataTable GetNewsEventByTitle(string title)
+        {
+            DataTable eventData = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string selectQuery = "SELECT * FROM dbo.NewsEvents WHERE Title = @Title";
+
+                    using (SqlCommand command = new SqlCommand(selectQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@Title", title);
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            adapter.Fill(eventData);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error fetching news event by title: {ex.Message}");
+            }
+
+            return eventData;
+        }
+        public static void UploadNewsEvent(string title, string description, string imagePath, string author)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string insertQuery = "INSERT INTO dbo.NewsEvents (Title, Description, ImagePath, Date, [by]) VALUES (@Title, @Description, @ImagePath, GETDATE(), @Author)";
+
+                    using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@Title", title);
+                        command.Parameters.AddWithValue("@Description", description);
+                        command.Parameters.AddWithValue("@ImagePath", imagePath);
+                        command.Parameters.AddWithValue("@Author", author);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected == 0)
+                        {
+                            throw new Exception("No rows affected. Upload failed.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error uploading news event: {ex.Message}");
+            }
+        }
+
     }
 }

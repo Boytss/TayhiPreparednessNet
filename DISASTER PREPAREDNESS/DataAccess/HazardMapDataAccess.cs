@@ -12,7 +12,7 @@ namespace DISASTER_PREPAREDNESS.DataAccess
     {
         private static readonly string connectionString = "Server=DESKTOP-7INE4EE\\SQLEXPRESS02;Database=DisasterPreparedness;Trusted_Connection=True;";
 
-        public static void UploadHazardMap(string mapName, string description, string imagePath)
+        public static void UploadHazardMap(string mapName,  string imagePath)
         {
             try
             {
@@ -20,12 +20,11 @@ namespace DISASTER_PREPAREDNESS.DataAccess
                 {
                     connection.Open();
 
-                    string insertQuery = "INSERT INTO dbo.HazardMaps (MapName, Description, ImagePath) VALUES (@MapName, @Description, @ImagePath)";
+                    string insertQuery = "INSERT INTO dbo.HazardMaps (MapName, ImagePath) VALUES (@MapName, @ImagePath)";
 
                     using (SqlCommand command = new SqlCommand(insertQuery, connection))
                     {
                         command.Parameters.AddWithValue("@MapName", mapName);
-                        command.Parameters.AddWithValue("@Description", description);
                         command.Parameters.AddWithValue("@ImagePath", imagePath);
 
 

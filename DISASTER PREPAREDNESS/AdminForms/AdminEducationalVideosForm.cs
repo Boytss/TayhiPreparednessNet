@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DISASTER_PREPAREDNESS.DataAccess;
 
 namespace DISASTER_PREPAREDNESS.Forms
 {
@@ -20,13 +21,21 @@ namespace DISASTER_PREPAREDNESS.Forms
 
         private void buttonUpload_Click(object sender, EventArgs e)
         {
-            // Get information from form controls
-            string title = txtTitle.Text;
-            string videolink = txtVideoLink.Text;
-         
-            // Insert video into the database
-            VideoDataAccess.InsertVideo(title, videolink);
-            MessageBox.Show("Hazard map uploaded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                string title = Title.Text;
+                string videoLink = url.Text;
+
+                VideoDataAccess.InsertVideo(title, videoLink);
+
+                MessageBox.Show("Video upload successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error uploading Video: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
     }
 }

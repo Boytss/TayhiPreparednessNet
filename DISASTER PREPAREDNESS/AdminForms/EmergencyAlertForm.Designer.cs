@@ -31,7 +31,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel2 = new Panel();
-            label4 = new Label();
+            label3 = new Label();
             panel1 = new Panel();
             clearButton = new MyControls.MyButton();
             label9 = new Label();
@@ -57,24 +57,24 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(82, 97, 184);
-            panel2.Controls.Add(label4);
+            panel2.Controls.Add(label3);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(928, 60);
             panel2.TabIndex = 7;
             // 
-            // label4
+            // label3
             // 
-            label4.Anchor = AnchorStyles.None;
-            label4.AutoSize = true;
-            label4.Font = new Font("Sigmar One", 20.2499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(356, 9);
-            label4.Name = "label4";
-            label4.Size = new Size(197, 45);
-            label4.TabIndex = 0;
-            label4.Text = "SMS ALERT";
+            label3.Anchor = AnchorStyles.None;
+            label3.AutoSize = true;
+            label3.Font = new Font("Sitka Heading", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(377, 4);
+            label3.Name = "label3";
+            label3.Size = new Size(151, 47);
+            label3.TabIndex = 54;
+            label3.Text = "SMS Alert";
             // 
             // panel1
             // 
@@ -268,7 +268,7 @@
             txtPort.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtPort.ForeColor = Color.Black;
             txtPort.IconColor = Color.MediumSlateBlue;
-            txtPort.Items.AddRange(new object[] { "COM5", "COM6" });
+            txtPort.Items.AddRange(new object[] { "COM5", "COM10" });
             txtPort.ListBackColor = Color.White;
             txtPort.ListTextColor = Color.Black;
             txtPort.Location = new Point(577, 12);
@@ -349,7 +349,6 @@
 
         #endregion
         private Panel panel2;
-        private Label label4;
         private Panel panel1;
         private Panel panel3;
         private Panel panel4;
@@ -365,5 +364,6 @@
         private MyControls.MyComboBox txtPort;
         private MyControls.MyButton myButton1;
         private MyControls.MyButton clearButton;
+        private Label label3;
     }
 }

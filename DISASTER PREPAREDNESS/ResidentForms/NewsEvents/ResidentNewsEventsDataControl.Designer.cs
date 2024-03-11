@@ -30,8 +30,8 @@
         {
             buttonImage = new MyControls.MyButton();
             panel1 = new Panel();
-            labelDate = new Label();
             linkTitle = new LinkLabel();
+            labelDate = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -51,42 +51,45 @@
             buttonImage.TabIndex = 3;
             buttonImage.TextColor = Color.White;
             buttonImage.UseVisualStyleBackColor = false;
+            buttonImage.Click += buttonImage_Click;
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panel1.BackColor = Color.LightGray;
             panel1.Controls.Add(linkTitle);
-            panel1.Controls.Add(buttonImage);
             panel1.Controls.Add(labelDate);
-            panel1.Location = new Point(159, 14);
+            panel1.Controls.Add(buttonImage);
+            panel1.Location = new Point(180, 15);
             panel1.Name = "panel1";
             panel1.Size = new Size(492, 338);
             panel1.TabIndex = 1;
             // 
-            // labelDate
-            // 
-            labelDate.AutoSize = true;
-            labelDate.Location = new Point(39, 310);
-            labelDate.Name = "labelDate";
-            labelDate.Size = new Size(38, 15);
-            labelDate.TabIndex = 2;
-            labelDate.Text = "label2";
-            // 
             // linkTitle
             // 
             linkTitle.AutoSize = true;
-            linkTitle.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            linkTitle.ForeColor = SystemColors.MenuHighlight;
+            linkTitle.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             linkTitle.LinkBehavior = LinkBehavior.HoverUnderline;
             linkTitle.LinkColor = Color.Blue;
-            linkTitle.Location = new Point(39, 247);
+            linkTitle.Location = new Point(39, 246);
             linkTitle.Name = "linkTitle";
-            linkTitle.Size = new Size(96, 25);
-            linkTitle.TabIndex = 5;
+            linkTitle.Size = new Size(80, 21);
+            linkTitle.TabIndex = 9;
             linkTitle.TabStop = true;
             linkTitle.Text = "linkLabel1";
-            linkTitle.LinkClicked += linkTitle_LinkClicked;
+            linkTitle.TextAlign = ContentAlignment.MiddleLeft;
+            linkTitle.LinkClicked += linkTitle_LinkClicked_3;
+            // 
+            // labelDate
+            // 
+            labelDate.AutoSize = true;
+            labelDate.Location = new Point(39, 314);
+            labelDate.Name = "labelDate";
+            labelDate.Size = new Size(38, 15);
+            labelDate.TabIndex = 8;
+            labelDate.Text = "label2";
+            labelDate.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // ResidentNewsEventsDataControl
             // 
@@ -95,7 +98,8 @@
             AutoSize = true;
             Controls.Add(panel1);
             Name = "ResidentNewsEventsDataControl";
-            Size = new Size(1021, 369);
+            Size = new Size(860, 369);
+            Load += ResidentNewsEventsDataControl_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -105,7 +109,8 @@
 
         private MyControls.MyButton buttonImage;
         private Panel panel1;
-        private Label labelDate;
         private LinkLabel linkTitle;
+        private Label labelDate;
+        private Panel panel2;
     }
 }

@@ -143,20 +143,23 @@ namespace DISASTER_PREPAREDNESS.AdminForms
             var rowsToSendSMS = dataTable.AsEnumerable()
                                           .Where(row => row.Field<string>("PurokNumber") == purok)
                                           .ToList();
+            DialogResult result = MessageBox.Show($"Are you sure you want to send SMS alerts to {purok}?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                foreach (DataRow row in rowsToSendSMS)
+                {
+                    string phoneNumber = row["MobileNumber"].ToString();
+                    SendSMS(phoneNumber, messageContent);
+                }
 
-            foreach (DataRow row in rowsToSendSMS)
-            {
-                string phoneNumber = row["MobileNumber"].ToString();
-                SendSMS(phoneNumber, messageContent);
-            }
-
-            if (rowsToSendSMS.Count > 0)
-            {
-                MessageBox.Show($"SMS messages have been sent to all residents in Purok {purok}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show($"No residents found in Purok {purok} to send SMS.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (rowsToSendSMS.Count > 0)
+                {
+                    MessageBox.Show($"SMS messages have been sent to all residents in {purok}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show($"No residents found in Purok {purok} to send SMS.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -264,14 +267,6 @@ namespace DISASTER_PREPAREDNESS.AdminForms
                     MessageBox.Show("SMS alerts have been sent to all residents!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-                // Iterate through each resident and send SMS
-                foreach (DataRow row in allResidentsDataTable.Rows)
-                {
-                    string phoneNumber = row["MobileNumber"].ToString();
-                    SendSMS(phoneNumber, message.Text);
-                }
-
-                MessageBox.Show("SMS alerts have been sent to all residents!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (dataGridViewResidents.SelectedRows.Count == 0)
             {

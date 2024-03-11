@@ -20,12 +20,12 @@ namespace DISASTER_PREPAREDNESS.DataAccess
                 {
                     connection.Open();
 
-                    string query = "INSERT INTO dbo.EducationalVideos (Title, VideoLink) VALUES (@Title, @VideoLink)";
+                    string query = "INSERT INTO dbo.EducationalVideos (Title, VideoURL) VALUES (@Title, @VideoURL)";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Title", title);
-                        command.Parameters.AddWithValue("@VideoLink", videoLink);
+                        command.Parameters.AddWithValue("@VideoURL", videoLink);
 
                         command.ExecuteNonQuery();
                     }
@@ -47,7 +47,7 @@ namespace DISASTER_PREPAREDNESS.DataAccess
                 {
                     connection.Open();
 
-                    string selectQuery = "SELECT Title, VideoLink FROM dbo.EducationalVideos";
+                    string selectQuery = "SELECT Title, VideoURL FROM dbo.EducationalVideos";
 
                     using (SqlCommand command = new SqlCommand(selectQuery, connection))
                     {

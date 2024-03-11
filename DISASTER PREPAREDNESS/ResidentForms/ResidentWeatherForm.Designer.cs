@@ -28,20 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResidentWeatherForm));
             panel1 = new Panel();
             panel4 = new Panel();
-            panel11 = new Panel();
-            conditionLabels7 = new Label();
-            temperatureLabels7 = new Label();
-            pictureBoxes7 = new PictureBox();
-            dayLabels7 = new Label();
-            panel9 = new Panel();
-            conditionLabels6 = new Label();
-            temperatureLabels6 = new Label();
-            pictureBoxes6 = new PictureBox();
-            dayLabels6 = new Label();
             panel8 = new Panel();
             conditionLabels5 = new Label();
             temperatureLabels5 = new Label();
@@ -79,14 +68,9 @@
             pictureBox2 = new PictureBox();
             pictureBoxToday = new PictureBox();
             panel3 = new Panel();
-            label1 = new Label();
-            timer1 = new System.Windows.Forms.Timer(components);
+            label3 = new Label();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
-            panel11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxes7).BeginInit();
-            panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxes6).BeginInit();
             panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxes5).BeginInit();
             panel7.SuspendLayout();
@@ -120,8 +104,6 @@
             // panel4
             // 
             panel4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel4.Controls.Add(panel11);
-            panel4.Controls.Add(panel9);
             panel4.Controls.Add(panel8);
             panel4.Controls.Add(panel7);
             panel4.Controls.Add(panel6);
@@ -132,130 +114,6 @@
             panel4.Size = new Size(800, 163);
             panel4.TabIndex = 43;
             // 
-            // panel11
-            // 
-            panel11.Anchor = AnchorStyles.None;
-            panel11.BackColor = Color.FromArgb(100, 151, 167, 233);
-            panel11.Controls.Add(conditionLabels7);
-            panel11.Controls.Add(temperatureLabels7);
-            panel11.Controls.Add(pictureBoxes7);
-            panel11.Controls.Add(dayLabels7);
-            panel11.Location = new Point(685, 0);
-            panel11.Name = "panel11";
-            panel11.Size = new Size(114, 163);
-            panel11.TabIndex = 86;
-            // 
-            // conditionLabels7
-            // 
-            conditionLabels7.AutoSize = true;
-            conditionLabels7.BackColor = Color.Transparent;
-            conditionLabels7.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            conditionLabels7.ForeColor = Color.White;
-            conditionLabels7.Location = new Point(20, 133);
-            conditionLabels7.Name = "conditionLabels7";
-            conditionLabels7.Size = new Size(78, 20);
-            conditionLabels7.TabIndex = 4;
-            conditionLabels7.Text = "Sunny Day";
-            // 
-            // temperatureLabels7
-            // 
-            temperatureLabels7.AutoSize = true;
-            temperatureLabels7.BackColor = Color.Transparent;
-            temperatureLabels7.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            temperatureLabels7.ForeColor = Color.White;
-            temperatureLabels7.Location = new Point(35, 104);
-            temperatureLabels7.Name = "temperatureLabels7";
-            temperatureLabels7.Size = new Size(42, 21);
-            temperatureLabels7.TabIndex = 3;
-            temperatureLabels7.Text = "20 C";
-            // 
-            // pictureBoxes7
-            // 
-            pictureBoxes7.Anchor = AnchorStyles.Top;
-            pictureBoxes7.BackColor = Color.Transparent;
-            pictureBoxes7.BackgroundImage = (Image)resources.GetObject("pictureBoxes7.BackgroundImage");
-            pictureBoxes7.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBoxes7.Location = new Point(27, 42);
-            pictureBoxes7.Name = "pictureBoxes7";
-            pictureBoxes7.Size = new Size(63, 59);
-            pictureBoxes7.TabIndex = 1;
-            pictureBoxes7.TabStop = false;
-            // 
-            // dayLabels7
-            // 
-            dayLabels7.BackColor = Color.FromArgb(82, 97, 184);
-            dayLabels7.Dock = DockStyle.Top;
-            dayLabels7.Font = new Font("Orbitron", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dayLabels7.ForeColor = Color.White;
-            dayLabels7.Location = new Point(0, 0);
-            dayLabels7.Name = "dayLabels7";
-            dayLabels7.Size = new Size(114, 39);
-            dayLabels7.TabIndex = 0;
-            dayLabels7.Text = "dayLabels7";
-            dayLabels7.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // panel9
-            // 
-            panel9.Anchor = AnchorStyles.None;
-            panel9.BackColor = Color.FromArgb(100, 151, 167, 233);
-            panel9.Controls.Add(conditionLabels6);
-            panel9.Controls.Add(temperatureLabels6);
-            panel9.Controls.Add(pictureBoxes6);
-            panel9.Controls.Add(dayLabels6);
-            panel9.Location = new Point(571, 0);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(114, 163);
-            panel9.TabIndex = 85;
-            // 
-            // conditionLabels6
-            // 
-            conditionLabels6.AutoSize = true;
-            conditionLabels6.BackColor = Color.Transparent;
-            conditionLabels6.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            conditionLabels6.ForeColor = Color.White;
-            conditionLabels6.Location = new Point(20, 133);
-            conditionLabels6.Name = "conditionLabels6";
-            conditionLabels6.Size = new Size(78, 20);
-            conditionLabels6.TabIndex = 4;
-            conditionLabels6.Text = "Sunny Day";
-            // 
-            // temperatureLabels6
-            // 
-            temperatureLabels6.AutoSize = true;
-            temperatureLabels6.BackColor = Color.Transparent;
-            temperatureLabels6.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            temperatureLabels6.ForeColor = Color.White;
-            temperatureLabels6.Location = new Point(35, 104);
-            temperatureLabels6.Name = "temperatureLabels6";
-            temperatureLabels6.Size = new Size(42, 21);
-            temperatureLabels6.TabIndex = 3;
-            temperatureLabels6.Text = "20 C";
-            // 
-            // pictureBoxes6
-            // 
-            pictureBoxes6.Anchor = AnchorStyles.Top;
-            pictureBoxes6.BackColor = Color.Transparent;
-            pictureBoxes6.BackgroundImage = (Image)resources.GetObject("pictureBoxes6.BackgroundImage");
-            pictureBoxes6.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBoxes6.Location = new Point(24, 42);
-            pictureBoxes6.Name = "pictureBoxes6";
-            pictureBoxes6.Size = new Size(63, 59);
-            pictureBoxes6.TabIndex = 1;
-            pictureBoxes6.TabStop = false;
-            // 
-            // dayLabels6
-            // 
-            dayLabels6.BackColor = Color.FromArgb(82, 97, 184);
-            dayLabels6.Dock = DockStyle.Top;
-            dayLabels6.Font = new Font("Orbitron", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dayLabels6.ForeColor = Color.White;
-            dayLabels6.Location = new Point(0, 0);
-            dayLabels6.Name = "dayLabels6";
-            dayLabels6.Size = new Size(114, 39);
-            dayLabels6.TabIndex = 0;
-            dayLabels6.Text = "dayLabels26";
-            dayLabels6.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // panel8
             // 
             panel8.Anchor = AnchorStyles.None;
@@ -264,18 +122,19 @@
             panel8.Controls.Add(temperatureLabels5);
             panel8.Controls.Add(pictureBoxes5);
             panel8.Controls.Add(dayLabels5);
-            panel8.Location = new Point(457, 0);
+            panel8.Location = new Point(637, 0);
             panel8.Name = "panel8";
-            panel8.Size = new Size(114, 163);
+            panel8.Size = new Size(160, 163);
             panel8.TabIndex = 83;
             // 
             // conditionLabels5
             // 
+            conditionLabels5.Anchor = AnchorStyles.None;
             conditionLabels5.AutoSize = true;
             conditionLabels5.BackColor = Color.Transparent;
             conditionLabels5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             conditionLabels5.ForeColor = Color.White;
-            conditionLabels5.Location = new Point(20, 133);
+            conditionLabels5.Location = new Point(40, 128);
             conditionLabels5.Name = "conditionLabels5";
             conditionLabels5.Size = new Size(78, 20);
             conditionLabels5.TabIndex = 4;
@@ -283,11 +142,12 @@
             // 
             // temperatureLabels5
             // 
+            temperatureLabels5.Anchor = AnchorStyles.None;
             temperatureLabels5.AutoSize = true;
             temperatureLabels5.BackColor = Color.Transparent;
             temperatureLabels5.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             temperatureLabels5.ForeColor = Color.White;
-            temperatureLabels5.Location = new Point(35, 104);
+            temperatureLabels5.Location = new Point(56, 104);
             temperatureLabels5.Name = "temperatureLabels5";
             temperatureLabels5.Size = new Size(42, 21);
             temperatureLabels5.TabIndex = 3;
@@ -299,7 +159,7 @@
             pictureBoxes5.BackColor = Color.Transparent;
             pictureBoxes5.BackgroundImage = (Image)resources.GetObject("pictureBoxes5.BackgroundImage");
             pictureBoxes5.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBoxes5.Location = new Point(24, 42);
+            pictureBoxes5.Location = new Point(47, 42);
             pictureBoxes5.Name = "pictureBoxes5";
             pictureBoxes5.Size = new Size(63, 59);
             pictureBoxes5.TabIndex = 1;
@@ -313,7 +173,7 @@
             dayLabels5.ForeColor = Color.White;
             dayLabels5.Location = new Point(0, 0);
             dayLabels5.Name = "dayLabels5";
-            dayLabels5.Size = new Size(114, 39);
+            dayLabels5.Size = new Size(160, 39);
             dayLabels5.TabIndex = 0;
             dayLabels5.Text = "dayLabels4";
             dayLabels5.TextAlign = ContentAlignment.MiddleCenter;
@@ -326,18 +186,19 @@
             panel7.Controls.Add(temperatureLabels4);
             panel7.Controls.Add(pictureBoxes4);
             panel7.Controls.Add(dayLabels4);
-            panel7.Location = new Point(344, 0);
+            panel7.Location = new Point(478, 0);
             panel7.Name = "panel7";
-            panel7.Size = new Size(114, 163);
+            panel7.Size = new Size(160, 163);
             panel7.TabIndex = 84;
             // 
             // conditionLabels4
             // 
+            conditionLabels4.Anchor = AnchorStyles.None;
             conditionLabels4.AutoSize = true;
             conditionLabels4.BackColor = Color.Transparent;
             conditionLabels4.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             conditionLabels4.ForeColor = Color.White;
-            conditionLabels4.Location = new Point(20, 133);
+            conditionLabels4.Location = new Point(42, 131);
             conditionLabels4.Name = "conditionLabels4";
             conditionLabels4.Size = new Size(78, 20);
             conditionLabels4.TabIndex = 4;
@@ -345,11 +206,12 @@
             // 
             // temperatureLabels4
             // 
+            temperatureLabels4.Anchor = AnchorStyles.None;
             temperatureLabels4.AutoSize = true;
             temperatureLabels4.BackColor = Color.Transparent;
             temperatureLabels4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             temperatureLabels4.ForeColor = Color.White;
-            temperatureLabels4.Location = new Point(35, 104);
+            temperatureLabels4.Location = new Point(59, 104);
             temperatureLabels4.Name = "temperatureLabels4";
             temperatureLabels4.Size = new Size(42, 21);
             temperatureLabels4.TabIndex = 3;
@@ -361,7 +223,7 @@
             pictureBoxes4.BackColor = Color.Transparent;
             pictureBoxes4.BackgroundImage = (Image)resources.GetObject("pictureBoxes4.BackgroundImage");
             pictureBoxes4.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBoxes4.Location = new Point(24, 42);
+            pictureBoxes4.Location = new Point(47, 42);
             pictureBoxes4.Name = "pictureBoxes4";
             pictureBoxes4.Size = new Size(63, 59);
             pictureBoxes4.TabIndex = 1;
@@ -375,7 +237,7 @@
             dayLabels4.ForeColor = Color.White;
             dayLabels4.Location = new Point(0, 0);
             dayLabels4.Name = "dayLabels4";
-            dayLabels4.Size = new Size(114, 39);
+            dayLabels4.Size = new Size(160, 39);
             dayLabels4.TabIndex = 0;
             dayLabels4.Text = "dayLabels4";
             dayLabels4.TextAlign = ContentAlignment.MiddleCenter;
@@ -388,18 +250,19 @@
             panel6.Controls.Add(temperatureLabels3);
             panel6.Controls.Add(pictureBoxes3);
             panel6.Controls.Add(dayLabels3);
-            panel6.Location = new Point(230, 0);
+            panel6.Location = new Point(319, 0);
             panel6.Name = "panel6";
-            panel6.Size = new Size(114, 163);
+            panel6.Size = new Size(160, 163);
             panel6.TabIndex = 82;
             // 
             // conditionLabels3
             // 
+            conditionLabels3.Anchor = AnchorStyles.None;
             conditionLabels3.AutoSize = true;
             conditionLabels3.BackColor = Color.Transparent;
             conditionLabels3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             conditionLabels3.ForeColor = Color.White;
-            conditionLabels3.Location = new Point(20, 133);
+            conditionLabels3.Location = new Point(42, 131);
             conditionLabels3.Name = "conditionLabels3";
             conditionLabels3.Size = new Size(78, 20);
             conditionLabels3.TabIndex = 4;
@@ -407,11 +270,12 @@
             // 
             // temperatureLabels3
             // 
+            temperatureLabels3.Anchor = AnchorStyles.None;
             temperatureLabels3.AutoSize = true;
             temperatureLabels3.BackColor = Color.Transparent;
             temperatureLabels3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             temperatureLabels3.ForeColor = Color.White;
-            temperatureLabels3.Location = new Point(35, 104);
+            temperatureLabels3.Location = new Point(59, 104);
             temperatureLabels3.Name = "temperatureLabels3";
             temperatureLabels3.Size = new Size(42, 21);
             temperatureLabels3.TabIndex = 3;
@@ -423,7 +287,7 @@
             pictureBoxes3.BackColor = Color.Transparent;
             pictureBoxes3.BackgroundImage = (Image)resources.GetObject("pictureBoxes3.BackgroundImage");
             pictureBoxes3.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBoxes3.Location = new Point(27, 42);
+            pictureBoxes3.Location = new Point(50, 42);
             pictureBoxes3.Name = "pictureBoxes3";
             pictureBoxes3.Size = new Size(63, 59);
             pictureBoxes3.TabIndex = 1;
@@ -437,7 +301,7 @@
             dayLabels3.ForeColor = Color.White;
             dayLabels3.Location = new Point(0, 0);
             dayLabels3.Name = "dayLabels3";
-            dayLabels3.Size = new Size(114, 39);
+            dayLabels3.Size = new Size(160, 39);
             dayLabels3.TabIndex = 0;
             dayLabels3.Text = "dayLabels3";
             dayLabels3.TextAlign = ContentAlignment.MiddleCenter;
@@ -450,18 +314,19 @@
             panel5.Controls.Add(temperatureLabels2);
             panel5.Controls.Add(pictureBoxes2);
             panel5.Controls.Add(dayLabels2);
-            panel5.Location = new Point(116, 0);
+            panel5.Location = new Point(160, 0);
             panel5.Name = "panel5";
-            panel5.Size = new Size(114, 163);
+            panel5.Size = new Size(160, 163);
             panel5.TabIndex = 81;
             // 
             // conditionLabels2
             // 
+            conditionLabels2.Anchor = AnchorStyles.None;
             conditionLabels2.AutoSize = true;
             conditionLabels2.BackColor = Color.Transparent;
             conditionLabels2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             conditionLabels2.ForeColor = Color.White;
-            conditionLabels2.Location = new Point(20, 133);
+            conditionLabels2.Location = new Point(42, 131);
             conditionLabels2.Name = "conditionLabels2";
             conditionLabels2.Size = new Size(78, 20);
             conditionLabels2.TabIndex = 4;
@@ -469,11 +334,12 @@
             // 
             // temperatureLabels2
             // 
+            temperatureLabels2.Anchor = AnchorStyles.None;
             temperatureLabels2.AutoSize = true;
             temperatureLabels2.BackColor = Color.Transparent;
             temperatureLabels2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             temperatureLabels2.ForeColor = Color.White;
-            temperatureLabels2.Location = new Point(35, 104);
+            temperatureLabels2.Location = new Point(59, 104);
             temperatureLabels2.Name = "temperatureLabels2";
             temperatureLabels2.Size = new Size(42, 21);
             temperatureLabels2.TabIndex = 3;
@@ -485,7 +351,7 @@
             pictureBoxes2.BackColor = Color.Transparent;
             pictureBoxes2.BackgroundImage = (Image)resources.GetObject("pictureBoxes2.BackgroundImage");
             pictureBoxes2.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBoxes2.Location = new Point(24, 42);
+            pictureBoxes2.Location = new Point(47, 42);
             pictureBoxes2.Name = "pictureBoxes2";
             pictureBoxes2.Size = new Size(63, 59);
             pictureBoxes2.TabIndex = 1;
@@ -499,7 +365,7 @@
             dayLabels2.ForeColor = Color.White;
             dayLabels2.Location = new Point(0, 0);
             dayLabels2.Name = "dayLabels2";
-            dayLabels2.Size = new Size(114, 39);
+            dayLabels2.Size = new Size(160, 39);
             dayLabels2.TabIndex = 0;
             dayLabels2.Text = "dayLabels2";
             dayLabels2.TextAlign = ContentAlignment.MiddleCenter;
@@ -514,16 +380,17 @@
             panel10.Controls.Add(dayLabels1);
             panel10.Location = new Point(2, 0);
             panel10.Name = "panel10";
-            panel10.Size = new Size(114, 163);
+            panel10.Size = new Size(160, 163);
             panel10.TabIndex = 80;
             // 
             // conditionLabels1
             // 
+            conditionLabels1.Anchor = AnchorStyles.None;
             conditionLabels1.AutoSize = true;
             conditionLabels1.BackColor = Color.Transparent;
             conditionLabels1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             conditionLabels1.ForeColor = Color.White;
-            conditionLabels1.Location = new Point(20, 133);
+            conditionLabels1.Location = new Point(42, 131);
             conditionLabels1.Name = "conditionLabels1";
             conditionLabels1.Size = new Size(78, 20);
             conditionLabels1.TabIndex = 4;
@@ -531,11 +398,12 @@
             // 
             // temperatureLabels1
             // 
+            temperatureLabels1.Anchor = AnchorStyles.None;
             temperatureLabels1.AutoSize = true;
             temperatureLabels1.BackColor = Color.Transparent;
             temperatureLabels1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             temperatureLabels1.ForeColor = Color.White;
-            temperatureLabels1.Location = new Point(35, 104);
+            temperatureLabels1.Location = new Point(59, 104);
             temperatureLabels1.Name = "temperatureLabels1";
             temperatureLabels1.Size = new Size(42, 21);
             temperatureLabels1.TabIndex = 3;
@@ -547,7 +415,7 @@
             pictureBoxes1.BackColor = Color.Transparent;
             pictureBoxes1.BackgroundImage = (Image)resources.GetObject("pictureBoxes1.BackgroundImage");
             pictureBoxes1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBoxes1.Location = new Point(28, 42);
+            pictureBoxes1.Location = new Point(51, 42);
             pictureBoxes1.Name = "pictureBoxes1";
             pictureBoxes1.Size = new Size(63, 59);
             pictureBoxes1.TabIndex = 1;
@@ -561,7 +429,7 @@
             dayLabels1.ForeColor = Color.White;
             dayLabels1.Location = new Point(0, 0);
             dayLabels1.Name = "dayLabels1";
-            dayLabels1.Size = new Size(114, 39);
+            dayLabels1.Size = new Size(160, 39);
             dayLabels1.TabIndex = 0;
             dayLabels1.Text = "dayLabels1";
             dayLabels1.TextAlign = ContentAlignment.MiddleCenter;
@@ -709,30 +577,24 @@
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(82, 97, 184);
-            panel3.Controls.Add(label1);
+            panel3.Controls.Add(label3);
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 0);
             panel3.Name = "panel3";
             panel3.Size = new Size(800, 63);
             panel3.TabIndex = 41;
             // 
-            // label1
+            // label3
             // 
-            label1.Anchor = AnchorStyles.None;
-            label1.AutoSize = true;
-            label1.Font = new Font("Sigmar One", 20.2499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(371, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(323, 45);
-            label1.TabIndex = 0;
-            label1.Text = "Weather Forecast";
-            // 
-            // timer1
-            // 
-            timer1.Enabled = true;
-            timer1.Interval = 1000;
-            timer1.Tick += timer1_Tick_1;
+            label3.Anchor = AnchorStyles.None;
+            label3.AutoSize = true;
+            label3.Font = new Font("Sitka Heading", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(292, 7);
+            label3.Name = "label3";
+            label3.Size = new Size(251, 47);
+            label3.TabIndex = 65;
+            label3.Text = "Weather Forecast";
             // 
             // ResidentWeatherForm
             // 
@@ -747,12 +609,6 @@
             Load += ResidentWeatherForm_Load;
             panel1.ResumeLayout(false);
             panel4.ResumeLayout(false);
-            panel11.ResumeLayout(false);
-            panel11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxes7).EndInit();
-            panel9.ResumeLayout(false);
-            panel9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxes6).EndInit();
             panel8.ResumeLayout(false);
             panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxes5).EndInit();
@@ -783,8 +639,6 @@
 
         private Panel panel1;
         private Panel panel3;
-        private Label label1;
-        private System.Windows.Forms.Timer timer1;
         private Panel panel2;
         private Label label2;
         private PictureBox pictureBox1;
@@ -797,16 +651,6 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBoxToday;
         private Panel panel4;
-        private Panel panel11;
-        private Label conditionLabels7;
-        private Label temperatureLabels7;
-        private PictureBox pictureBoxes7;
-        private Label dayLabels7;
-        private Panel panel9;
-        private Label conditionLabels6;
-        private Label temperatureLabels6;
-        private PictureBox pictureBoxes6;
-        private Label dayLabels6;
         private Panel panel8;
         private Label conditionLabels5;
         private Label temperatureLabels5;
@@ -832,5 +676,6 @@
         private Label temperatureLabels1;
         private PictureBox pictureBoxes1;
         private Label dayLabels1;
+        private Label label3;
     }
 }

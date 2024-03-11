@@ -26,10 +26,11 @@ namespace DISASTER_PREPAREDNESS.ResidentForms
 
             // Set the image for the hazard map (assuming you have a PictureBox named pictureBoxMap)
             buttonHazardMaps.Image = Image.FromFile(imagePath);
+            buttonHazardMaps.BackgroundImageLayout = ImageLayout.Center;
         }
 
 
-        
+
         private void HazardMapControl_Load(object sender, EventArgs e)
         {
 
@@ -37,6 +38,16 @@ namespace DISASTER_PREPAREDNESS.ResidentForms
 
         private void buttonHazardMaps_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void buttonHazardMaps_Click_1(object sender, EventArgs e)
+        {
+        }
+
+        private void buttonHazardMaps_Click_2(object sender, EventArgs e)
+        {
+
             // Check if the button's Image property is not null
             if (buttonHazardMaps.Image != null)
             {

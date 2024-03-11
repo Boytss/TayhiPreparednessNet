@@ -51,10 +51,11 @@
             // 
             // labelDisasters
             // 
+            labelDisasters.Anchor = AnchorStyles.None;
             labelDisasters.AutoSize = true;
             labelDisasters.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
             labelDisasters.ForeColor = Color.Navy;
-            labelDisasters.Location = new Point(31, 132);
+            labelDisasters.Location = new Point(22, 132);
             labelDisasters.Name = "labelDisasters";
             labelDisasters.Padding = new Padding(1);
             labelDisasters.Size = new Size(143, 22);

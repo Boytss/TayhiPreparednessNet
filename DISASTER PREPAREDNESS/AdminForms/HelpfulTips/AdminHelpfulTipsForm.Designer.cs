@@ -30,8 +30,8 @@
         {
             flowLayoutPanelDisasters = new FlowLayoutPanel();
             panel2 = new Panel();
+            label3 = new Label();
             label2 = new Label();
-            label1 = new Label();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,13 +48,25 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(82, 97, 184);
+            panel2.Controls.Add(label3);
             panel2.Controls.Add(label2);
-            panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(779, 90);
             panel2.TabIndex = 3;
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.None;
+            label3.AutoSize = true;
+            label3.Font = new Font("Sitka Heading", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(215, 9);
+            label3.Name = "label3";
+            label3.Size = new Size(383, 47);
+            label3.TabIndex = 2;
+            label3.Text = "Disaster Preparedness Tips";
             // 
             // label2
             // 
@@ -62,23 +74,11 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(351, 45);
+            label2.Location = new Point(349, 57);
             label2.Name = "label2";
             label2.Size = new Size(98, 21);
             label2.TabIndex = 1;
             label2.Text = "Manage Tips";
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.None;
-            label1.AutoSize = true;
-            label1.Font = new Font("Sigmar One", 20.2499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(206, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(478, 45);
-            label1.TabIndex = 0;
-            label1.Text = "Disaster Preparedness Tips";
             // 
             // AdminHelpfulTipsForm
             // 
@@ -100,6 +100,6 @@
         private FlowLayoutPanel flowLayoutPanelDisasters;
         private Panel panel2;
         private Label label2;
-        private Label label1;
+        private Label label3;
     }
 }
