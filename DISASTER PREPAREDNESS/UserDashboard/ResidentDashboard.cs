@@ -17,6 +17,8 @@ namespace DISASTER_PREPAREDNESS
         private string loggedInUsername;
         public Panel PanelDesktopPanels { get { return panelDesktopPanel; } }
 
+        public ResidentNewsEventsForm ResidentNewsEventsFormInstance { get; internal set; }
+
         private Button currentButton;
         private Random random;
         private int tempIndex;
@@ -38,7 +40,7 @@ namespace DISASTER_PREPAREDNESS
             userLabel.Text = loggedInUsername;
 
             random = new Random();
-            buttonWeatherForecast_Click(null, EventArgs.Empty);
+            buttonEvacuationCenter_Click_2(null, EventArgs.Empty);
             SetRoundedCorners(this, 15);
 
             ApplyRoundedEdges(panel2);

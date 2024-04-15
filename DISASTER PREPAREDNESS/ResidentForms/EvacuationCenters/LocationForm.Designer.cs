@@ -1,6 +1,6 @@
-﻿namespace DISASTER_PREPAREDNESS.AdminForms
+﻿namespace DISASTER_PREPAREDNESS.ResidentForms.EvacuationCenters
 {
-    partial class Form1
+    partial class LocationForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,32 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LocationForm));
             SuspendLayout();
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(334, 157);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 0;
-            label1.Text = "label1";
-            // 
-            // Form1
+            // LocationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
-            Controls.Add(label1);
-            Name = "Form1";
-            Text = "Form1";
+            DoubleBuffered = true;
+            Name = "LocationForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "LocationForm";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
     }
 }

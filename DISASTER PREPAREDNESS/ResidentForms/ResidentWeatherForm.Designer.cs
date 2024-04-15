@@ -69,6 +69,9 @@
             pictureBoxToday = new PictureBox();
             panel3 = new Panel();
             label3 = new Label();
+            pictureBox4 = new PictureBox();
+            label1 = new Label();
+            myButton1 = new MyControls.MyButton();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             panel8.SuspendLayout();
@@ -87,6 +90,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxToday).BeginInit();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -436,6 +440,9 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(pictureBox4);
+            panel2.Controls.Add(label1);
+            panel2.Controls.Add(myButton1);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(label7);
@@ -459,7 +466,7 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(524, 60);
+            label2.Location = new Point(508, 131);
             label2.Name = "label2";
             label2.Size = new Size(227, 32);
             label2.TabIndex = 64;
@@ -471,7 +478,7 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(468, 50);
+            pictureBox1.Location = new Point(452, 121);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(50, 50);
             pictureBox1.TabIndex = 63;
@@ -596,6 +603,50 @@
             label3.TabIndex = 65;
             label3.Text = "Weather Forecast";
             // 
+            // pictureBox4
+            // 
+            pictureBox4.Anchor = AnchorStyles.None;
+            pictureBox4.BackgroundImage = (Image)resources.GetObject("pictureBox4.BackgroundImage");
+            pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox4.Location = new Point(626, 23);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(47, 30);
+            pictureBox4.TabIndex = 67;
+            pictureBox4.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.None;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(394, 25);
+            label1.Name = "label1";
+            label1.Size = new Size(225, 21);
+            label1.TabIndex = 65;
+            label1.Text = "Click here to access Windy.com";
+            // 
+            // myButton1
+            // 
+            myButton1.Anchor = AnchorStyles.None;
+            myButton1.BackColor = Color.Transparent;
+            myButton1.BackgroundColor = Color.Transparent;
+            myButton1.BackgroundImage = (Image)resources.GetObject("myButton1.BackgroundImage");
+            myButton1.BackgroundImageLayout = ImageLayout.Stretch;
+            myButton1.BorderColor = Color.Red;
+            myButton1.BorderRadius = 8;
+            myButton1.BorderSize = 2;
+            myButton1.FlatAppearance.BorderSize = 0;
+            myButton1.FlatStyle = FlatStyle.Flat;
+            myButton1.ForeColor = Color.White;
+            myButton1.Location = new Point(684, 10);
+            myButton1.Name = "myButton1";
+            myButton1.Size = new Size(99, 49);
+            myButton1.TabIndex = 66;
+            myButton1.TextColor = Color.White;
+            myButton1.UseVisualStyleBackColor = false;
+            myButton1.Click += myButton1_Click;
+            // 
             // ResidentWeatherForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -632,6 +683,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBoxToday).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
         }
 
@@ -677,5 +729,8 @@
         private PictureBox pictureBoxes1;
         private Label dayLabels1;
         private Label label3;
+        private PictureBox pictureBox4;
+        private Label label1;
+        private MyControls.MyButton myButton1;
     }
 }

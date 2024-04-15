@@ -307,7 +307,7 @@
             message.Padding = new Padding(7);
             message.PasswordChar = false;
             message.PlaceholderColor = Color.DarkGray;
-            message.PlaceholderText = "";
+            message.PlaceholderText = "Write alert message here";
             message.Size = new Size(671, 276);
             message.TabIndex = 12;
             message.UnderlinedStyle = false;

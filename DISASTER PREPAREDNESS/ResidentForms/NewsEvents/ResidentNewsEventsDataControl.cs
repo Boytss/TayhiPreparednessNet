@@ -64,6 +64,7 @@ namespace DISASTER_PREPAREDNESS.ResidentForms.NewsEvents
 
         private void linkTitle_LinkClicked_3(object sender, LinkLabelLinkClickedEventArgs e)
         {
+     
             ResidentDashboard parentForm = FindResidentDashboardParentForm();
 
             if (parentForm != null)

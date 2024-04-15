@@ -77,5 +77,11 @@ namespace DISASTER_PREPAREDNESS.ResidentForms.EvacuationCenters
                 MessageBox.Show($"Error loading Evacuation Rooms: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void viewLoation_Click(object sender, EventArgs e)
+        {
+            LocationForm location = new LocationForm();
+            location.ShowDialog();
+        }
     }
 }

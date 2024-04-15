@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DISASTER_PREPAREDNESS.AdminForms
+namespace DISASTER_PREPAREDNESS.ResidentForms.EvacuationCenters
 {
-    public partial class Form1 : Form
+    public partial class LocationForm : Form
     {
-        public Form1()
+        public LocationForm()
         {
             InitializeComponent();
         }

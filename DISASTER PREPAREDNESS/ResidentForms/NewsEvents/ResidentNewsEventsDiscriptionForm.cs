@@ -15,14 +15,15 @@ namespace DISASTER_PREPAREDNESS.ResidentForms.NewsEvents
 
     public partial class ResidentNewsEventsDiscriptionForm : Form
     {
-        private string titleName; // Store the titleName
 
+        private string titleName; // Store the titleName
         public ResidentNewsEventsDiscriptionForm(string titleName)
         {
 
             InitializeComponent();
             this.titleName = titleName;
             LoadEventData();
+
         }
         private void LoadEventData()
         {
@@ -39,7 +40,7 @@ namespace DISASTER_PREPAREDNESS.ResidentForms.NewsEvents
                     // Populate your form controls with the data
                     labelTitle.Text = row["Title"].ToString();
                     labelDate.Text = row["Date"].ToString();
-                    labelDescription.Text = row["Description"].ToString();
+                    labelDescriptions.Text = row["Description"].ToString();
                     labelBy.Text = row["by"].ToString();
 
                     // Load image if necessary
@@ -61,6 +62,52 @@ namespace DISASTER_PREPAREDNESS.ResidentForms.NewsEvents
                 MessageBox.Show($"Error loading event data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private ResidentDashboard FindResidentDashboardParentForm()
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is ResidentDashboard)
+                {
+                    return (ResidentDashboard)form;
+                }
+            }
 
+            return null;
+        }
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            ResidentDashboard parentForm = FindResidentDashboardParentForm();
+
+            if (parentForm != null)
+            {
+                // Access the panelDesktopPanel directly
+                Panel panelDesktopPanel = parentForm.PanelDesktopPanels;
+
+                if (panelDesktopPanel != null)
+                {
+                    ResidentNewsEventsForm residentNewsEventsForm = new ResidentNewsEventsForm(); // Replace Form1 with the actual form you want to open
+                    residentNewsEventsForm.TopLevel = false;
+                    residentNewsEventsForm.FormBorderStyle = FormBorderStyle.None;
+                    residentNewsEventsForm.Dock = DockStyle.Fill;
+                    panelDesktopPanel.Controls.Clear(); // Clear previous controls in the panelDesktopPanel
+                    panelDesktopPanel.Controls.Add(residentNewsEventsForm);
+                    residentNewsEventsForm.BringToFront();
+                    residentNewsEventsForm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("panelDesktopPanel not found.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Parent form not found.");
+            }
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

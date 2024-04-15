@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using static System.Net.WebRequestMethods;
+using DISASTER_PREPAREDNESS.ResidentForms.Hazard_Maps;
 
 namespace DISASTER_PREPAREDNESS.ResidentForms
 {
@@ -296,6 +297,50 @@ namespace DISASTER_PREPAREDNESS.ResidentForms
         private void timer1_Tick_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void myButton1_Click(object sender, EventArgs e)
+        {
+            ResidentDashboard parentForm = FindResidentDashboardParentForm();
+
+            if (parentForm != null)
+            {
+                // Access the panelDesktopPanel directly
+                Panel panelDesktopPanel = parentForm.PanelDesktopPanels;
+
+                if (panelDesktopPanel != null)
+                {
+
+                    WindyForm windy = new WindyForm(); // Replace Form1 with the actual form you want to open
+                    windy.TopLevel = false;
+                    windy.FormBorderStyle = FormBorderStyle.None;
+                    windy.Dock = DockStyle.Fill;
+                    panelDesktopPanel.Controls.Clear(); // Clear previous controls in the panelDesktopPanel
+                    panelDesktopPanel.Controls.Add(windy);
+                    windy.BringToFront();
+                    windy.Show();
+                }
+                else
+                {
+                    MessageBox.Show("panelDesktopPanel not found.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Parent form not found.");
+            }
+        }
+        private ResidentDashboard FindResidentDashboardParentForm()
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is ResidentDashboard)
+                {
+                    return (ResidentDashboard)form;
+                }
+            }
+
+            return null;
         }
     }
 }

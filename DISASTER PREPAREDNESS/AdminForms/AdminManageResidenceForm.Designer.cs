@@ -65,11 +65,11 @@
             label3 = new Label();
             label8 = new Label();
             panel2 = new Panel();
+            label12 = new Label();
             label2 = new Label();
             contextMenuStrip1 = new ContextMenuStrip(components);
             deleteToolStripMenuItem = new ToolStripMenuItem();
             editToolStripMenuItem = new ToolStripMenuItem();
-            label12 = new Label();
             gradientPanel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -164,8 +164,8 @@
             dataGridViewCellStyle2.BackColor = Color.FromArgb(223, 228, 231);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(51, 51, 76);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.LightGray;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridViewResidents.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewResidents.Dock = DockStyle.Top;
@@ -626,6 +626,18 @@
             panel2.Size = new Size(928, 84);
             panel2.TabIndex = 36;
             // 
+            // label12
+            // 
+            label12.Anchor = AnchorStyles.None;
+            label12.AutoSize = true;
+            label12.Font = new Font("Sitka Heading", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label12.ForeColor = Color.White;
+            label12.Location = new Point(244, 18);
+            label12.Name = "label12";
+            label12.Size = new Size(431, 47);
+            label12.TabIndex = 4;
+            label12.Text = "Manage Resident Informations";
+            // 
             // label2
             // 
             label2.Anchor = AnchorStyles.None;
@@ -655,18 +667,6 @@
             editToolStripMenuItem.Name = "editToolStripMenuItem";
             editToolStripMenuItem.Size = new Size(107, 22);
             editToolStripMenuItem.Text = "Edit";
-            // 
-            // label12
-            // 
-            label12.Anchor = AnchorStyles.None;
-            label12.AutoSize = true;
-            label12.Font = new Font("Sitka Heading", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label12.ForeColor = Color.White;
-            label12.Location = new Point(244, 18);
-            label12.Name = "label12";
-            label12.Size = new Size(431, 47);
-            label12.TabIndex = 4;
-            label12.Text = "Manage Resident Informations";
             // 
             // AdminManageResidenceForm
             // 
@@ -707,11 +707,30 @@
         private ToolStripMenuItem editToolStripMenuItem;
         private Panel panel2;
         private Label label2;
+        private Label label11;
+        private Label label12;
         private TabControl tabControl1;
         private TabPage tabPage1;
-        private MyControls.MyButton deleteButton;
+        private MyControls.MyButton clearButton;
+        private DataGridView dataGridViewResidents;
+        private Panel panel4;
+        private PictureBox pictureBox1;
+        private Label label10;
+        private MyControls.MyComboBox searchByPurokDropdown;
+        private Label label9;
+        private MyControls.MyTextBox searchNameTextbox;
+        private Panel panel3;
+        private Panel panel1;
+        private MyControls.MyButton editButton;
         private MyControls.MyButton addnewButton;
+        private MyControls.MyButton deleteButton;
         private TabPage tabPage2;
+        private MyControls.MyTextBox passwordTextbox;
+        private Label label7;
+        private MyControls.MyTextBox usernameTextbox;
+        private Label label6;
+        private Label labelDetails;
+        private MyControls.MyTextBox residentFirstNameTextbox;
         private MyControls.MyButton cancelButton;
         private MyControls.MyButton saveButton;
         private MyControls.MyTextBox residentMobileNumberTextbox;
@@ -721,24 +740,5 @@
         private MyControls.MyTextBox residentLastnameTextbox;
         private Label label3;
         private Label label8;
-        private Panel panel1;
-        private DataGridView dataGridViewResidents;
-        private Panel panel4;
-        private Label label9;
-        private MyControls.MyTextBox searchNameTextbox;
-        private Panel panel3;
-        private MyControls.MyComboBox searchByPurokDropdown;
-        private Label label10;
-        private MyControls.MyButton editButton;
-        private Label label11;
-        private PictureBox pictureBox1;
-        private MyControls.MyTextBox residentFirstNameTextbox;
-        private Label labelDetails;
-        private MyControls.MyTextBox passwordTextbox;
-        private Label label7;
-        private MyControls.MyTextBox usernameTextbox;
-        private Label label6;
-        private MyControls.MyButton clearButton;
-        private Label label12;
     }
 }

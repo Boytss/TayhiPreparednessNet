@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResidentDashboard));
             panelMenu = new Panel();
+            buttonNewsEvents = new Button();
             button1 = new Button();
             label3 = new Label();
             userLabel = new Label();
@@ -39,7 +40,6 @@
             labelDate = new Label();
             labelTime = new Label();
             buttonHelpfulTips = new Button();
-            buttonNewsEvents = new Button();
             buttonEvacuationCenter = new Button();
             buttonEducationalVideos = new Button();
             buttonHazardMaps = new Button();
@@ -63,22 +63,41 @@
             // 
             panelMenu.AutoSize = true;
             panelMenu.BackColor = Color.FromArgb(51, 51, 76);
+            panelMenu.Controls.Add(buttonHelpfulTips);
             panelMenu.Controls.Add(buttonNewsEvents);
+            panelMenu.Controls.Add(buttonWeatherForecast);
             panelMenu.Controls.Add(button1);
             panelMenu.Controls.Add(label3);
             panelMenu.Controls.Add(userLabel);
             panelMenu.Controls.Add(panel4);
             panelMenu.Controls.Add(panel2);
-            panelMenu.Controls.Add(buttonHelpfulTips);
             panelMenu.Controls.Add(buttonEvacuationCenter);
             panelMenu.Controls.Add(buttonEducationalVideos);
             panelMenu.Controls.Add(buttonHazardMaps);
-            panelMenu.Controls.Add(buttonWeatherForecast);
             panelMenu.Dock = DockStyle.Left;
             panelMenu.Location = new Point(0, 20);
             panelMenu.Name = "panelMenu";
             panelMenu.Size = new Size(223, 559);
             panelMenu.TabIndex = 10;
+            // 
+            // buttonNewsEvents
+            // 
+            buttonNewsEvents.FlatAppearance.BorderSize = 0;
+            buttonNewsEvents.FlatStyle = FlatStyle.Flat;
+            buttonNewsEvents.Font = new Font("Microsoft Sans Serif", 9F);
+            buttonNewsEvents.ForeColor = Color.White;
+            buttonNewsEvents.Image = (Image)resources.GetObject("buttonNewsEvents.Image");
+            buttonNewsEvents.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonNewsEvents.Location = new Point(3, 348);
+            buttonNewsEvents.Name = "buttonNewsEvents";
+            buttonNewsEvents.Padding = new Padding(12, 0, 0, 0);
+            buttonNewsEvents.Size = new Size(214, 50);
+            buttonNewsEvents.TabIndex = 4;
+            buttonNewsEvents.Text = "  News/Events";
+            buttonNewsEvents.TextAlign = ContentAlignment.MiddleLeft;
+            buttonNewsEvents.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonNewsEvents.UseVisualStyleBackColor = true;
+            buttonNewsEvents.Click += buttonNewsEvents_Click_2;
             // 
             // button1
             // 
@@ -171,7 +190,7 @@
             buttonHelpfulTips.ForeColor = Color.White;
             buttonHelpfulTips.Image = (Image)resources.GetObject("buttonHelpfulTips.Image");
             buttonHelpfulTips.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonHelpfulTips.Location = new Point(6, 236);
+            buttonHelpfulTips.Location = new Point(5, 404);
             buttonHelpfulTips.Name = "buttonHelpfulTips";
             buttonHelpfulTips.Padding = new Padding(12, 0, 0, 0);
             buttonHelpfulTips.Size = new Size(214, 50);
@@ -182,25 +201,6 @@
             buttonHelpfulTips.UseVisualStyleBackColor = true;
             buttonHelpfulTips.Click += buttonHelpfulTips_Click_2;
             // 
-            // buttonNewsEvents
-            // 
-            buttonNewsEvents.FlatAppearance.BorderSize = 0;
-            buttonNewsEvents.FlatStyle = FlatStyle.Flat;
-            buttonNewsEvents.Font = new Font("Microsoft Sans Serif", 9F);
-            buttonNewsEvents.ForeColor = Color.White;
-            buttonNewsEvents.Image = (Image)resources.GetObject("buttonNewsEvents.Image");
-            buttonNewsEvents.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonNewsEvents.Location = new Point(3, 348);
-            buttonNewsEvents.Name = "buttonNewsEvents";
-            buttonNewsEvents.Padding = new Padding(12, 0, 0, 0);
-            buttonNewsEvents.Size = new Size(214, 50);
-            buttonNewsEvents.TabIndex = 4;
-            buttonNewsEvents.Text = "  News/Events";
-            buttonNewsEvents.TextAlign = ContentAlignment.MiddleLeft;
-            buttonNewsEvents.TextImageRelation = TextImageRelation.ImageBeforeText;
-            buttonNewsEvents.UseVisualStyleBackColor = true;
-            buttonNewsEvents.Click += buttonNewsEvents_Click_2;
-            // 
             // buttonEvacuationCenter
             // 
             buttonEvacuationCenter.FlatAppearance.BorderSize = 0;
@@ -209,7 +209,7 @@
             buttonEvacuationCenter.ForeColor = Color.White;
             buttonEvacuationCenter.Image = (Image)resources.GetObject("buttonEvacuationCenter.Image");
             buttonEvacuationCenter.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonEvacuationCenter.Location = new Point(2, 404);
+            buttonEvacuationCenter.Location = new Point(6, 180);
             buttonEvacuationCenter.Name = "buttonEvacuationCenter";
             buttonEvacuationCenter.Padding = new Padding(12, 0, 0, 0);
             buttonEvacuationCenter.Size = new Size(214, 50);
@@ -266,7 +266,7 @@
             buttonWeatherForecast.ForeColor = Color.White;
             buttonWeatherForecast.Image = (Image)resources.GetObject("buttonWeatherForecast.Image");
             buttonWeatherForecast.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonWeatherForecast.Location = new Point(4, 180);
+            buttonWeatherForecast.Location = new Point(5, 236);
             buttonWeatherForecast.Name = "buttonWeatherForecast";
             buttonWeatherForecast.Padding = new Padding(12, 0, 0, 0);
             buttonWeatherForecast.Size = new Size(214, 50);
@@ -438,7 +438,7 @@
         private Label labelTime;
         private PictureBox pictureBox2;
         private Label label1;
-        private System.Windows.Forms.Timer timer1;
         private Button button1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

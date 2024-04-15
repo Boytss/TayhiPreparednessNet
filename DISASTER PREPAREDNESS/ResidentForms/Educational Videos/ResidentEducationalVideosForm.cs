@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DISASTER_PREPAREDNESS.AdminForms;
-using DISASTER_PREPAREDNESS.DataAccess;
+using DISASTER_PREPAREDNESS.MyControls;
 using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
 
@@ -46,6 +46,11 @@ namespace DISASTER_PREPAREDNESS.ResidentForms
                 // Add the videoControl to the flowLayoutPanel1
                 flowLayoutPanel.Controls.Add(videoControl);
             }
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

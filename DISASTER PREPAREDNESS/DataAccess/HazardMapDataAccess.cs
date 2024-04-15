@@ -48,7 +48,7 @@ namespace DISASTER_PREPAREDNESS.DataAccess
                 {
                     connection.Open();
 
-                    string selectQuery = "SELECT MapName, Description, ImagePath FROM dbo.HazardMaps";
+                    string selectQuery = "SELECT MapID, MapName, Description, ImagePath FROM dbo.HazardMaps";
 
                     using (SqlCommand command = new SqlCommand(selectQuery, connection))
                     {
@@ -65,6 +65,57 @@ namespace DISASTER_PREPAREDNESS.DataAccess
             }
 
             return hazardMapsDataTable;
+        }
+        public static void DeleteMap(int mapID)
+        {
+            try
+            {
+                using (SqlConnection connection = DatabaseHelper.GetConnection())
+                {
+                    connection.Open();
+
+                    string deleteQuery = "DELETE FROM dbo.HazardMaps WHERE MapID = @MapID";
+
+                    using (SqlCommand command = new SqlCommand(deleteQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@MapID", mapID);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle it as needed
+                throw new Exception($"Error deleting resident: {ex.Message}");
+            }
+        }
+        public static void UpdateHazardMaps(int mapID, string mapName, string mapImage)
+        {
+            try
+            {
+                using (SqlConnection connection = DatabaseHelper.GetConnection())
+                {
+                    connection.Open();
+
+                    string updateQuery = "UPDATE dbo.HazardMaps SET MapName = @MapName, ImagePath = @ImagePath  WHERE MapID = @MapID";
+
+                    using (SqlCommand command = new SqlCommand(updateQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@MapID", mapID);
+                        command.Parameters.AddWithValue("@MapName", mapName);
+                        command.Parameters.AddWithValue("@ImagePath", mapImage);
+                       
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle it as needed
+                throw new Exception($"Error updating resident data: {ex.Message}");
+            }
         }
         public static void DeleteHazardMap(string mapName)
         {

@@ -20,13 +20,41 @@ namespace DISASTER_PREPAREDNESS.Forms
             PopulateCenterComboBox();
         }
 
-        private void dataGridViewResidents_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+
+
+
+        private void PopulateDataGridView()
         {
-
-
+        }
+        private void PopulateCenterComboBox()
+        {
+            myComboBox1.DataSource = Evacuation.GetEvacuationCenters();
+            myComboBox1.DisplayMember = "CenterName";
+            myComboBox1.ValueMember = "CenterID";
         }
 
 
+
+
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void uploadCenterButton_Click(object sender, EventArgs e)
+        {
+            string centerName = centerNameTextBox.Text;
+            string location = centerLocationTextBox.Text;
+
+            // Insert evacuation center into the database
+            Evacuation.InsertEvacuationCenter(centerName, location);
+
+            MessageBox.Show("Evacuation center uploaded successfully!");
+            PopulateDataGridView(); // Refresh DataGridView
+            PopulateCenterComboBox(); // Refresh center combobox
+        }
 
         private void addRoomButton_Click(object sender, EventArgs e)
         {
@@ -50,27 +78,46 @@ namespace DISASTER_PREPAREDNESS.Forms
                 MessageBox.Show("Please select an evacuation center.");
             }
         }
-        private void PopulateDataGridView()
+
+        private void tabPage2_Click(object sender, EventArgs e)
         {
-        }
-        private void PopulateCenterComboBox()
-        {
-            myComboBox1.DataSource = Evacuation.GetEvacuationCenters();
-            myComboBox1.DisplayMember = "CenterName";
-            myComboBox1.ValueMember = "CenterID";
+
         }
 
-        private void uploadCenterButton_Click(object sender, EventArgs e)
+        private void myTextBox7_TextChanged(object sender, EventArgs e)
         {
-            string centerName = centerNameTextBox.Text;
-            string location = centerLocationTextBox.Text;
 
-            // Insert evacuation center into the database
-            Evacuation.InsertEvacuationCenter(centerName, location);
+        }
 
-            MessageBox.Show("Evacuation center uploaded successfully!");
-            PopulateDataGridView(); // Refresh DataGridView
-            PopulateCenterComboBox(); // Refresh center combobox
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            // Retrieve data from input fields
+            string lastName = lastNameText.Text;
+            string firstName = firstNameText.Text;
+            string middleName = middleNameText.Text;
+            int age = int.Parse(ageText.Text);
+            string gender = genderDrop.Texts;
+            string purokNumber = purokDrop.Texts;
+            int numOfFamily = int.Parse(numberFamilyText.Text);
+            string roomName = roomNameTextBox.Text;
+
+            // Save evacuee data
+            bool success = EvacueeDataAccess.SaveEvacueeData(lastName, firstName, middleName, age, gender, purokNumber, numOfFamily, roomName);
+
+            if (success)
+            {
+                MessageBox.Show("Data saved successfully!");
+            }
+            else
+            {
+                MessageBox.Show("Failed to save data.");
+            }
         }
     }
 }

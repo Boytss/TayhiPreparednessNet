@@ -1,4 +1,5 @@
 ﻿using DISASTER_PREPAREDNESS.AdminForms;
+using DISASTER_PREPAREDNESS.ResidentForms.NewsEvents;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -75,6 +76,50 @@ namespace DISASTER_PREPAREDNESS.ResidentForms
 
         private void labelTips_Click(object sender, EventArgs e)
         {
+
+        }
+        private ResidentDashboard FindResidentDashboardParentForm()
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is ResidentDashboard)
+                {
+                    return (ResidentDashboard)form;
+                }
+            }
+
+            return null;
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            ResidentDashboard parentForm = FindResidentDashboardParentForm();
+
+            if (parentForm != null)
+            {
+                // Access the panelDesktopPanel directly
+                Panel panelDesktopPanel = parentForm.PanelDesktopPanels;
+
+                if (panelDesktopPanel != null)
+                {
+                    ResidentHelpfulTipsForm helpfulTipsForm = new ResidentHelpfulTipsForm(); // Replace Form1 with the actual form you want to open
+                    helpfulTipsForm.TopLevel = false;
+                    helpfulTipsForm.FormBorderStyle = FormBorderStyle.None;
+                    helpfulTipsForm.Dock = DockStyle.Fill;
+                    panelDesktopPanel.Controls.Clear(); // Clear previous controls in the panelDesktopPanel
+                    panelDesktopPanel.Controls.Add(helpfulTipsForm);
+                    helpfulTipsForm.BringToFront();
+                    helpfulTipsForm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("panelDesktopPanel not found.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Parent form not found.");
+            }
 
         }
     }

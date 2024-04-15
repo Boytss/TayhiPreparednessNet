@@ -33,7 +33,7 @@
             label3 = new Label();
             pictureBox1 = new PictureBox();
             label2 = new Label();
-            flowLayoutPanelHazardMaps = new FlowLayoutPanel();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -84,14 +84,14 @@
             label2.TabIndex = 1;
             label2.Text = "Understanding and Mitigating Environmental Risks through Visualized Data";
             // 
-            // flowLayoutPanelHazardMaps
+            // flowLayoutPanel1
             // 
-            flowLayoutPanelHazardMaps.BackColor = Color.FromArgb(190, 196, 228);
-            flowLayoutPanelHazardMaps.Dock = DockStyle.Fill;
-            flowLayoutPanelHazardMaps.Location = new Point(0, 90);
-            flowLayoutPanelHazardMaps.Name = "flowLayoutPanelHazardMaps";
-            flowLayoutPanelHazardMaps.Size = new Size(800, 360);
-            flowLayoutPanelHazardMaps.TabIndex = 5;
+            flowLayoutPanel1.BackColor = Color.FromArgb(190, 196, 228);
+            flowLayoutPanel1.Dock = DockStyle.Fill;
+            flowLayoutPanel1.Location = new Point(0, 90);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(800, 360);
+            flowLayoutPanel1.TabIndex = 7;
             // 
             // ResidentHazardMapsForm
             // 
@@ -99,7 +99,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(800, 450);
-            Controls.Add(flowLayoutPanelHazardMaps);
+            Controls.Add(flowLayoutPanel1);
             Controls.Add(panel2);
             Name = "ResidentHazardMapsForm";
             Text = "ResidentHazardMapsForm";
@@ -116,5 +116,6 @@
         private FlowLayoutPanel flowLayoutPanelHazardMaps;
         private PictureBox pictureBox1;
         private Label label3;
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }

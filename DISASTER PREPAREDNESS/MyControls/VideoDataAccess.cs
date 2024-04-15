@@ -5,8 +5,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DISASTER_PREPAREDNESS.DataAccess;
 
-namespace DISASTER_PREPAREDNESS.DataAccess
+namespace DISASTER_PREPAREDNESS.MyControls
 {
     public class VideoDataAccess
     {
