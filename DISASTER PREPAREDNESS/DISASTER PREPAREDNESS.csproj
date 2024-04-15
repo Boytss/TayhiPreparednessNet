@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <TargetFramework>net7.0-windows7.0</TargetFramework>
     <RootNamespace>DISASTER_PREPAREDNESS</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
@@ -10,10 +10,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="HIC.System.Windows.Forms.DataVisualization" Version="1.0.1" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2365.46" />
+    <PackageReference Include="OxyPlot.Core" Version="2.1.2" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
     <PackageReference Include="System.IO.Ports" Version="8.0.0" />
     <PackageReference Include="Twilio" Version="6.16.1" />
+    <PackageReference Include="XPlot.GoogleCharts" Version="3.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="LiveCharts">
+      <HintPath>bin\Debug\net8.0-windows7.0\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot">
+      <HintPath>bin\Debug\net8.0-windows7.0\OxyPlot.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization">
+      <HintPath>bin\Debug\net8.0-windows7.0\System.Windows.Forms.DataVisualization.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

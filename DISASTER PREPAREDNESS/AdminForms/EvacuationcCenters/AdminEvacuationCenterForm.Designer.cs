@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminEvacuationCenterForm));
             label1 = new Label();
             panel2 = new Panel();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             panel1 = new Panel();
+            barChartControl1 = new BarChartControl();
             label3 = new Label();
             label2 = new Label();
             addRoomButton = new MyControls.MyButton();
@@ -61,18 +63,22 @@
             middleNameText = new MyControls.MyTextBox();
             firstNameText = new MyControls.MyTextBox();
             label4 = new Label();
+            tabPage3 = new TabPage();
+            webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             panel2.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             panel1.SuspendLayout();
             tabPage2.SuspendLayout();
+            tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Font = new Font("Sitka Heading", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Sitka Heading", 24F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
             label1.Location = new Point(284, 20);
             label1.Name = "label1";
@@ -94,6 +100,7 @@
             // 
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage3);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 90);
             tabControl1.Name = "tabControl1";
@@ -115,6 +122,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(224, 224, 224);
+            panel1.Controls.Add(barChartControl1);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(addRoomButton);
@@ -131,11 +139,21 @@
             panel1.TabIndex = 10;
             panel1.Paint += panel1_Paint;
             // 
+            // barChartControl1
+            // 
+            barChartControl1.BarColor = Color.Blue;
+            barChartControl1.DataValues = (List<int>)resources.GetObject("barChartControl1.DataValues");
+            barChartControl1.Labels = (List<string>)resources.GetObject("barChartControl1.Labels");
+            barChartControl1.Location = new Point(80, 41);
+            barChartControl1.Name = "barChartControl1";
+            barChartControl1.Size = new Size(8, 8);
+            barChartControl1.TabIndex = 64;
+            // 
             // label3
             // 
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label3.Location = new Point(506, 74);
             label3.Name = "label3";
             label3.Size = new Size(218, 25);
@@ -146,7 +164,7 @@
             // 
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label2.Location = new Point(126, 84);
             label2.Name = "label2";
             label2.Size = new Size(208, 25);
@@ -181,7 +199,7 @@
             roomCapacityTextBox.BorderFocusColor = Color.HotPink;
             roomCapacityTextBox.BorderRadius = 15;
             roomCapacityTextBox.BorderSize = 1;
-            roomCapacityTextBox.Font = new Font("Segoe UI", 9.5F);
+            roomCapacityTextBox.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular, GraphicsUnit.Point);
             roomCapacityTextBox.ForeColor = Color.DimGray;
             roomCapacityTextBox.Location = new Point(514, 189);
             roomCapacityTextBox.Margin = new Padding(4);
@@ -202,7 +220,7 @@
             myComboBox1.BorderColor = Color.MediumSlateBlue;
             myComboBox1.BorderSize = 1;
             myComboBox1.DropDownStyle = ComboBoxStyle.DropDown;
-            myComboBox1.Font = new Font("Segoe UI", 10F);
+            myComboBox1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             myComboBox1.ForeColor = Color.DimGray;
             myComboBox1.IconColor = Color.MediumSlateBlue;
             myComboBox1.ListBackColor = Color.FromArgb(230, 228, 245);
@@ -223,7 +241,7 @@
             roomNameTextBox.BorderFocusColor = Color.HotPink;
             roomNameTextBox.BorderRadius = 15;
             roomNameTextBox.BorderSize = 1;
-            roomNameTextBox.Font = new Font("Segoe UI", 9.5F);
+            roomNameTextBox.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular, GraphicsUnit.Point);
             roomNameTextBox.ForeColor = Color.DimGray;
             roomNameTextBox.Location = new Point(514, 129);
             roomNameTextBox.Margin = new Padding(4);
@@ -265,7 +283,7 @@
             centerLocationTextBox.BorderFocusColor = Color.HotPink;
             centerLocationTextBox.BorderRadius = 15;
             centerLocationTextBox.BorderSize = 1;
-            centerLocationTextBox.Font = new Font("Segoe UI", 9.5F);
+            centerLocationTextBox.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular, GraphicsUnit.Point);
             centerLocationTextBox.ForeColor = Color.DimGray;
             centerLocationTextBox.Location = new Point(134, 199);
             centerLocationTextBox.Margin = new Padding(4);
@@ -287,7 +305,7 @@
             centerNameTextBox.BorderFocusColor = Color.HotPink;
             centerNameTextBox.BorderRadius = 15;
             centerNameTextBox.BorderSize = 1;
-            centerNameTextBox.Font = new Font("Segoe UI", 9.5F);
+            centerNameTextBox.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular, GraphicsUnit.Point);
             centerNameTextBox.ForeColor = Color.DimGray;
             centerNameTextBox.Location = new Point(134, 139);
             centerNameTextBox.Margin = new Padding(4);
@@ -337,7 +355,7 @@
             lastNameText.BorderFocusColor = Color.HotPink;
             lastNameText.BorderRadius = 15;
             lastNameText.BorderSize = 1;
-            lastNameText.Font = new Font("Segoe UI", 9.5F);
+            lastNameText.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular, GraphicsUnit.Point);
             lastNameText.ForeColor = Color.DimGray;
             lastNameText.Location = new Point(28, 79);
             lastNameText.Margin = new Padding(4);
@@ -373,7 +391,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label12.Location = new Point(305, 257);
             label12.Name = "label12";
             label12.Size = new Size(74, 15);
@@ -386,7 +404,7 @@
             roomNameDrop.BorderColor = Color.MediumSlateBlue;
             roomNameDrop.BorderSize = 1;
             roomNameDrop.DropDownStyle = ComboBoxStyle.DropDown;
-            roomNameDrop.Font = new Font("Segoe UI", 10F);
+            roomNameDrop.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             roomNameDrop.ForeColor = Color.DimGray;
             roomNameDrop.IconColor = Color.MediumSlateBlue;
             roomNameDrop.Items.AddRange(new object[] { "Room1", "Room2", "Room3", "Room4", "Room5", "Room6", "Room7" });
@@ -403,7 +421,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label11.Location = new Point(28, 257);
             label11.Name = "label11";
             label11.Size = new Size(83, 15);
@@ -413,7 +431,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label10.Location = new Point(587, 152);
             label10.Name = "label10";
             label10.Size = new Size(45, 15);
@@ -426,7 +444,7 @@
             purokDrop.BorderColor = Color.MediumSlateBlue;
             purokDrop.BorderSize = 1;
             purokDrop.DropDownStyle = ComboBoxStyle.DropDown;
-            purokDrop.Font = new Font("Segoe UI", 10F);
+            purokDrop.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             purokDrop.ForeColor = Color.DimGray;
             purokDrop.IconColor = Color.MediumSlateBlue;
             purokDrop.Items.AddRange(new object[] { "Purok 1", "Purok 2", "Purok 3", "Purok 4", "Purok 5", "Purok 6" });
@@ -443,7 +461,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label9.Location = new Point(305, 151);
             label9.Name = "label9";
             label9.Size = new Size(54, 15);
@@ -456,7 +474,7 @@
             genderDrop.BorderColor = Color.MediumSlateBlue;
             genderDrop.BorderSize = 1;
             genderDrop.DropDownStyle = ComboBoxStyle.DropDown;
-            genderDrop.Font = new Font("Segoe UI", 10F);
+            genderDrop.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             genderDrop.ForeColor = Color.DimGray;
             genderDrop.IconColor = Color.MediumSlateBlue;
             genderDrop.Items.AddRange(new object[] { "Male", "Female" });
@@ -473,7 +491,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label8.Location = new Point(28, 151);
             label8.Name = "label8";
             label8.Size = new Size(34, 15);
@@ -483,7 +501,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label7.Location = new Point(587, 60);
             label7.Name = "label7";
             label7.Size = new Size(89, 15);
@@ -493,7 +511,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label6.Location = new Point(28, 60);
             label6.Name = "label6";
             label6.Size = new Size(70, 15);
@@ -504,7 +522,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label5.Location = new Point(305, 60);
             label5.Name = "label5";
             label5.Size = new Size(72, 15);
@@ -518,7 +536,7 @@
             numberFamilyText.BorderFocusColor = Color.HotPink;
             numberFamilyText.BorderRadius = 15;
             numberFamilyText.BorderSize = 1;
-            numberFamilyText.Font = new Font("Segoe UI", 9.5F);
+            numberFamilyText.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular, GraphicsUnit.Point);
             numberFamilyText.ForeColor = Color.DimGray;
             numberFamilyText.Location = new Point(28, 276);
             numberFamilyText.Margin = new Padding(4);
@@ -540,7 +558,7 @@
             ageText.BorderFocusColor = Color.HotPink;
             ageText.BorderRadius = 15;
             ageText.BorderSize = 1;
-            ageText.Font = new Font("Segoe UI", 9.5F);
+            ageText.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular, GraphicsUnit.Point);
             ageText.ForeColor = Color.DimGray;
             ageText.Location = new Point(28, 170);
             ageText.Margin = new Padding(4);
@@ -561,7 +579,7 @@
             middleNameText.BorderFocusColor = Color.HotPink;
             middleNameText.BorderRadius = 15;
             middleNameText.BorderSize = 1;
-            middleNameText.Font = new Font("Segoe UI", 9.5F);
+            middleNameText.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular, GraphicsUnit.Point);
             middleNameText.ForeColor = Color.DimGray;
             middleNameText.Location = new Point(587, 79);
             middleNameText.Margin = new Padding(4);
@@ -582,7 +600,7 @@
             firstNameText.BorderFocusColor = Color.HotPink;
             firstNameText.BorderRadius = 15;
             firstNameText.BorderSize = 1;
-            firstNameText.Font = new Font("Segoe UI", 9.5F);
+            firstNameText.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular, GraphicsUnit.Point);
             firstNameText.ForeColor = Color.DimGray;
             firstNameText.Location = new Point(305, 79);
             firstNameText.Margin = new Padding(4);
@@ -599,12 +617,34 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label4.Location = new Point(28, 17);
             label4.Name = "label4";
             label4.Size = new Size(130, 25);
             label4.TabIndex = 63;
             label4.Text = "Add Evacuees";
+            // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(webView21);
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Size = new Size(885, 418);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Reports";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // webView21
+            // 
+            webView21.AllowExternalDrop = true;
+            webView21.CreationProperties = null;
+            webView21.DefaultBackgroundColor = Color.White;
+            webView21.Dock = DockStyle.Fill;
+            webView21.Location = new Point(0, 0);
+            webView21.Name = "webView21";
+            webView21.Size = new Size(885, 418);
+            webView21.TabIndex = 0;
+            webView21.ZoomFactor = 1D;
             // 
             // AdminEvacuationCenterForm
             // 
@@ -615,7 +655,7 @@
             Controls.Add(tabControl1);
             Controls.Add(panel2);
             Name = "AdminEvacuationCenterForm";
-            Text = "EvacuationCenterForm";
+            Text = "a";
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             tabControl1.ResumeLayout(false);
@@ -624,6 +664,8 @@
             panel1.PerformLayout();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
+            tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)webView21).EndInit();
             ResumeLayout(false);
         }
 
@@ -662,5 +704,8 @@
         private Label label12;
         private MyControls.MyComboBox roomNameDrop;
         private Label label11;
+        private BarChartControl barChartControl1;
+        private TabPage tabPage3;
+        private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
     }
 }

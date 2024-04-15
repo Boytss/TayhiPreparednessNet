@@ -18,8 +18,71 @@ namespace DISASTER_PREPAREDNESS.Forms
             InitializeComponent();
             PopulateDataGridView();
             PopulateCenterComboBox();
+            ShowEvacueesByPurokReport();
         }
 
+        private async Task ShowEvacueesByPurokReport()
+        {
+            if (!webView21.EnsureCoreWebView2Async().IsCompleted)
+            {
+                // Wait until CoreWebView2 is initialized
+                await webView21.EnsureCoreWebView2Async();
+            }
+
+            // Retrieve data of evacuees by purok from your database
+            Dictionary<string, int> evacueesByPurok = EvacueeDataAccess.RetrieveEvacueesPerPurokFromDatabase();
+
+            // Format the data into a format suitable for Google Charts
+            StringBuilder data = new StringBuilder();
+            data.AppendLine("['Purok', 'Evacuees'],");
+            foreach (var kvp in evacueesByPurok)
+            {
+                data.AppendLine($"['{kvp.Key}', {kvp.Value}],");
+            }
+
+            // Ensure all puroks are included even if they have no evacuees
+            string[] allPuroks = { "Purok 1", "Purok 2", "Purok 3", "Purok 4", "Purok 5", "Purok 6" };
+            foreach (string purok in allPuroks)
+            {
+                if (!evacueesByPurok.ContainsKey(purok))
+                {
+                    data.AppendLine($"['{purok}', 0],");
+                }
+            }
+
+            // Construct the HTML content with Google Charts
+            string htmlContent = @"
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
+            <script type='text/javascript'>
+                google.charts.load('current', { 'packages': ['corechart'] });
+                google.charts.setOnLoadCallback(drawChart);
+
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable([
+                        " + data.ToString() + @"
+                    ]);
+
+                    var options = {
+                        title: 'Evacuees by Purok'
+                    };
+
+                    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+                    chart.draw(data, options);
+                }
+            </script>
+        </head>
+        <body>
+            <div id='chart_div' style='width: 900px; height: 500px;'></div>
+        </body>
+        </html>
+    ";
+
+            // Update WebView with the modified HTML content
+            webView21.NavigateToString(htmlContent);
+        }
 
 
 
